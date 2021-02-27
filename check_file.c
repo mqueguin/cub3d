@@ -2,13 +2,22 @@
 
 int	ft_check_file(char *path)
 {
+	int	fd;
+
 	if (!(ft_check_extension(path, ".cub")))
 	{
 		printf("Error\n");
 		printf("L'extension du fichier n'est pas valide... L'extension doit etre '.cub'\n");
-		return (0);
+		return (-1);
 	}
-	return (1);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error\n");
+		printf("Le file descriptor n'est pas valide...");
+		return (-1);
+	}
+	return (fd);
 }
 
 int	ft_check_extension(char *path, char *extension)

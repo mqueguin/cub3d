@@ -4,7 +4,7 @@ int	main(int argc, char **argv)
 {
 	if (argc == 2 || argc == 3)
 	{
-		if (!(ft_check_file(argv[1])))
+		if (!(ft_init_parse(argv[1])))
 			return (-1);
 	}
 	else

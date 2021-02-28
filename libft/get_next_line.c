@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "libft.h"
 
 static char		*ft_strjoin_gnl(char *str, char *buffer)
 {

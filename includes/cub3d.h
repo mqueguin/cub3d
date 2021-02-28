@@ -32,5 +32,6 @@ int	ft_parse_line(t_info_game *info_game, char *line);
 int	get_next_line(int fd, char **line);
 char	*ft_strcpy(char *dst, char *src);
 int	ft_check(char *str);
+int	ft_parse_res(t_info_game *info_game, char *line, int i);
 
 #endif

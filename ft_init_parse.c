@@ -8,9 +8,9 @@ static void	ft_init_info_game(t_info_game *info_game)
 	info_game->characters_start_y = 0;
 	info_game->win_res[0] = 0;
 	info_game->win_res[1] = 0;
-	info_game->color_f[0] = 0;
-	info_game->color_f[1] = 0;
-	info_game->color_f[2] = 0;
+	info_game->color_f[0] = -1;
+	info_game->color_f[1] = -1;
+	info_game->color_f[2] = -1;
 	info_game->map[0][0] = 0;
 }
 

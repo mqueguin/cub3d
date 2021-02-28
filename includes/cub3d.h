@@ -20,6 +20,7 @@ typedef struct s_info_game
 	int characters_start_x;
 	int characters_start_y;
 	int win_res[2];
+	int color_f[3];
 	int **map;
 	
 }		t_info_game;
@@ -33,5 +34,7 @@ int	get_next_line(int fd, char **line);
 char	*ft_strcpy(char *dst, char *src);
 int	ft_check(char *str);
 int	ft_parse_res(t_info_game *info_game, char *line, int i);
+int	ft_isdigit_atoi(char *line, int *i);
+int	ft_parse_f(t_info_game *info_game, char *line, int i);
 
 #endif

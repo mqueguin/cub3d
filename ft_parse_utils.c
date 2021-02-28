@@ -12,3 +12,11 @@ int	ft_isdigit_atoi(char *line, int *i)
 	*i = j;
 	return (res);
 }
+
+int	ft_jump_space(char *line, int i)
+{
+	while (line[i] == ' ')
+		i++;
+	return (i);
+}
+

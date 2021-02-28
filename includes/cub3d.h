@@ -35,6 +35,7 @@ char	*ft_strcpy(char *dst, char *src);
 int	ft_check(char *str);
 int	ft_parse_res(t_info_game *info_game, char *line, int i);
 int	ft_isdigit_atoi(char *line, int *i);
+int	ft_jump_space(char *line, int i);
 int	ft_parse_f(t_info_game *info_game, char *line, int i);
 
 #endif

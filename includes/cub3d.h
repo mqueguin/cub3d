@@ -16,6 +16,7 @@
 typedef struct s_info_game
 {
 	int fd;
+	int line_index;
 	int characters_start_x;
 	int characters_start_y;
 	int win_res[2];

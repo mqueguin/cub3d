@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 22:40:59 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/02/25 22:49:27 by mqueguin         ###   ########.fr       */
+/*   Created: 2021/01/22 18:39:25 by mqueguin          #+#    #+#             */
+/*   Updated: 2021/01/23 13:39:56 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static char		*ft_strjoin_gnl(char *str, char *buffer)
 
 	if (!buffer)
 		return (NULL);
-	len_str = (int)ft_strlen(str);
-	total_len = len_str + (int)ft_strlen(buffer);
-	if (!(new_line = (char*)malloc(sizeof(char) * (total_len + 1))))
+	len_str = ft_strlen(str);
+	total_len = len_str + ft_strlen(buffer);
+	if (!(new_line = (char*)malloc(sizeof(char)
+					* (total_len + 1))))
 		return (NULL);
 	if (str)
 		ft_strcpy(new_line, str);
@@ -35,28 +36,27 @@ static char		*ft_strjoin_gnl(char *str, char *buffer)
 	return (new_line);
 }
 
-static char		*ft_get_line(char *str)
+static char		*ft_get_new_line(char *str)
 {
-	char	*ret_line;
+	char	*line;
 	int		len;
 	int		i;
 
-	len = 0;
-	i = 0;
 	if (!str)
 		return (NULL);
+	len = 0;
 	while (str[len] && str[len] != '\n')
 		len++;
-	if (!(ret_line = (char*)malloc(sizeof(char)
-					* (len + 1))))
+	if (!(line = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
+	i = 0;
 	while (str[i] && str[i] != '\n')
 	{
-		ret_line[i] = str[i];
+		line[i] = str[i];
 		i++;
 	}
-	ret_line[i] = '\0';
-	return (ret_line);
+	line[i] = '\0';
+	return (line);
 }
 
 static char		*ft_get_second_part(char *str)
@@ -76,7 +76,7 @@ static char		*ft_get_second_part(char *str)
 		free(str);
 		return (NULL);
 	}
-	len_new_str = (int)ft_strlen(str) - len;
+	len_new_str = ft_strlen(str) - len;
 	if (!(new_str = (char*)malloc(sizeof(char)
 					* (len_new_str + 1))))
 		return (NULL);
@@ -89,29 +89,29 @@ static char		*ft_get_second_part(char *str)
 
 int				get_next_line(int fd, char **line)
 {
-	static char		*str[MAX_FD];
 	char			*buffer;
-	int				size_read;
+	static char		*str = NULL;
+	int				size_of_read;
 
-	size_read = 1;
-	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+	size_of_read = 1;
+	if (BUFFER_SIZE <= 0 || !line || fd < 0)
 		return (-1);
 	if (!(buffer = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while (!ft_check(str[fd]) && size_read != 0)
+	while (!ft_check(str) && size_of_read != 0)
 	{
-		if ((size_read = read(fd, buffer, BUFFER_SIZE)) == -1)
+		if ((size_of_read = read(fd, buffer, BUFFER_SIZE)) == -1)
 		{
 			free(buffer);
 			return (-1);
 		}
-		buffer[size_read] = '\0';
-		str[fd] = ft_strjoin_gnl(str[fd], buffer);
+		buffer[size_of_read] = '\0';
+		str = ft_strjoin_gnl(str, buffer);
 	}
 	free(buffer);
-	*line = ft_get_line(str[fd]);
-	str[fd] = ft_get_second_part(str[fd]);
-	if (size_read == 0)
+	*line = ft_get_new_line(str);
+	str = ft_get_second_part(str);
+	if (size_of_read == 0)
 		return (0);
 	return (1);
 }

@@ -1,12 +1,14 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <fcntl.h>
-#include "../libft/libft.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <math.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include "../libft/libft.h"
 
 # define BUFFER_SIZE 1
 # define MAX_FD 2147483647

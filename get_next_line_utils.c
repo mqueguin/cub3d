@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 22:41:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/02/25 22:42:38 by mqueguin         ###   ########.fr       */
+/*   Created: 2021/01/22 18:42:12 by mqueguin          #+#    #+#             */
+/*   Updated: 2021/01/23 13:24:41 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_strcpy(char *dst, char *src)
 {
 	while (*src)
 		*dst++ = *src++;
-	*dst = '\0';
 	return (dst);
 }
 

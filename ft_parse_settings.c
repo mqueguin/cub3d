@@ -58,3 +58,8 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 		return (0);
 	return (1);
 }
+
+int	ft_parse_textures(t_info_game *info_game, char *line, int i)
+{
+	
+}

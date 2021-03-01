@@ -27,7 +27,6 @@ int	ft_parse_res(t_info_game *info_game, char *line, int i)
 
 int	ft_parse_color(t_info_game *info_game, char *line, int i)
 {
-	printf("Valeur de line dans ft_parse_f : %s\n", line);
 	i++;
 	if (line[i] != ' ')
 	{
@@ -35,7 +34,10 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 		return (0);
 	}
 	i = ft_jump_space(line, i);
-	info_game->color_f[0] = ft_isdigit_atoi(line, &i);
+	if (info_game->parse_char == 'F')
+		info_game->color_f[0] = ft_isdigit_atoi(line, &i);
+	else if (info_game->parse_char == 'C')
+		info_game->color_c[0] = ft_isdigit_atoi(line, &i);
 	i = ft_jump_space(line, i);
 	i = ft_parse_f_or_c(info_game, line, i);
 	i = ft_jump_space(line, i);

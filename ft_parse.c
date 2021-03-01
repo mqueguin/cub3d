@@ -14,8 +14,9 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 		if (!(ft_parse_res(info_game, line, i)))
 			return (0);
 	}
-	else if (line[i] == 'F')
+	else if (line[i] == 'F' || line[i] == 'C')
 	{
+		info_game->parse_char = line[i];
 		if (!(ft_parse_f(info_game, line, i)))
 			return (0);
 	}

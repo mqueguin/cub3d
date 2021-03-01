@@ -18,6 +18,8 @@ typedef struct s_info_game
 	int characters_start_y;
 	int win_res[2];
 	int color_f[3];
+	int color_c[3];
+	char parse_char;
 	int **map;
 	
 }		t_info_game;

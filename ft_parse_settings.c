@@ -39,12 +39,20 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 	else if (info_game->parse_char == 'C')
 		info_game->color_c[0] = ft_isdigit_atoi(line, &i);
 	i = ft_jump_space(line, i);
-	i = ft_parse_f_or_c(info_game, line, i);
+	if ((i = ft_parse_f_or_c(info_game, line, i)) == -1)
+	{
+		printf("Error\n");
+		printf("Invalid color arguments.");
+		return (0);
+	}
 	i = ft_jump_space(line, i);
-	i = ft_parse_f_or_c(info_game, line, i);
+	if ((i = ft_parse_f_or_c(info_game, line, i)) == -1)
+	{
+		printf("Error\n");
+		printf("Invalid color arguments.");
+		return (0);
+	}
 	if (!ft_verif_f_or_c(info_game))
 		return (0);
-	printf("Valeur de color_f[0] : %d color_f[1] : %d et color_f[2] : %d\n", info_game->color_f[0], info_game->color_f[1], info_game->color_f[2]);
-	printf("Valeur de color_c[0] : %d color_c[1] : %d et color_c[2] : %d\n", info_game->color_c[0], info_game->color_c[1], info_game->color_c[2]);
 	return (1);
 }

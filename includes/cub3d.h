@@ -32,6 +32,8 @@ int	ft_parse_line(t_info_game *info_game, char *line);
 int	ft_parse_res(t_info_game *info_game, char *line, int i);
 int	ft_isdigit_atoi(char *line, int *i);
 int	ft_jump_space(char *line, int i);
-int	ft_parse_f(t_info_game *info_game, char *line, int i);
+int	ft_parse_color(t_info_game *info_game, char *line, int i);
+int	ft_parse_f_or_c(t_info_game *info_game, char *line, int i);
+int	ft_verif_f_or_c(t_info_game *info_game);
 
 #endif

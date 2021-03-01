@@ -35,5 +35,6 @@ int	ft_jump_space(char *line, int i);
 int	ft_parse_color(t_info_game *info_game, char *line, int i);
 int	ft_parse_f_or_c(t_info_game *info_game, char *line, int i);
 int	ft_verif_f_or_c(t_info_game *info_game);
+int	ft_check_line(char *line, int i);
 
 #endif

@@ -14,9 +14,7 @@ int	ft_check_line(char *line, int i)
 
 int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
 {
-	if (line[i] == 'S' && line[i + 1] == ' ')
-		info_game->parse_char[0] = 'S';
-	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
 	{
 		i += 1;
 		info_game->parse_char[0] = 'N';

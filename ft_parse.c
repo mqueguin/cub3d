@@ -20,8 +20,18 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 		if (!(ft_parse_color(info_game, line, i)))
 			return (0);
 	}
-	i = ft_parse_identifiant(info_game, line, i);
-
+	else if ((i = ft_parse_identifiant(info_game, line, i)))
+	{
+		if (!(ft_parse_textures(info_game, line, i)))
+			return (0);
+	}
+	else if (line[i] == 'S' && line[i + 1] == ' ')
+	{
+		info_game->parse_char[0] = 'S';
+		info_game->parse_char[1] = '\0';
+		if (!(ft_parse_textures(info_game, line, i)))
+			return (0);
+	}
 	return (1);
 }
 

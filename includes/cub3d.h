@@ -19,7 +19,7 @@ typedef struct s_info_game
 	int win_res[2];
 	int color_f[3];
 	int color_c[3];
-	char parse_char[2];
+	char parse_char[3];
 	int **map;
 	
 }		t_info_game;
@@ -36,6 +36,7 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i);
 int	ft_parse_f_or_c(t_info_game *info_game, char *line, int i);
 int	ft_verif_f_or_c(t_info_game *info_game);
 int	ft_check_line(char *line, int i);
+int	ft_parse_identifiant(t_info_game *info_game, char *line, int i);
 int	ft_parse_textures(t_info_game *info_game,  char *line, int i);
 
 #endif

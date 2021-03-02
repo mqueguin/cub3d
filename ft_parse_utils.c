@@ -30,13 +30,13 @@ int	ft_parse_f_or_c(t_info_game *info_game, char *line, int i)
 		i = ft_jump_space(line, i);
 		if (!ft_isdigit(line[i]))
 			return (-1);
-		if (info_game->parse_char == 'F')
+		if (info_game->parse_char[0] == 'F')
 		{
 			if (info_game->color_f[1] != -1)
 				index = 2;
 			info_game->color_f[index] = ft_isdigit_atoi(line, &i);
 		}
-		else if (info_game->parse_char == 'C')
+		else if (info_game->parse_char[0] == 'C')
 		{
 			if (info_game->color_c[1] != -1)
 				index = 2;
@@ -50,7 +50,7 @@ int	ft_parse_f_or_c(t_info_game *info_game, char *line, int i)
 
 int	ft_verif_f_or_c(t_info_game *info_game)
 {
-	if (info_game->parse_char == 'F')
+	if (info_game->parse_char[0] == 'F')
 	{
 		if (info_game->color_f[0] < 0 || info_game->color_f[1] < 0
 				|| info_game->color_f[2] < 0 ||
@@ -63,7 +63,7 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 			return (0);
 		}
 	}
-	else if (info_game->parse_char == 'C')
+	else if (info_game->parse_char[0] == 'C')
 	{
 		if (info_game->color_c[0] < 0 || info_game->color_c[1] < 0
 				|| info_game->color_c[2] < 0 ||

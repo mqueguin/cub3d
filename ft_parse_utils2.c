@@ -40,3 +40,18 @@ int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
 	}
 	return (i);	
 }
+
+int	ft_check_textures(char *texture_path)
+{
+	int fd;
+
+	fd = open(texture_path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error\n");
+		printf("Invalid textures paths.");
+		return (0);
+	}
+	close(fd);
+	return (1);
+}

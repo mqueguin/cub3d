@@ -61,12 +61,23 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 
 int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 {
+	char *texture;
+
 	i = ft_jump_space(line, i);
-	while (line[i] != ' ')
-	{
-		if ((ft_strcmp(info_game->parse_char, "S")) == 0)
-			inf_game->
-	}
+	if ((textures = ft_recover_texture(line, i)) == NULL)
+		return (0);
+	if ((ft_strcmp(info_game->parse_char, "S")) == 0)
+		info_game->path_textures_s = textures;
+	else if ((ft_strcmp(info_game->parse_char, "NO")) == 0)
+		info_game->path_textures_no = textures;
+	else if ((ft_strcmp(info_game->parse_char, "SO")) == 0)
+		info_game->path_textures_so = textures;
+	else if ((ft_strcmp(info_game->parse_char, "WE")) == 0)
+		info_game->path_textures_we = textures;
+	else if ((ft_strcmp(info_game->parse_char, "EA")) == 0)
+		info_game->path_textures_ea = textures;
+	if (!(ft_check_textures(textures)))
+		return (0);
 	printf("Valeur de info_game->parse_char : %s\n", info_game->parse_char);
 	return (1);	
 }

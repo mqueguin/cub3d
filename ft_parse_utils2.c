@@ -11,3 +11,34 @@ int	ft_check_line(char *line, int i)
 	}
 	return (1); 
 }
+
+int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
+{
+	if (line[i] == 'S' && line[i + 1] == ' ')
+		info_game->parse_char[0] = 'S';
+	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	{
+		i += 1;
+		info_game->parse_char[0] = 'N';
+		info_game->parse_char[1] = 'O';
+	}
+	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	{
+		i += 1;
+		info_game->parse_char[0] = 'S';
+		info_game->parse_char[1] = 'O';
+	}
+	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
+	{
+		i += 1;
+		info_game->parse_char[0] = 'E';
+		info_game->parse_char[1] = 'A';
+	}
+	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
+	{
+		i += 1;
+		info_game->parse_char[0] = 'W';
+		info_game->parse_char[1] = 'E';
+	}
+	return (i);	
+}

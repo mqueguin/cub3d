@@ -19,7 +19,7 @@ typedef struct s_info_game
 	int win_res[2];
 	int color_f[3];
 	int color_c[3];
-	char parse_char;
+	char parse_char[2];
 	int **map;
 	
 }		t_info_game;

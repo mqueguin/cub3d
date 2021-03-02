@@ -34,9 +34,9 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 		return (0);
 	}
 	i = ft_jump_space(line, i);
-	if (info_game->parse_char == 'F')
+	if (info_game->parse_char[0] == 'F')
 		info_game->color_f[0] = ft_isdigit_atoi(line, &i);
-	else if (info_game->parse_char == 'C')
+	else if (info_game->parse_char[0] == 'C')
 		info_game->color_c[0] = ft_isdigit_atoi(line, &i);
 	i = ft_jump_space(line, i);
 	if ((i = ft_parse_f_or_c(info_game, line, i)) == -1)
@@ -59,7 +59,7 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 	return (1);
 }
 
-int	ft_parse_textures(t_info_game *info_game, char *line, int i)
-{
+//int	ft_parse_textures(t_info_game *info_game, char *line, int i)
+//{
 	
-}
+//}

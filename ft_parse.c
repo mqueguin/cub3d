@@ -16,10 +16,12 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	}
 	else if (line[i] == 'F' || line[i] == 'C')
 	{
-		info_game->parse_char = line[i];
+		info_game->parse_char[0] = line[i];
 		if (!(ft_parse_color(info_game, line, i)))
 			return (0);
 	}
+	i = ft_parse_identifiant(info_game, line, i);
+
 	return (1);
 }
 

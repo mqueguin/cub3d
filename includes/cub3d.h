@@ -20,6 +20,11 @@ typedef struct s_info_game
 	int color_f[3];
 	int color_c[3];
 	char parse_char[3];
+	char *path_textures_s;
+	char *path_textures_no;
+	char *path_textures_so;
+	char *path_textures_we;
+	char *path_textures_ea;
 	int **map;
 	
 }		t_info_game;

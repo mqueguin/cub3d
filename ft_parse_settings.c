@@ -61,7 +61,8 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 
 int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 {
-	printf("Valeur de line[i] : %c\n", line[i]);
+	while (line[i] != '\n')
+		i++;
 	printf("Valeur de info_game->parse_char : %s\n", info_game->parse_char);
 	return (1);	
 }

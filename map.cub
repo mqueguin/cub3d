@@ -4,11 +4,11 @@ R 1920  1080
 
 C 12,255, 0
 
-NO ./textures/coucou.xpm
-S ./textures/sprites.xpm
-WE ./textures/hello.xpm
-SO ./textures/test.xpm
-EA ./textures/oui.xpm
+  NO     ./textures/coucou.xpm
+     S     ./textures/sprites.xpm
+      WE ./textures/hello.xpm
+ SO ./textures/test.xpm
+    EA ./textures/oui.xpm
 
 1111111111
 1000000001

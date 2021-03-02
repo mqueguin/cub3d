@@ -76,5 +76,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 int			get_next_line(int fd, char **line);
 char			*ft_strcpy(char *dst, char *src);
 int			ft_check(char *str);
+int			ft_strcmp(const char *s1, const char *s2);
 
 #endif

@@ -7,7 +7,10 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	i = 0;
 	ft_bzero(info_game->parse_char, 3);
 	if (line[0] == '\n')
+	{
+		printf("Je rentre dans le tout premier if\n");
 		return (1);
+	}
 	while (line[i] == ' ')
 		i++;
 	if (line[i] == 'R')
@@ -29,8 +32,10 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	}
 	else if ((i = ft_parse_identifiant(info_game, line, i)))
 	{
-		if (!(ft_parse_textures(info_game, line, i)))
+		if (i == -1)
 			return (0);
+		if (!(ft_parse_textures(info_game, line, i)))
+			return (0);	
 	}
 	return (1);
 }
@@ -49,5 +54,6 @@ int	ft_parse_gnl(t_info_game info_game, int fd)
 	}
 	if (ret == -1)
 		return (-1);
+	printf("texture s : %s\n texture no : %s\n texture so : %s\n texture we : %s\n texture ea : %s\n", info_game.path_textures_s, info_game.path_textures_no, info_game.path_textures_so, info_game.path_textures_we, info_game.path_textures_ea);
 	return (1);	
 }

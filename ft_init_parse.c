@@ -1,6 +1,18 @@
 #include "includes/cub3d.h"
 
-static void	ft_init_info_game(t_info_game *info_game)
+void	ft_init_boolean_settings(t_info_game *info_game)
+{
+	info_game->b_colors[0] = 0;
+	info_game->b_colors[1] = 0;
+	info_game->b_res = 0;
+	info_game->b_texture_no = 0;
+	info_game->b_texture_so = 0;
+	info_game->b_texture_we = 0;
+	info_game->b_texture_ea = 0;
+	info_game->b_texture_s = 0;
+}
+
+void	ft_init_info_game(t_info_game *info_game)
 {
 	info_game->fd = 0;
 	info_game->line_index = 0;
@@ -15,6 +27,7 @@ static void	ft_init_info_game(t_info_game *info_game)
 	info_game->color_c[1] = -1;
 	info_game->color_c[2] = -1;
 	ft_bzero(info_game->parse_char, 3);
+	ft_init_boolean_settings(info_game);
 	info_game->map[0][0] = 0;
 }
 

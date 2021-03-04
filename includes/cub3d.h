@@ -25,6 +25,13 @@ typedef struct s_info_game
 	char *path_textures_so;
 	char *path_textures_we;
 	char *path_textures_ea;
+	int b_colors[2];
+	int b_res;
+	int b_texture_no;
+	int b_texture_so;
+	int b_texture_we;
+	int b_texture_ea;
+	int b_texture_s;
 	int **map;
 	
 }		t_info_game;
@@ -32,6 +39,8 @@ typedef struct s_info_game
 int	ft_check_file(char *path);
 int	ft_check_extension(char *path, char *extension);
 int	ft_init_parse(char *path);
+void	ft_init_info_game(t_info_game *info_game);
+void	ft_init_boolean_settings(t_info_game *info_game);
 int	ft_parse_gnl(t_info_game info_game, int fd);
 int	ft_parse_line(t_info_game *info_game, char *line);
 int	ft_parse_res(t_info_game *info_game, char *line, int i);
@@ -45,5 +54,6 @@ int	ft_parse_identifiant(t_info_game *info_game, char *line, int i);
 int	ft_parse_textures(t_info_game *info_game,  char *line, int i);
 int	ft_check_textures(char *texture_path);
 char	*ft_recover_texture(char *line, int i);
+int	ft_verif_settings(t_info_game *info_game);
 
 #endif

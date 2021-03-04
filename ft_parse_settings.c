@@ -3,6 +3,11 @@
 int	ft_parse_res(t_info_game *info_game, char *line, int i)
 {
 	i++;
+	if (info_game->win_res[0] != 0 || info_game->win_res[1] != 0)
+	{
+		printf("Error\nInvalid resolution settings...");
+		return (0);
+	}
 	if (line[i] != ' ')
 	{
 		printf("Error\n");
@@ -21,6 +26,7 @@ int	ft_parse_res(t_info_game *info_game, char *line, int i)
 		printf("Les parametres de resolution saisis ne sont pas valides...");
 		return (0);
 	}
+	info_game->b_res = 1;
 	printf("Valeur de win_res1 : %d et win_res2 : %d\n", info_game->win_res[0], info_game->win_res[1]); 
 	return (1);
 }
@@ -66,17 +72,57 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 	i++;
 	if ((texture = ft_recover_texture(line, i)) == NULL)
 		return (0);
-	if ((ft_strcmp(info_game->parse_char, "S")) == 0)
-		info_game->path_textures_s = texture;
-	else if ((ft_strcmp(info_game->parse_char, "NO")) == 0)
-		info_game->path_textures_no = texture;
-	else if ((ft_strcmp(info_game->parse_char, "SO")) == 0)
-		info_game->path_textures_so = texture;
-	else if ((ft_strcmp(info_game->parse_char, "WE")) == 0)
-		info_game->path_textures_we = texture;
-	else if ((ft_strcmp(info_game->parse_char, "EA")) == 0)
-		info_game->path_textures_ea = texture;
 	if (!(ft_check_textures(texture)))
 		return (0);
+	if ((ft_strcmp(info_game->parse_char, "S")) == 0)
+	{
+		info_game->path_textures_s = texture;
+		if (info_game->b_texture_s == 1)
+		{
+			printf("Error\nInvalid textures settings...");
+			return (0);
+		}
+		info_game->b_texture_s = 1;
+	}
+	else if ((ft_strcmp(info_game->parse_char, "NO")) == 0)
+	{
+		info_game->path_textures_no = texture;
+		if (info_game->b_texture_no == 1)
+		{
+			printf("Error\nInvalid textures settings...");
+			return (0);
+		}
+		info_game->b_texture_no = 1;
+	}
+	else if ((ft_strcmp(info_game->parse_char, "SO")) == 0)
+	{
+		info_game->path_textures_so = texture;
+		if (info_game->b_texture_so == 1)
+		{
+			printf("Error\nInvalid textures settings...");
+			return (0);
+		}
+		info_game->b_texture_so = 1;
+	}
+	else if ((ft_strcmp(info_game->parse_char, "WE")) == 0)
+	{
+		info_game->path_textures_we = texture;
+		if (info_game->b_texture_we == 1)
+		{
+			printf("Error\nInvalid textures settings...");
+			return (0);
+		}
+		info_game->b_texture_we = 1;
+	}
+	else if ((ft_strcmp(info_game->parse_char, "EA")) == 0)
+	{
+		info_game->path_textures_ea = texture;
+		if (info_game->b_texture_ea == 1)
+		{
+			printf("Error\nInvalid textures settings...");
+			return (0);
+		}
+		info_game->b_texture_ea = 1;
+	}
 	return (1);	
 }

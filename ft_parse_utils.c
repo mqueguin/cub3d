@@ -56,12 +56,13 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 				|| info_game->color_f[2] < 0 ||
 				info_game->color_f[0] > 255 ||
 				info_game->color_f[1] > 255 ||
-				info_game->color_f[2] > 255)
+				info_game->color_f[2] > 255 || info_game->b_colors[0] == 1)
 		{
 			printf("Error\n");
 			printf("Invalid color arguments.");
 			return (0);
 		}
+		info_game->b_colors[0] = 1;
 	}
 	else if (info_game->parse_char[0] == 'C')
 	{
@@ -69,12 +70,13 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 				|| info_game->color_c[2] < 0 ||
 				info_game->color_c[0] > 255 ||
 				info_game->color_c[1] > 255 ||
-				info_game->color_c[2] > 255)
+				info_game->color_c[2] > 255 || info_game->b_colors[1] == 1)
 		{
 			printf("Error\n");
 			printf("Invalid color arguments.");
 			return (0);
 		}
+		info_game->b_colors[1] = 1;
 	}
 	return (1);
 }

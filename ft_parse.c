@@ -6,11 +6,8 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 
 	i = 0;
 	ft_bzero(info_game->parse_char, 3);
-	if (line[0] == '\n')
-	{
-		printf("Je rentre dans le tout premier if\n");
+	if (line[0] == '\0')
 		return (1);
-	}
 	while (line[i] == ' ')
 		i++;
 	if (line[i] == 'R')
@@ -48,9 +45,14 @@ int	ft_parse_gnl(t_info_game info_game, int fd)
 	line =  NULL;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		if (!(ft_parse_line(&info_game, line)))
-			return (0);
-		free(line);
+		if (!ft_verif_settings(&info_game))
+		{
+			if (!(ft_parse_line(&info_game, line)))
+				return (0);
+			free(line);
+		}
+		else
+			break ;
 	}
 	if (ret == -1)
 		return (-1);

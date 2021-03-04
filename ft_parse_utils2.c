@@ -38,9 +38,8 @@ int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
 		info_game->parse_char[0] = 'W';
 		info_game->parse_char[1] = 'E';
 	}
-	else
+	else if (line[i] != '\0')
 	{
-		printf("Pourquoi ?\n");
 		printf("Error\n");
 		printf("Invalid textures settings...");
 		return (-1);
@@ -94,4 +93,14 @@ char	*ft_recover_texture(char *line, int i)
 		texture[j++] = line[i++];
 	texture[j] = '\0';
 	return (texture);
+}
+
+int	ft_verif_settings(t_info_game *info_game)
+{
+	if (info_game->b_colors[0] == 1 && info_game->b_colors[1] == 1
+			&& info_game->b_res == 1 && info_game->b_texture_no == 1
+			&& info_game->b_texture_so == 1 && info_game->b_texture_we == 1
+			&& info_game->b_texture_ea == 1 && info_game->b_texture_s == 1)
+		return (1);
+	return (0);
 }

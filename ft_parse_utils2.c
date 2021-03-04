@@ -1,12 +1,18 @@
 #include "includes/cub3d.h"
 
-int	ft_check_line(char *line, int i)
+int	ft_check_line(t_info_game *info_game, char *line, int i)
 {
+	printf("Quel ligne ? : %s\n", line);
+	printf("Valeur de i : %d\n", i);
 	i = ft_jump_space(line, i);
+	printf("Valeur de i i apres ft_jump_space : %d\n", i);
+	printf("----------Valeur de line[i] : %c\n", line[i]);
 	if (line[i] != ' ' && line[i] != '\0')
 	{
-		printf("Error\n");
-		printf("Invalid color arguments.");
+		if (info_game->parse_char[0] == 'C' || info_game->parse_char[0] == 'F')
+			printf("Error\nInvalid colors settings...");
+		else
+			printf("Error\nInvalid textures settings...");
 		return (0);
 	}
 	return (1); 
@@ -62,7 +68,7 @@ int	ft_check_textures(char *texture_path)
 	close(fd);
 	return (1);
 }
-char	*ft_recover_texture(char *line, int i)
+char	*ft_recover_texture(t_info_game *info_game, char *line, int i)
 {
 	char	*texture;
 	int	tmp;
@@ -82,6 +88,9 @@ char	*ft_recover_texture(char *line, int i)
 	tmp = i;
 	while (line[tmp] != ' ' && line[tmp++] != '\0')
 		size++;
+	tmp--;
+	if (!ft_check_line(info_game, line, tmp))
+		return (0);
 	texture = (char*)malloc(sizeof(char) * (size + 1));
 	if (texture == NULL)
 	{

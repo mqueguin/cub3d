@@ -17,7 +17,7 @@ int	ft_parse_res(t_info_game *info_game, char *line, int i)
 	info_game->win_res[0] = ft_isdigit_atoi(line, &i);
 	i = ft_jump_space(line, i);
 	info_game->win_res[1] = ft_isdigit_atoi(line, &i);
-	if (!ft_check_line(line, i))
+	if (!ft_check_line(info_game, line, i))
 		return (0);
 	if ((info_game->win_res[0] == 0  && info_game->win_res[1] == 0) ||
 			info_game->win_res[0] == 0 || info_game->win_res[1] == 0)
@@ -58,7 +58,7 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 		printf("Invalid color arguments.");
 		return (0);
 	}
-	if (!ft_check_line(line, i))
+	if (!ft_check_line(info_game, line, i))
 		return (0);
 	if (!ft_verif_f_or_c(info_game))
 		return (0);
@@ -70,7 +70,7 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 	char *texture;
 
 	i++;
-	if ((texture = ft_recover_texture(line, i)) == NULL)
+	if ((texture = ft_recover_texture(info_game, line, i)) == NULL)
 		return (0);
 	if (!(ft_check_textures(texture)))
 		return (0);

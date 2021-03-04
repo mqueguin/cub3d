@@ -7,3 +7,8 @@ Comment stocker la map ?
 Parser la map
 Reflechir au raycasting
 Faire la norm du parseur
+
+
+
+
+PENSER A FAIRE LE MAKEFILE SINON CA VA DEVENIR CHIANT...

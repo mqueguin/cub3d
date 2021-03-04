@@ -1,10 +1,10 @@
 F 25, 0,                     250           
 
 
-R 1920  1080      
-C 12,255, 0
+R 1920  1080     
+C 12,255, 0     
 
-NO ./textures/coucou.xpm
+NO ./textures/coucou.xpm    4
 SO ./textures/test.xpm
 WE ./textures/hello.xpm
 S ./textures/sprites.xpm

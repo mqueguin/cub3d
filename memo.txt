@@ -1,0 +1,9 @@
+Penser a regarder les messages d'erreur... Parce que desfois chelou
+Faire une fonction pour centraliser les messages d'erreurs
+Gerer le parsing apres le chemin des textures
+Checker le maximum de test possibles... Faire tout pour planter le programme
+
+Comment stocker la map ?
+Parser la map
+Reflechir au raycasting
+Faire la norm du parseur

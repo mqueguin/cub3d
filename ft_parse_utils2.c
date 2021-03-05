@@ -86,9 +86,11 @@ char	*ft_recover_texture(t_info_game *info_game, char *line, int i)
 	}
 	i = ft_jump_space(line, i);
 	tmp = i;
-	while (line[tmp] != ' ' && line[tmp++] != '\0')
+	while (line[tmp] != ' ' && line[tmp] != '\0')
+	{
 		size++;
-	tmp--;
+		tmp++;
+	}
 	if (!ft_check_line(info_game, line, tmp))
 		return (0);
 	texture = (char*)malloc(sizeof(char) * (size + 1));

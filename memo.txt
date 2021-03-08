@@ -1,12 +1,12 @@
 Penser a regarder les messages d'erreur... Parce que desfois chelou
 Faire une fonction pour centraliser les messages d'erreurs
-Gerer le parsing apres le chemin des textures
+Gerer le parsing apres le chemin des textures -------------------FAIT------------------- 
 Checker le maximum de test possibles... Faire tout pour planter le programme
 
-Comment stocker la map ?
-Parser la map
-Reflechir au raycasting
-Faire la norm du parseur
+Comment stocker la map ? Stocker dans un tableau en 2d avec x et y
+Parser la map //Pour l'instant faire l algo sur papier
+Reflechir au raycasting //Pour l instant j'ai regarder des tutos
+Faire la norm du parseur // A faire a la fin du parser
 
 
 

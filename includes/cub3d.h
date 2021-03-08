@@ -14,6 +14,8 @@ typedef struct s_info_game
 {
 	int fd;
 	int line_index;
+	int x;
+	int y;
 	int characters_start_x;
 	int characters_start_y;
 	int win_res[2];
@@ -55,5 +57,8 @@ int	ft_parse_textures(t_info_game *info_game,  char *line, int i);
 int	ft_check_textures(char *texture_path);
 char	*ft_recover_texture(t_info_game *info_game, char *line, int i);
 int	ft_verif_settings(t_info_game *info_game);
+
+/** Parse map **/
+int	ft_parse_map(t_info_game *info_game, char *line);
 
 #endif

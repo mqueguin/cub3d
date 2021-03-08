@@ -16,6 +16,8 @@ void	ft_init_info_game(t_info_game *info_game)
 {
 	info_game->fd = 0;
 	info_game->line_index = 0;
+	info_game->x = 0;
+	info_game->y = 0;
 	info_game->characters_start_x = 0;
 	info_game->characters_start_y = 0;
 	info_game->win_res[0] = 0;

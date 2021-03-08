@@ -34,7 +34,7 @@ typedef struct s_info_game
 	int b_texture_we;
 	int b_texture_ea;
 	int b_texture_s;
-	int **map;
+	char **map;
 	
 }		t_info_game;
 

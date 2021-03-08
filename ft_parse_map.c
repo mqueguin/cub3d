@@ -16,7 +16,6 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 		return (0);
 	}
 	printf ("Valeur de line : %s\n", line);
-	info_game->map[0][0] = 1;
 	info_game->y += 1;
 	return (1);
 }

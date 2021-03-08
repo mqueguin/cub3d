@@ -30,7 +30,6 @@ void	ft_init_info_game(t_info_game *info_game)
 	info_game->color_c[2] = -1;
 	ft_bzero(info_game->parse_char, 3);
 	ft_init_boolean_settings(info_game);
-	info_game->map[0][0] = 0;
 }
 
 int	ft_init_parse(char *path)

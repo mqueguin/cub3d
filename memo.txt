@@ -10,5 +10,8 @@ Faire la norm du parseur // A faire a la fin du parser
 
 
 
+Recuperation line_index ok
+Faire un appel a gnl dans une fonction pour savoir combien malloc et commencer un minimum de verif (Peut-etre meme toutes les verifs)
+
 
 PENSER A FAIRE LE MAKEFILE SINON CA VA DEVENIR CHIANT...

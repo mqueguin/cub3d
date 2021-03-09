@@ -15,6 +15,12 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 		printf("Error\nInvalis settings arguments...");
 		return (0);
 	}
+	//else if (line[i] == '1')
+	//{
+		//if (!ft_parse_first_line_map(info_game, line, i))
+			//return (0);
+	//}
+	printf("Valeur de line_index : %d\n", info_game->line_index);
 	printf ("Valeur de line : %s\n", line);
 	info_game->y += 1;
 	return (1);

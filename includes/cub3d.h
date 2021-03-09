@@ -61,4 +61,7 @@ int	ft_verif_settings(t_info_game *info_game);
 /** Parse map **/
 int	ft_parse_map(t_info_game *info_game, char *line);
 
+/** Utils **/
+void	ft_free_tab2d(t_info_game *info_game);
+
 #endif

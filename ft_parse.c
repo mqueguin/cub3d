@@ -5,6 +5,7 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	int i;
 
 	i = 0;
+	info_game->line_index += 1;
 	ft_bzero(info_game->parse_char, 3);
 	if (line[0] == '\0')
 		return (1);

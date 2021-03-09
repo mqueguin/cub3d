@@ -9,8 +9,6 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	ft_bzero(info_game->parse_char, 3);
 	if (line[0] == '\0')
 		return (1);
-	while (line[i] == ' ')
-		i++;
 	if (line[i] == 'R')
 	{
 		if (!(ft_parse_res(info_game, line, i)))
@@ -34,6 +32,11 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 			return (0);
 		if (!(ft_parse_textures(info_game, line, i)))
 			return (0);	
+	}
+	else
+	{
+		printf("Error\nInvalid settings...");
+		return (0);
 	}
 	return (1);
 }

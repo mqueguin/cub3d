@@ -48,6 +48,7 @@ int	ft_parse_gnl(t_info_game info_game, int fd)
 	{
 		if (!ft_verif_settings(&info_game))
 		{
+			printf("Valeur de line : %s\n", line);
 			if (!(ft_parse_line(&info_game, line)))
 				return (0);
 			free(line);

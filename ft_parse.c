@@ -41,13 +41,13 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	return (1);
 }
 
-int	ft_parse_gnl(t_info_game info_game, int fd)
+int	ft_parse_gnl(t_info_game info_game)
 {
 	int ret;
 	char *line;
 
 	line =  NULL;
-	while ((ret = get_next_line(fd, &line)) > 0)
+	while ((ret = get_next_line(info_game.fd_map, &line)) > 0)
 	{
 		if (!ft_verif_settings(&info_game))
 		{
@@ -67,5 +67,6 @@ int	ft_parse_gnl(t_info_game info_game, int fd)
 		return (-1);
 	printf("\n\nValeur de y : %d\n", info_game.y);
 	printf("\n\nValeur recuperer : \ntexture s : %s\n texture no : %s\n texture so : %s\n texture we : %s\n texture ea : %s\n", info_game.path_textures_s, info_game.path_textures_no, info_game.path_textures_so, info_game.path_textures_we, info_game.path_textures_ea);
-	return (1);	
+	close(info_game.fd_map);
+	return (1);
 }

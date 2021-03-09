@@ -34,15 +34,14 @@ void	ft_init_info_game(t_info_game *info_game)
 
 int	ft_init_parse(char *path)
 {
-	int fd;
 	t_info_game info_game;
 
 	ft_init_info_game(&info_game);
-	if ((fd = ft_check_file(path)))
-		if (fd < 0)
+	if ((info_game.fd_map = ft_check_file(path)))
+		if (info_game.fd_map < 0)
 			return (-1);
-	printf("Valeur du file descriptor : %d\n", fd);
-	if (!(ft_parse_gnl(info_game, fd)))
+	printf("Valeur du file descriptor : %d\n", info_game.fd_map);
+	if (!(ft_parse_gnl(info_game)))
 		return (-1);
 	return (1);
 }

@@ -34,8 +34,8 @@ typedef struct s_info_game
 	int b_texture_we;
 	int b_texture_ea;
 	int b_texture_s;
-	char **map;
-	
+	int **map;
+	int fd_map;
 }		t_info_game;
 
 int	ft_check_file(char *path);
@@ -43,7 +43,7 @@ int	ft_check_extension(char *path, char *extension);
 int	ft_init_parse(char *path);
 void	ft_init_info_game(t_info_game *info_game);
 void	ft_init_boolean_settings(t_info_game *info_game);
-int	ft_parse_gnl(t_info_game info_game, int fd);
+int	ft_parse_gnl(t_info_game info_game);
 int	ft_parse_line(t_info_game *info_game, char *line);
 int	ft_parse_res(t_info_game *info_game, char *line, int i);
 int	ft_isdigit_atoi(char *line, int *i);
@@ -60,6 +60,7 @@ int	ft_verif_settings(t_info_game *info_game);
 
 /** Parse map **/
 int	ft_parse_map(t_info_game *info_game, char *line);
+int	ft_recover_size_map(t_info_game *info_game, int size_map_x_y[2]);
 
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);

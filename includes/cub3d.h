@@ -37,6 +37,7 @@ typedef struct s_info_game
 	int **map;
 	int fd_map;
 	int size_map_x_y[2];
+	int	b_line_before;
 }		t_info_game;
 
 int		ft_check_file(char *path);
@@ -63,6 +64,7 @@ int	ft_verif_settings(t_info_game *info_game);
 int		ft_parse_map(t_info_game *info_game, char *line);
 int		ft_recover_size_map(t_info_game *info_game, char *line, int i);
 int		ft_parse_line_size(t_info_game *info_game, char *line, int *x_max, int *y_max);
+int		ft_check_line_map(t_info_game *info_game, char *line, int i);
 
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);

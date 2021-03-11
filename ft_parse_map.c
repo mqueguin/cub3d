@@ -12,6 +12,15 @@
 
 #include "includes/cub3d.h"
 
+int	ft_check_line_map(t_info_game *info_game, char *line, int i)
+{
+	while(line[i] == '1')
+		i++;
+	if (line[i] == '0')
+		info_game->b_line_before = 1;
+	return (1);
+}
+
 int	ft_parse_line_size(t_info_game *info_game, char *line, int *x_max, int *y_max)
 {
 	int i;
@@ -20,10 +29,12 @@ int	ft_parse_line_size(t_info_game *info_game, char *line, int *x_max, int *y_ma
 	printf("fd_map : %d\n", info_game->fd_map);
 	printf("Valeur de i_max : %d\n", *x_max);
 	printf("ft_parse_line_size line : %s\n", line);
+	ft_check_line_map(info_game, line, i);
 	if (line[0] == '\0')
 	{
-		if (*y_max > 1)
-			return (1);
+		if (info_game->b_line_before == 1)
+			if (*y_max >= 1)
+				return (1);
 		return (0);
 	}
 	i = ft_strlen(line);
@@ -45,8 +56,11 @@ int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
 	while ((get_next_line(info_game->fd_map, &line_map) > 0))
 	{
 		if (!ft_parse_line_size(info_game, line_map, &i, &y_max))
+		{
+			free(line_map);;
 			return (0);
-		free(line);
+		}
+		free(line_map);
 	}
 	printf("Derniere ligne ? %s\n", line_map);
 	printf("Valeur de x_max x : %d\n", i);

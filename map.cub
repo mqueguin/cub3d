@@ -12,9 +12,12 @@ SO ./textures/test.xpm
 WE ./textures/hello.xpm
 S ./textures/sprites.xpm   
 EA ./textures/oui.xpm   
+
+
+
 1111111111
 1000000001
-1000000001
+1000000001111111
 1000000001
 1000000N01
 1000000001

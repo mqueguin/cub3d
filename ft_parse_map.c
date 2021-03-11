@@ -1,32 +1,71 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
+/*   Updated: 2021/03/11 14:39:24 by mqueguin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/cub3d.h"
 
-int	ft_recover_size_map(t_info_game *info_game, int size_map_x_y[2])
+int	ft_parse_line_size(t_info_game *info_game, char *line, int *x_max, int *y_max)
 {
-	char *line;
+	int i;
 
-	size_map_x_y[0] = 100;
-	size_map_x_y[1] = 200;
-	while ((get_next_line(info_game->fd_map, &line) > 0))
+	i = 0;
+	printf("fd_map : %d\n", info_game->fd_map);
+	printf("Valeur de i_max : %d\n", *x_max);
+	printf("ft_parse_line_size line : %s\n", line);
+	if (line[0] == '\0')
 	{
-		printf("Valeur line dans gnl2 : %s\n", line);
+		printf("Error\nInvalid map...");
+		return (0);
+	}
+	i = ft_strlen(line);
+	*y_max += 1;
+	if (i > *x_max)
+		*x_max = i;
+	return (1);
+}
+
+int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
+{
+	char *line_map;
+	int y_max;
+
+	y_max = 1;
+	while (line[i] != '\0')
+		i++;
+	printf("Valeur de i : %d\n", i);
+	while ((get_next_line(info_game->fd_map, &line_map) > 0))
+	{
+		printf("Debut de la fonction\n");
+		if (!ft_parse_line_size(info_game, line_map, &i, &y_max))
+			return (0);
+			printf("Fin de la focntion\n");
 		free(line);
 	}
-	printf("Derniere ligne ? %s\n", line);
+	printf("Derniere ligne ? %s\n", line_map);
+	printf("Valeur de x_max x : %d\n", i);
+	printf("Valeur de y_max y : %d\n", y_max);
+	info_game->size_map_x_y[0] = i;
+	info_game->size_map_x_y[1] = y_max;
 	return (1);
 }
 
 int	ft_parse_map(t_info_game *info_game, char *line)
 {
 	int i;
-	int size_map_x_y[2];
 
 	i = 0;
-	size_map_x_y[0] = 0;
-	size_map_x_y[1] = 0;
 	if (line[0] == '\0')
 		return (1);
 	i = ft_jump_space(line, i);
-	if (line[i] == '\0') 
+	if (line[i] == '\0')
 		return (1);
 	else if (line[i] != '1')
 	{
@@ -34,8 +73,7 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 		return (0);
 	}
 	else
-		ft_recover_size_map(info_game, size_map_x_y);
-	printf("Valeur de line_index : %d\n", info_game->line_index);
+		ft_recover_size_map(info_game, line, i);
 	printf ("Valeur de line : %s\n", line);
 	info_game->y += 1;
 	return (1);

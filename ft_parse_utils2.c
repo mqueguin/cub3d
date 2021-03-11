@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:56 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 10:48:59 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/11 14:45:34 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 int	ft_check_line(t_info_game *info_game, char *line, int i)
 {
-	printf("Quel ligne ? : %s\n", line);
-	printf("Valeur de i : %d\n", i);
-	i = ft_jump_space(line, i);
-	printf("Valeur de i i apres ft_jump_space : %d\n", i);
-	printf("----------Valeur de line[i] : %c\n", line[i]);
-	if (line[i] != ' ' && line[i] != '\0')
+	i = ft_jump_space(line, i);	if (line[i] != ' ' && line[i] != '\0')
 	{
 		if (info_game->parse_char[0] == 'C' || info_game->parse_char[0] == 'F')
 			printf("Error\nInvalid colors settings...");

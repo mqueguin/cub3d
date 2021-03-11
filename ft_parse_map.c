@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 14:39:24 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/11 14:47:11 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	ft_parse_line_size(t_info_game *info_game, char *line, int *x_max, int *y_ma
 	printf("ft_parse_line_size line : %s\n", line);
 	if (line[0] == '\0')
 	{
-		printf("Error\nInvalid map...");
+		if (*y_max > 1)
+			return (1);
 		return (0);
 	}
 	i = ft_strlen(line);
@@ -43,10 +44,8 @@ int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
 	printf("Valeur de i : %d\n", i);
 	while ((get_next_line(info_game->fd_map, &line_map) > 0))
 	{
-		printf("Debut de la fonction\n");
 		if (!ft_parse_line_size(info_game, line_map, &i, &y_max))
 			return (0);
-			printf("Fin de la focntion\n");
 		free(line);
 	}
 	printf("Derniere ligne ? %s\n", line_map);

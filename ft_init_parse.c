@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:13 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 14:45:55 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/12 15:03:30 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_init_parse(char *path)
 	if ((info_game.fd_map = ft_check_file(path)))
 		if (info_game.fd_map < 0)
 			return (-1);
-	if (!(ft_parse_gnl(info_game)))
+	if (!(ft_parse_gnl(info_game, path)))
 		return (-1);
 	return (1);
 }

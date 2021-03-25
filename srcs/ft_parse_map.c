@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/25 15:26:18 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/25 16:34:25 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 	else
 			if (!ft_recover_size_map(info_game, line, i))
 				return (0);
-	printf ("Valeur de line : %s\n", line);
 	info_game->y += 1;
 	return (1);
 }

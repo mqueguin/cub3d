@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:13 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/24 19:17:58 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/25 16:27:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_init_info_game(t_info_game *info_game)
 	info_game->line_index = 0;
 	info_game->x = 0;
 	info_game->y = 0;
-	info_game->characters_start_x = 0;
-	info_game->characters_start_y = 0;
+	info_game->characters_start_x_y[0] = 0;
+	info_game->characters_start_x_y[1] = 0;
 	info_game->win_res[0] = 0;
 	info_game->win_res[1] = 0;
 	info_game->color_f[0] = -1;

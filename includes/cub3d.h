@@ -58,7 +58,7 @@ int		ft_parse_identifiant(t_info_game *info_game, char *line, int i);
 int		ft_parse_textures(t_info_game *info_game,  char *line, int i);
 int		ft_check_textures(char *texture_path);
 char	*ft_recover_texture(t_info_game *info_game, char *line, int i);
-int	ft_verif_settings(t_info_game *info_game);
+int		ft_verif_settings(t_info_game *info_game);
 
 /** Parse map **/
 int		ft_parse_map(t_info_game *info_game, char *line);
@@ -71,6 +71,7 @@ int		ft_recover_line(t_info_game *info_game, char *line, int start_map, int *y);
 int		ft_recover_first_line(t_info_game *info_game, char *line);
 int		ft_recover_all_lines(t_info_game *info_game, char *line, int *y);
 int		ft_recover_player(t_info_game *info_game, char c, int x, int *y);
+int		ft_verif_map(t_info_game *info_game);
 
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);

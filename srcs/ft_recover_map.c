@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:24:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/25 17:05:35 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/25 17:58:26 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	ft_recover_all_lines(t_info_game *info_game, char *line, int *y)
 			info_game->map[*y][x] = '0';
 		else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
 		{
+			if (info_game->character_pos != 0)
+				return (0);
 			ft_recover_player(info_game, line[i], x, y);
 			info_game->map[*y][x] = line[i];
 		}

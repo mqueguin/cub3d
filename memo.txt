@@ -15,3 +15,6 @@ Faire un appel a gnl dans une fonction pour savoir combien malloc et commencer u
 
 
 PENSER A FAIRE LE MAKEFILE SINON CA VA DEVENIR CHIANT...
+
+
+Regler le probleme de la ligne apres la map qui est pas detecté comme une erreur...

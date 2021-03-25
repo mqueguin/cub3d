@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/16 10:50:49 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:40:11 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	ft_parse_line(t_info_game *info_game, char *line)
 {
@@ -91,5 +91,6 @@ int	ft_parse_gnl(t_info_game info_game, char *path)
 	close(info_game.fd_map);
 	if (!ft_recover_map(&info_game, path))
 		return (0);
+		printf("Valeur de la premiere ligne : %s\n", info_game.map[0]);
 	return (1);
 }

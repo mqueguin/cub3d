@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:50:55 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 10:50:57 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:17:50 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	ft_check_file(char *path)
 {

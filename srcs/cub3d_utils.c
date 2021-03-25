@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 10:48:26 by mqueguin         ###   ########.fr       */
+/*   Created: 2021/03/11 10:49:42 by mqueguin          #+#    #+#             */
+/*   Updated: 2021/03/24 19:17:54 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+void	ft_free_tab2d(t_info_game *info_game)
 {
-	if (argc == 2 || argc == 3)
-	{
-		if (!(ft_init_parse(argv[1])))
-			return (-1);
-	}
-	else
-	{
-		printf("Error\n");
-		printf("Il doit y avoir 2 ou 3 parametres.");
-	}
-	return (0);
+	free(info_game->map);
+	free(*info_game->map);
 }

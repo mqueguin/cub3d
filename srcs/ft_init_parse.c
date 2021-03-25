@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:13 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/12 15:03:30 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:17:58 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 void	ft_init_boolean_settings(t_info_game *info_game)
 {

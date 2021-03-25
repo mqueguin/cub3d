@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:17 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 10:49:20 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:18:07 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	ft_parse_res(t_info_game *info_game, char *line, int i)
 {

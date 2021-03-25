@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:06 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/11 10:49:09 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/03/24 19:18:12 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	ft_isdigit_atoi(char *line, int *i)
 {

@@ -34,7 +34,7 @@ typedef struct s_info_game
 	int b_texture_we;
 	int b_texture_ea;
 	int b_texture_s;
-	int **map;
+	char **map;
 	int fd_map;
 	int size_map_x_y[2];
 	int	b_line_before;
@@ -63,11 +63,12 @@ int	ft_verif_settings(t_info_game *info_game);
 /** Parse map **/
 int		ft_parse_map(t_info_game *info_game, char *line);
 int		ft_recover_size_map(t_info_game *info_game, char *line, int i);
-int		ft_parse_line_size(t_info_game *info_game, char *line, int *x_max, int *y_max);
+int		ft_parse_line_size(char *line, int *x_max, int *y_max);
 int		ft_check_line_map(t_info_game *info_game, char *line, int i);
 int		ft_alloc_map(t_info_game *info_game);
 int		ft_recover_map(t_info_game *info_game, char *path);
 int		ft_recover_line(t_info_game *info_game, char *line, int start_map);
+int		ft_recover_first_line(t_info_game *info_game, char *line);
 
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);

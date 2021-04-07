@@ -6,7 +6,7 @@
 #    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/09 23:39:23 by mqueguin          #+#    #+#              #
-#    Updated: 2021/02/25 22:47:23 by mqueguin         ###   ########.fr        #
+#    Updated: 2021/04/07 23:38:17 by mqueguin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS		= 		ft_isalnum.c\
 					ft_putstr_fd.c\
 					ft_putendl_fd.c\
 					ft_putnbr_fd.c\
+					ft_strcmp.c\
 					get_next_line.c\
 					get_next_line_utils.c
 

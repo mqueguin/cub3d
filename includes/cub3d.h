@@ -9,6 +9,7 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include "../libft/libft.h"
+# include "mlx.h"
 
 typedef struct s_info_game
 {

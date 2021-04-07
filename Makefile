@@ -6,118 +6,181 @@
 #    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/24 18:54:15 by mqueguin          #+#    #+#              #
-#    Updated: 2021/03/24 19:29:09 by mqueguin         ###   ########.fr        #
+#    Updated: 2021/04/07 23:30:37 by mqueguin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-END		=	\x1b[0m
-BOLD	=	\x1b[1m
-UNDER	=	\x1b[4m
-RED		=	\x1b[31m
-GREEN	=	\x1b[32m
-YELLOW	=	\x1b[33m
-BLUE	=	\x1b[34m
-PURPLE	=	\x1b[35m
-CYAN	=	\x1b[36m
-WHITE	=	\x1b[37m
+# SRC_BONUS		=	bonus/bonus.c\
+# 				bonus/screen_shot.c\
+# 				bonus/check_color_data.c\
+# 				bonus/check_map.c\
+# 				bonus/check_is_map_close.c\
+# 				bonus/check_is_map_close_last_column.c\
+# 				bonus/check_param_file.c\
+# 				bonus/check_path.c\
+# 				bonus/check_resolution.c\
+# 				bonus/display.c\
+# 				bonus/draw_column_px.c\
+# 				bonus/esc_game.c\
+# 				bonus/exit_game.c\
+# 				bonus/free_data.c\
+# 				bonus/get_color.c\
+# 				bonus/get_info.c\
+# 				bonus/load_file.c\
+# 				bonus/get_map.c\
+# 				bonus/get_texture_and_sprite.c\
+# 				bonus/get_texture_path.c\
+# 				bonus/init.c\
+# 				bonus/init_2.c\
+# 				bonus/key.c\
+# 				bonus/main.c\
+# 				bonus/move_player.c\
+# 				bonus/parsing.c\
+# 				bonus/print_texture.c\
+# 				bonus/raycasting.c\
+# 				bonus/raycasting_2.c\
+# 				bonus/sprite.c\
+# 				bonus/sprite_utils.c\
+# 				bonus/utils.c
 
 
-OBJ_DIR 	=	obj/
+# INCLUDE_BONUS		=	bonus/cub3d.h\
+# 				bonus/ft_printf.h\
+# 				bonus/get_next_line.h\
+# 				bonus/libft.h\
+# 				bonus/mlx.h
 
-SRC_DIR 	=	srcs/
+SRC_NAME		=	main.c\
+			check_file.c\
+			cub3d_utils.c\
+			ft_check_space_map.c\
+			ft_init_parse.c\
+			ft_map_is_close.c\
+			ft_parse_map.c\
+			ft_parse_settings.c\
+			ft_parse_utils.c\
+			ft_parse_utils2.c\
+			ft_parse.c\
+			ft_recover_map.c
 
-LIB_DIR 	=	libft/
+INCLUDE_NAME		=	cub3d.h\
+				libft.h\
+				mlx.h
 
-CUB3D_H	=	includes/cub3d.h\
+NAME		= Cub3D
 
-#PRINTF_BONUS_H	=	-I includes_bonus/ft_printf_bonus.h
+CC		= clang
 
-LIBFT_H		= 	libft/libft.h\
+RM		= rm -rf
 
-SRCS	 	=	main.c\
-				check_file.c\
-				cub3d_utils.c\
-				ft_init_parse.c\
-				ft_parse_map.c\
-				ft_parse_settings.c\
-				ft_parse_utils.c\
-				ft_parse_utils2.c\
-				ft_parse.c\
-				ft_recover_map.c\
+CP		= cp -r
 
+LS		= ls -la
 
-#SRCS_BONUS	=	
+CFLAGS		= -c #-Wall -Wextra -Werror -g -c
 
-NAME 		=	cub3d.a
+#LFLAGS		= -framework OpenGL -framework AppKit
+LFLAGS		= -lm -lbsd -lX11 -lXext
 
-LIBFT_A 	=	libft.a
+#OBJ_BONUS		= $(SRC_BONUS:.c=.o)
 
-CC			=	gcc -Wall -Wextra -Werror $(CUB3D_H) $(LIBFT_H) -c -o
+OBJ_NAME		= $(SRC_NAME:.c=.o)
 
-#CC_BONUS	=	gcc -Wall -Wextra -Werror $(PRINTF_BONUS_H) $(LIBFT_H) -c
+LIBMLX_MAC		= libmlx.a
 
-CFIND		=	$(SRCS:%=$(SRC_DIR)%)
+LIBMLX_NAME		= libmlx_Linux.a
 
-OFILE		=	$(SRCS:%.c=%.o)
+LIBFT_NAME		= libft.a
 
-#OFILE_BONUS	=	$(SRCS_BONUS:%.c=%.o)
+INCLUDE_PATH		= ./includes
 
-OBJ			=	$(addprefix $(OBJ_DIR), $(OFILE))
+SRC_PATH		= ./srcs
 
-all: $(OBJ_DIR) $(NAME)
+OBJ_PATH		= ./.obj
 
-$(OBJ_DIR):
-		@echo "$(GREEN)\t\t\t\t########################################"
-		@echo "\t\t\t\t####                                ####"
-		@echo "\t\t\t\t####                                ####"
-		@echo "\t\t\t\t####            $(BOLD)$(CYAN)CUB3D$(END)$(GREEN)           ####"
-		@echo "\t\t\t\t####                                ####"
-		@echo "\t\t\t\t####                                ####"
-		@echo "\t\t\t\t########################################\n\n$(END)"
-		@mkdir -p $(OBJ_DIR)
-		@echo "$(BLUE)Create:$(END) cub3d Object directory $(GREEN)$(BOLD)[OK]$(END)"
+LIBFT_SRC_PATH		= ./libft
 
-$(NAME): $(OBJ)
-		@echo "\n\n\t\t$(BOLD)====================== $(GREEN)COMPILATION LIBFT... $(END)$(BOLD)====================$(END)\t\t\n\n"
-		@make -C $(LIB_DIR)
-		@echo Copying $(LIBFT_A) to root.
-		@cp $(LIB_DIR)$(LIBFT_A) .
-		@mv $(LIBFT_A) $(NAME)
-		@ar rc $(NAME) $(addprefix $(OBJ_DIR), $(OFILE))
-		@ranlib $(NAME)
-		@echo Merged: $(NAME) with $(LIBFT_A)
-		@echo "$(BOLD)$(GREEN)\n\t\t\t-------------------- CUB3D COMPLETE --------------------"
+MLX_LINUX_PATH		= ./minilibx
 
-$(OBJ): $(CFIND)
-		@$(MAKE) $(OFILE)
+INCLUDE			= $(addprefix $(INCLUDE_PATH)/, $(INCLUDE_NAME))
 
-$(OFILE):
-		@echo "$(BOLD)$(GREEN)[GOOD]$(END) Create: $(@:obj/%=%)"
-		@$(CC) $(OBJ_DIR)$@ $(SRC_DIR)$(@:%.o=%.c)
+SRC			= $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 
-#bonus:	
-#		@echo "$(BOLD)$(CYAN)\n\t\t\t-------------------- Bonus Compilation... --------------------$(END)"
-#		@make -C $(LIB_DIR)
-#		@$(CC_BONUS) srcs_bonus/*.c
-#		@mv *.o srcs_bonus
-#		@cp $(LIB_DIR)$(LIBFT_A) 
-#		@mv $(LIBFT_A) $(NAME)
-#		@ar rc $(NAME) $(OFILE_BONUS)
-#		@ranlib $(NAME)
-#		@echo "$(BOLD)$(GREEN)\n\t\t\t-------------------- BONUS COMPLETE --------------------$(END)"
+OBJ			= $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
+LIBFT			= $(addprefix $(INCLUDE_PATH)/, $(LIBFT_NAME))
+
+LIBFT_SRC		= $(addprefix $(LIBFT_SRC_PATH)/, $(LIBFT_NAME))
+
+#LIBPRINTF_SRC		= $(addprefix $(LIBPRINTF_SRC_PATH)/, $(LIBPRINTF_NAME))
+
+LIBMLX_LINUX		= $(addprefix $(MLX_LINUX_PATH)/, $(LIBMLX_NAME))
+
+all: $(OBJ_PATH) $(LIB_PATH) $(NAME)
+
+$(OBJ_PATH):
+	@echo Creating object directory
+	@mkdir -p $(OBJ_PATH)
+
+$(LIB_PATH):
+	@echo Creating library directory
+	@mkdir -p $(LIB_PATH)
+
+$(NAME): $(OBJ) $(LIBFT) $(LIBMLX_LINUX) $(INCLUDE)
+	@echo Compiling executable $(NAME)..
+	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) $(LIBMLX_LINUX) $(LFLAGS)
+	@$(LS)
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@echo Compiling $< in $@..
+	@$(CC) -o $@ $(CFLAGS) $<
+
+# $(LIBPRINTF): $(LIBPRINTF_SRC)
+# 	@echo Copy $(LIBPRINTF_SRC) in $(LIBPRINTF)..
+# 	@$(CP) $(LIBPRINTF_SRC) $(LIBPRINTF)
+
+# $(LIBPRINTF_SRC):
+# 	@echo Compiling FT_PRINTF..
+# 	@(cd $(LIBPRINTF_SRC_PATH) && $(MAKE))
+
+$(LIBFT): $(LIBFT_SRC)
+	@echo Copy $(LIBFT_SRC) in $(LIBFT)..
+	@($(CP) $(LIBFT_SRC) $(LIBFT))
+
+$(LIBFT_SRC):
+	@echo Compiling LIBFT..
+	@(cd $(LIBFT_SRC_PATH) && $(MAKE))
+
+#$(LIBMLX_LINUX):
+#	@echo Compiling minilibx linux..
+#	@(cd $(MLX_LINUX_PATH) && $(MAKE))
+
+#bonus :  $(OBJ_BONUS) $(LIBPRINTF) $(LIBFT) $(LIBMLX_LINUX) $(INCLUDE_BONUS)
+#	@echo Compiling executable $(NAME)..
+#	@$(CC) -o $(NAME) $(OBJ_BONUS) $(LIBPRINTF) $(LIBFT) $(LIBMLX_LINUX) $(LFLAGS)
+#	@$(LS)
 
 clean:
-		@/bin/rm -rf $(OBJ_DIR)
-		#@rm -rf srcs_bonus/*.o
-		@make -C $(LIB_DIR) clean
-		@echo "Cleaned cub3d object files"
+	@echo Delete $(OBJ)..
+	@$(RM) $(OBJ) $(OBJ_PATH)
+	@echo Delete library files and directory
+	@$(RM) $(LIBFT) $(LIB_PATH)
+	@(cd && $(MAKE) clean)
+	@$(LS)
+	#@(cd $(MLX_LINUX_PATH) && $(MAKE) clean)
+	#@$(LS)
 
-fclean: clean
-		@/bin/rm -f $(NAME)
-		@make -C $(LIB_DIR) fclean
-		@echo "$(BOLD)$(RED)\t\t\t-_-_-_-_-_-_-_-_-_-_ Cleaned $(NAME) _-_-_-_-_-_-_-_-_-_-$(END)"
+# fclean: clean
+# 	@echo Delete executable $(NAME)..
+# 	@$(RM) $(NAME)
+# 	@echo Delete library $(LIBFT)..
+# 	rm bonus/*.o
+# 	@echo Delete $(OBJ_BONUS)
+# 	@(cd $(LIBFT_SRC_PATH) && $(RM) $(LIBFT_NAME) && $(LS))
+# 	@echo Delete library $(LIBPRINTF)..
+# 	@(cd $(LIBPRINTF_SRC_PATH) && $(MAKE) fclean && $(LS))
+# 	@$(LS)
 
-re: fclean all
+re : fclean all
 
-.PHONY: all clean flcean re
+.PHONY: all clean fclean re

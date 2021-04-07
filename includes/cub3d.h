@@ -72,6 +72,11 @@ int		ft_recover_first_line(t_info_game *info_game, char *line);
 int		ft_recover_all_lines(t_info_game *info_game, char *line, int *y);
 int		ft_recover_player(t_info_game *info_game, char c, int x, int *y);
 int		ft_verif_map(t_info_game *info_game);
+int		ft_check_space_map(char **map);
+int		ft_replace_space_by_wall(char **map, int x, int y);
+int		ft_check_column(char **map);
+int		ft_check_up_is_wall(char **map, int x, int y);
+int		ft_check_down_is_wall(char **map, int x, int y);
 
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);

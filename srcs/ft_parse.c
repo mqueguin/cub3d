@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/07 14:21:22 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:36:53 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,17 @@ int	ft_parse_gnl(t_info_game info_game, char *path)
 	close(info_game.fd_map);
 	if (!ft_recover_map(&info_game, path))
 		return (0);
-		for (int y = 0; info_game.map[y]; y++)
-			printf("Valeur de map : %s\n", info_game.map[y]);
-	if (!ft_verif_map(&info_game))
+	if (!ft_check_space_map(info_game.map))
+	{
+		printf("Error\nInvalid map...");
 		return (0);
+	}
+	if (!ft_verif_map(&info_game))
+	{
+		printf("Error\nInvalid map...");
+		return (0);
+	}
+	for (int j = 0; info_game.map[j]; j++)
+		printf("%s\n", info_game.map[j]);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:06 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/24 19:18:12 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:18:36 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 				info_game->color_f[1] > 255 ||
 				info_game->color_f[2] > 255 || info_game->b_colors[0] == 1)
 		{
-			printf("Error\n");
-			printf("Invalid color arguments.");
+			ft_msg_errors(info_game, "Invalid colors settings...");
 			return (0);
 		}
 		info_game->b_colors[0] = 1;
@@ -84,8 +83,7 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 				info_game->color_c[1] > 255 ||
 				info_game->color_c[2] > 255 || info_game->b_colors[1] == 1)
 		{
-			printf("Error\n");
-			printf("Invalid color arguments.");
+			ft_msg_errors(info_game, "Invalid colors settings...");
 			return (0);
 		}
 		info_game->b_colors[1] = 1;

@@ -6,7 +6,7 @@
 #    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/24 18:54:15 by mqueguin          #+#    #+#              #
-#    Updated: 2021/04/07 23:30:37 by mqueguin         ###   ########.fr        #
+#    Updated: 2021/04/08 13:45:53 by mqueguin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRC_NAME		=	main.c\
 			ft_parse_utils.c\
 			ft_parse_utils2.c\
 			ft_parse.c\
-			ft_recover_map.c
+			ft_recover_map.c\
+			ft_utils.c
 
 INCLUDE_NAME		=	cub3d.h\
 				libft.h\

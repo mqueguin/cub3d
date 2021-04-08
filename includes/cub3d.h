@@ -39,6 +39,7 @@ typedef struct s_info_game
 	int fd_map;
 	int size_map_x_y[2];
 	int	b_line_before;
+	int	msg_error;
 }		t_info_game;
 
 int		ft_check_file(char *path);
@@ -81,5 +82,6 @@ int		ft_check_down_is_wall(char **map, int x, int y);
 
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);
-
+int		ft_msg_errors(t_info_game *info_game, char *str);
+int		ft_error(char *str);
 #endif

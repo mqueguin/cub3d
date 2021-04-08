@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:24:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/07 18:34:52 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:34:07 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_recover_first_line(t_info_game *info_game, char *line)
 
 	i = -1;
 	x = 0;
-	// while (line[++i] != '1')
-	// 	info_game->map[0][x++] = '1';
 	while (line[++i])
 	{
 		if (line[i] == '1')
@@ -50,8 +48,6 @@ int	ft_recover_all_lines(t_info_game *info_game, char *line, int *y)
 
 	i = -1;
 	x = 0;
-	// while (line[++i] != '1')
-	// 	info_game->map[*y][x++] = '1';
 	while (line[++i])
 	{
 		if (line[i] == '1')
@@ -83,18 +79,12 @@ int	ft_recover_line(t_info_game *info_game, char *line, int start_map, int *y)
 	if (start_map == info_game->line_index)
 	{
 		if (!ft_recover_first_line(info_game, line))
-		{
-			printf("Error\nInvalid map...");
 			return (0);
-		}
 	}
 	else
 	{
 		if (!ft_recover_all_lines(info_game, line, y))
-		{
-			printf("Error\nInvalid map...");
 			return (0);
-		}
 	}
 	return (1);
 }
@@ -109,20 +99,16 @@ int	ft_recover_map(t_info_game *info_game, char *path)
 	y = 1;
 	info_game->fd_map = open(path, O_RDONLY);
 	if (info_game->fd_map == -1)
-	{
-		printf("Error\n");
-		return (0);
-	}
+		return (ft_msg_errors(info_game, "Invalid file descriptor..."));
 	printf("Valeur de line_index : %d\n", info_game->line_index);
 	while ((get_next_line(info_game->fd_map, &line)) > 0)
 	{
-		printf("Ici\n");
 		if (i >= info_game->line_index)
 		{
 			if (!ft_recover_line(info_game, line, i, &y))
 			{
 				free(line);
-				return (0);
+				return (-1);
 			}
 		}		
 		free(line);
@@ -131,7 +117,7 @@ int	ft_recover_map(t_info_game *info_game, char *path)
 	if (!ft_recover_line(info_game, line, i, &y))
 	{
 		free(line);
-		return (0);
+		return (-1);
 	}
 	free(line);
 	close(info_game->fd_map);

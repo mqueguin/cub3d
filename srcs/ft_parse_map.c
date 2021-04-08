@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/07 17:51:34 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:29:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,44 +18,24 @@ int	ft_alloc_map(t_info_game *info_game)
 
 	y = -1;
 	if (!(info_game->map = (char**)malloc(sizeof(char*) * (info_game->size_map_x_y[1] + 1))))
-	{
-		printf("Error\nMemory allocation...");
-		return (0);
-	}
+		return (ft_msg_errors(info_game, "Memory allocation failed..."));
 	while (++y < info_game->size_map_x_y[1])
 	{
 		if (!(info_game->map[y] = (char*)malloc(sizeof(char) * (info_game->size_map_x_y[0] + 1))))
-		{
-			printf("Error\nMemory allocation...");
-			return (0);
-		}
+			return (ft_msg_errors(info_game, "Memory allocation failed..."));
 	}
 	return (1);
 }
 
-// int	ft_check_line_map(t_info_game *info_game, char *line, int i)
-// {
-// 	i = ft_jump_space(line, i);
-// 	if (line[i] == '0' || line[i] == '1')
-// 		info_game->b_line_before = 1;
-// 	else if (line[i] != '\0' && line[i] != '1' && line[i] != '0' && line[i] != '2')
-// 		info_game->b_line_before = 0;
-// 	return (1);
-// }
-
 int	ft_parse_line_size(char *line, int *x_max, int *y_max)
 {
-	printf("line fct : %s\n", line);
 	int i;
 
 	i = 0;
 	if (line[0] == '\0')
 	{
 		if (*y_max >= 1)
-		{
-			printf("Error\nInvalid map...");
 			return (0);
-		}
 	}
 	// if (!ft_check_line_map(info_game, line, i))
 	// 	return (0);
@@ -91,7 +71,7 @@ int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
 	free(line_map);
 	info_game->size_map_x_y[0] = i;
 	info_game->size_map_x_y[1] = y_max;
-	if (!ft_alloc_map(info_game))
+	if ((ft_alloc_map(info_game)) == -1)
 		return (0);
 	return (1);
 }
@@ -113,13 +93,10 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 		return (1);
 	}
 	else if (line[i] != '1')
-	{
-		printf("Error\nInvalis settings arguments...");
-		return (0);
-	}
+		return (ft_msg_errors(info_game, "Invalid data settings..."));
 	else
 			if (!ft_recover_size_map(info_game, line, i))
-				return (0);
+				return (-1);
 	info_game->y += 1;
 	return (1);
 }

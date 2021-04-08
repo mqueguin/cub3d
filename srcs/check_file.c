@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:50:55 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/24 19:17:50 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 14:54:24 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,10 @@ int	ft_check_file(char *path)
 	int	fd;
 
 	if (!(ft_check_extension(path, ".cub")))
-	{
-		printf("Error\n");
-		printf("L'extension du fichier n'est pas valide... L'extension doit etre '.cub'\n");
-		return (-1);
-	}
+		return (ft_error("The extension must be '.cub'"));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Error\n");
-		printf("Le file descriptor n'est pas valide...");
-		return (-1);
-	}
+		return (ft_error("The file descriptor is not valid"));
 	return (fd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:56 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/03/24 19:18:16 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:39:21 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	ft_check_line(t_info_game *info_game, char *line, int i)
 {
-	i = ft_jump_space(line, i);	if (line[i] != ' ' && line[i] != '\0')
+	i = ft_jump_space(line, i);	
+	if (line[i] != ' ' && line[i] != '\0')
 	{
 		if (info_game->parse_char[0] == 'C' || info_game->parse_char[0] == 'F')
-			printf("Error\nInvalid colors settings...");
+			ft_msg_errors(info_game, "Invalid colors settings...");
 		else
-			printf("Error\nInvalid textures settings...");
+			ft_msg_errors(info_game, "Invalid textures settings...");
 		return (0);
 	}
 	return (1); 
@@ -52,11 +53,7 @@ int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
 		info_game->parse_char[1] = 'E';
 	}
 	else if (line[i] != '\0')
-	{
-		printf("Error\n");
-		printf("Invalid textures settings...");
-		return (-1);
-	}
+		return (ft_msg_errors(info_game, "Invalid textures settings..."));
 	return (i);	
 }
 
@@ -67,8 +64,6 @@ int	ft_check_textures(char *texture_path)
 	fd = open(texture_path, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error\n");
-		printf("Invalid textures paths.");
 		free(texture_path);
 		return (0);
 	}
@@ -86,11 +81,7 @@ char	*ft_recover_texture(t_info_game *info_game, char *line, int i)
 	j = 0;
 	texture = NULL;
 	if (line[i] != ' ')
-	{
-		printf("Error\n");
-		printf("Invalid textures settings...");
 		return (0);
-	}
 	i = ft_jump_space(line, i);
 	tmp = i;
 	while (line[tmp] != ' ' && line[tmp] != '\0')
@@ -103,8 +94,7 @@ char	*ft_recover_texture(t_info_game *info_game, char *line, int i)
 	texture = (char*)malloc(sizeof(char) * (size + 1));
 	if (texture == NULL)
 	{
-		printf("Error\n");
-		printf("Malloc allocation...");
+		ft_msg_errors(info_game, "Memory allocation failed...");
 		return (0);
 	}
 	while (i < tmp)

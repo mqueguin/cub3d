@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 14:54:02 by mqueguin         ###   ########.fr       */
+/*   Created: 2021/04/08 13:40:09 by mqueguin          #+#    #+#             */
+/*   Updated: 2021/04/08 15:41:45 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+int	ft_msg_errors(t_info_game *info_game, char *str)
 {
-	if (argc == 2 || argc == 3)
-	{
-		if ((ft_init_parse(argv[1])) == -1)
-			return (-1);
-		void    *mlx;
-    	void    *mlx_win;
-
-    	mlx = mlx_init();
-    	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-    	mlx_loop(mlx);
-	}
+	if (info_game->msg_error == 1)
+		return (-1);
 	else
-		return(ft_error("There must be 2 or 3 parameters"));
-	return (0);
+	{
+		printf("Error\n");
+		printf("%s", str);
+		info_game->msg_error = 1;
+	}
+	return (-1);
+}
+
+int	ft_error(char *str)
+{
+	printf("Error\n");
+	printf("%s", str);
+	return (-1);
 }

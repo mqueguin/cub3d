@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 15:37:42 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 16:10:21 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 	}
 	if (line[i] == 'R')
 	{
+		info_game->parse_char[0] = line[i];
 		if (!(ft_parse_res(info_game, line, i)))
 			return (ft_msg_errors(info_game, "Invalid resolution settings..."));
 	}
@@ -70,7 +71,7 @@ int	ft_parse_gnl(t_info_game info_game, char *path)
 		{
 			printf("Valeur de line : %s\n", line);
 			if ((ft_parse_line(&info_game, line)) == -1)
-				return (-1);
+				return (ft_msg_errors(&info_game, "Invalid settings..."));
 			free(line);
 		}
 		else

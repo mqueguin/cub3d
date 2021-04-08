@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:56 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 15:39:21 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 16:27:16 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_check_line(t_info_game *info_game, char *line, int i)
 	i = ft_jump_space(line, i);	
 	if (line[i] != ' ' && line[i] != '\0')
 	{
-		if (info_game->parse_char[0] == 'C' || info_game->parse_char[0] == 'F')
+		if (info_game->parse_char[0] == 'R')
+			ft_msg_errors(info_game, "Invalid resolution settings...");
+		else if (info_game->parse_char[0] == 'C' || info_game->parse_char[0] == 'F')
 			ft_msg_errors(info_game, "Invalid colors settings...");
 		else
 			ft_msg_errors(info_game, "Invalid textures settings...");
@@ -53,7 +55,7 @@ int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
 		info_game->parse_char[1] = 'E';
 	}
 	else if (line[i] != '\0')
-		return (ft_msg_errors(info_game, "Invalid textures settings..."));
+		return (ft_msg_errors(info_game, "Invalid settings..."));
 	return (i);	
 }
 

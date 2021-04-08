@@ -1,14 +1,8 @@
-F    25, 0, 250           
+F 12,25, 25
 
-      
-R 1920  1080
+R 1920 1080 
 
-
-
-C   12,      255, 0     
-
-
-
+C  45,255, 12 
 
 NO ./textures/coucou.xpm    
 SO ./textures/test.xpm 

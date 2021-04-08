@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:06 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 15:18:36 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 17:32:25 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_isdigit_atoi(char *line, int *i)
 
 	res = 0;
 	j = *i;
+	if (!ft_isdigit(line[j]))
+		return (-1);
 	while (ft_isdigit(line[j]))
 		res = (res * 10) + ((int)line[j++] - 48);
 	*i = j;

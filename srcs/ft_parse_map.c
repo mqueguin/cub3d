@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 15:29:02 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/08 17:47:33 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_parse_line_size(char *line, int *x_max, int *y_max)
 	i = 0;
 	if (line[0] == '\0')
 	{
-		if (*y_max >= 1)
+		if (*y_max > 0)
 			return (0);
 	}
 	// if (!ft_check_line_map(info_game, line, i))

@@ -11,36 +11,76 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
-typedef struct s_info_game
+# define KEYCODE_A 		97
+# define KEYCODE_S		115
+# define KEYCODE_D		100
+# define KEYCODE_W		119
+# define KEYCODE_UP		65362
+# define KEYCODE_DOWN	65364
+# define KEYCODE_LEFT	65361
+# define KEYCODE_RIGHT	65363
+# define KEYCODE_ESCAPE	65307
+# define FOV 			60
+
+typedef struct	s_info_game
 {
-	int fd;
-	int line_index;
-	int x;
-	int y;
-	int characters_start_x_y[2];
-	char character_pos;
-	int win_res[2];
-	int color_f[3];
-	int color_c[3];
-	char parse_char[3];
-	char *path_textures_s;
-	char *path_textures_no;
-	char *path_textures_so;
-	char *path_textures_we;
-	char *path_textures_ea;
-	int b_colors[2];
-	int b_res;
-	int b_texture_no;
-	int b_texture_so;
-	int b_texture_we;
-	int b_texture_ea;
-	int b_texture_s;
-	char **map;
-	int fd_map;
-	int size_map_x_y[2];
-	int	b_line_before;
-	int	msg_error;
-}		t_info_game;
+	int 		fd;
+	int 		line_index;
+	int 		x;
+	int 		y;
+	int 		characters_start_x_y[2];
+	char 		character_pos;
+	int 		win_res[2];
+	int 		color_f[3];
+	int 		color_c[3];
+	char 		parse_char[3];
+	char 		*path_textures_s;
+	char 		*path_textures_no;
+	char 		*path_textures_so;
+	char 		*path_textures_we;
+	char 		*path_textures_ea;
+	int 		b_colors[2];
+	int 		b_res;
+	int 		b_texture_no;
+	int 		b_texture_so;
+	int 		b_texture_we;
+	int 		b_texture_ea;
+	int 		b_texture_s;
+	char 		**map;
+	int 		fd_map;
+	int 		size_map_x_y[2];
+	int			b_line_before;
+	int			msg_error;
+}				t_info_game;
+
+typedef struct	s_player
+{
+	float		pos_x;
+	float		pos_y;
+	float		dir;	
+}				t_player;
+
+typedef struct  s_data
+{
+    void        *img;
+    char        *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
+}               t_data;
+
+typedef struct	s_world
+{
+	void		*mlx;
+	float		dist_to_projection_plane;
+}				t_world;
+
+typedef struct	s_game
+{
+	t_world		world;
+	t_info_game info_game;
+	t_player	player;
+}				t_game;
 
 int		ft_check_file(char *path);
 int		ft_check_extension(char *path, char *extension);
@@ -80,8 +120,15 @@ int		ft_check_column(char **map);
 int		ft_check_up_is_wall(char **map, int x, int y);
 int		ft_check_down_is_wall(char **map, int x, int y);
 
+/** Start game **/
+int		game_start(t_game *game);
+
+
 /** Utils **/
 void	ft_free_tab2d(t_info_game *info_game);
 int		ft_msg_errors(t_info_game *info_game, char *str);
 int		ft_error(char *str);
+void	ft_check_res_size(t_game *game);
+float	ft_degree_to_radian(float degree);
+
 #endif

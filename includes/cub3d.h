@@ -57,7 +57,10 @@ typedef struct	s_player
 {
 	float		pos_x;
 	float		pos_y;
-	float		dir;	
+	float		dir;
+	float		angle;
+	int			b_walk_dir;
+	int			b_angle_dir;
 }				t_player;
 
 typedef struct  s_data
@@ -72,6 +75,7 @@ typedef struct  s_data
 typedef struct	s_world
 {
 	void		*mlx;
+	void		*win;
 	float		dist_to_projection_plane;
 }				t_world;
 

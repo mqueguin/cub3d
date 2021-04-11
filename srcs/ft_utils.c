@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 13:40:09 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/09 18:06:58 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/10 19:42:32 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_check_res_size(t_game *game)
 
 	res_x_max = 0;
 	res_y_max = 0;
-	mlx_get_screen_size(game->world.mlx, &res_x_max, &res_y_max);
+	mlx_get_screen_size(game->world.mlx_ptr, &res_x_max, &res_y_max);
 	if (game->info_game.win_res[0] > res_x_max)
 		game->info_game.win_res[0] = res_x_max;
 	if (game->info_game.win_res[1] > res_y_max)

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/09 17:56:26 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/11 17:51:53 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 int		game_start(t_game *game)
 {
+	ft_init_struct(game);
 	game->world.mlx = mlx_init();
-	ft_check_res_size(game);
+	if (!game->world.mlx)
+	{
+		ft_msg_errors(&game->info_game, "Failed to create mlx instance...");
+		return (0);
+	}
+	ft_init_window_mlx(game);
 	return (1);
 }
 

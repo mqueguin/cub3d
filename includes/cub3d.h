@@ -55,10 +55,10 @@ typedef struct	s_info_game
 
 typedef struct	s_player
 {
-	float		pos_x;
-	float		pos_y;
+	float		pos_x; //Position x du joueur
+	float		pos_y; //Position y du joueur
 	float		dir;
-	float		angle;
+	float		angle; //Angle de rotation du joueur
 	int			b_walk_dir;
 	int			b_angle_dir;
 }				t_player;
@@ -76,8 +76,31 @@ typedef struct	s_world
 {
 	void		*mlx;
 	void		*win;
-	float		dist_to_projection_plane;
+	float		dist_to_projection_plane; // distance entre la caméra et l'écran de projection
+	int			x; //variable qui nous permet de parcourir les colonnes de pixels de gauche à droite
 }				t_world;
+
+typedef struct	s_rays
+{
+	int			mapx; // coordonée x du carré dans lequel est pos
+	int			mapy; // coordonnée y du carré dans lequel est pos
+	float		camerax; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+	float		raydirx; //calcul de direction x du rayon
+	float		raydiry; //calcul de direction y du rayon
+	float		sidedistx; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
+	float		sidedisty; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
+	float		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
+	float		deltadisty; //distance que le rayon parcours entre chaque point d'intersection horizontal
+	int			stepx; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
+	int			stepy; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
+	int			hit; // 1 si un mur a ete touche, 0 sinon
+	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
+	float		perpwalldist; // distance du joueur au mur
+	int			lineheight; //hauteur de la ligne a dessiner
+	int			drawstart; //position de debut ou il faut dessiner
+	int			drawend; //position de fin ou il faut dessiner
+}				t_rays;
+
 
 typedef struct	s_game
 {
@@ -85,6 +108,7 @@ typedef struct	s_game
 	t_info_game info_game;
 	t_player	player;
 	t_data		data;
+	t_rays		rays;
 }				t_game;
 
 int		ft_check_file(char *path);
@@ -92,7 +116,7 @@ int		ft_check_extension(char *path, char *extension);
 int		ft_init_parse(char *path);
 void	ft_init_info_game(t_info_game *info_game);
 void	ft_init_boolean_settings(t_info_game *info_game);
-int		ft_parse_gnl(t_info_game info_game, char *path);
+int		ft_parse_gnl(t_info_game *info_game, char *path);
 int		ft_parse_line(t_info_game *info_game, char *line);
 int		ft_parse_res(t_info_game *info_game, char *line, int i);
 int		ft_isdigit_atoi(char *line, int *i);

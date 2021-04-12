@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/12 15:14:23 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/12 19:55:18 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	ft_get_pos_player_and_angle(t_game *game)
 int		ft_init_game(t_game *game)
 {
 	ft_check_res_size(game);
+	printf("res_x %d et res_y %d\n", game->info_game.win_res[0], game->info_game.win_res[1]);
 	game->world.win = mlx_new_window(game->world.mlx, game->info_game.win_res[0], game->info_game.win_res[1], "Cub3d");
 	if (!game->world.win)
 	{

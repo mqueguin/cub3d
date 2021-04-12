@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 18:39:33 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/11 18:59:15 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/12 19:50:47 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int		ft_press_hook(int keycode, t_player *player)
 {
-	if (keycode == KEYCODE_ESCAPE)
-		ft_end_game(); // Fonction qui mettra fin au programme apres avoir tout free
+	//if (keycode == KEYCODE_ESCAPE)
+		//ft_end_game(); // Fonction qui mettra fin au programme apres avoir tout free
 	if (keycode == KEYCODE_UP || keycode == KEYCODE_D
 		|| keycode == KEYCODE_W)
 		player->b_walk_dir = 1;

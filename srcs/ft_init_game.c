@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/12 23:58:28 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/13 00:19:19 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ static void	ft_get_pos_player_and_angle(t_game *game)
 		game->player.angle =  M_PI / 2;
 }
 
+int		ft_creates_images(t_game *game)
+{
+	game->north_text.img = NULL;
+	game->south_text.img = NULL;
+	game->west_text.img = NULL;
+	game->east_text.img = NULL;
+	if (!my_mlx_new_image(game->world.mlx, &game->data, game->info_game.win_res[0],
+						game->info_game.win_res[1]))
+		return (0);
+	//Ici charger les textures via une fonction
+	return (1);
+}
+
 int		ft_init_game(t_game *game)
 {
 	ft_check_res_size(game);
@@ -41,7 +54,7 @@ int		ft_init_game(t_game *game)
 		ft_msg_errors(&game->info_game, "Failed to create window");
 		return (0);
 	}
-	if (!my_mlx_new_image(game->world.mlx, &game->data, game->info_game.win_res[0], game->info_game.win_res[1]))
+	if (!ft_creates_images(game))
 		return (0);
 	ft_get_pos_player_and_angle(game);
 	game->world.dist_to_projection_plane = (game->info_game.win_res[0] / 2) / (tan(ft_degree_to_radian(FOV / 2)));

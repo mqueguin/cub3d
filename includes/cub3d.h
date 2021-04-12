@@ -77,7 +77,6 @@ typedef struct	s_world
 	void		*mlx;
 	void		*win;
 	float		dist_to_projection_plane; // distance entre la caméra et l'écran de projection
-	int			x; //variable qui nous permet de parcourir les colonnes de pixels de gauche à droite
 }				t_world;
 
 typedef struct	s_rays
@@ -101,6 +100,14 @@ typedef struct	s_rays
 	int			drawend; //position de fin ou il faut dessiner
 }				t_rays;
 
+typedef struct	s_textures
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_lenght;
+	int			endian;
+}				t_textures;
 
 typedef struct	s_game
 {
@@ -109,6 +116,11 @@ typedef struct	s_game
 	t_player	player;
 	t_data		data;
 	t_rays		rays;
+	t_textures	north_text;
+	t_textures	south_text;
+	t_textures	west_text;
+	t_textures	east_text;
+	t_textures	sprites_text;
 }				t_game;
 
 int		ft_check_file(char *path);

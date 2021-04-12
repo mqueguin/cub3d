@@ -84,6 +84,7 @@ typedef struct	s_game
 	t_world		world;
 	t_info_game info_game;
 	t_player	player;
+	t_data		data;
 }				t_game;
 
 int		ft_check_file(char *path);
@@ -134,5 +135,12 @@ int		ft_msg_errors(t_info_game *info_game, char *str);
 int		ft_error(char *str);
 void	ft_check_res_size(t_game *game);
 float	ft_degree_to_radian(float degree);
+
+void	ft_init_struct(t_game *game);
+int		ft_init_game(t_game *game);
+int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y);
+void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+int		ft_press_hook(int keycode, t_player *player);
 
 #endif

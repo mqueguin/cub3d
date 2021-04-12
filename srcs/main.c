@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/11 17:51:53 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/12 14:38:43 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		game_start(t_game *game)
 		ft_msg_errors(&game->info_game, "Failed to create mlx instance...");
 		return (0);
 	}
-	ft_init_window_mlx(game);
+	ft_init_game(game);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:56:29 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/11 00:04:24 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/12 15:16:31 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+/** Fonction sui permet de créer un image et de récupérer son adresse dans la struct data **/
 int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y)
 {
 	data->img = mlx_new_image(mlx_ptr, res_x, res_y);
 	if (!data->img)
 	{
-		ft_msg_errors(data, "Failed to create image...");
+		ft_error("Failed to create mlx image...");
 		return (0);
 	}
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,

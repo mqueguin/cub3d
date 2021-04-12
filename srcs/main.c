@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/12 19:56:35 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/12 23:54:57 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int		main(int argc, char **argv)
 	t_game	game;
 	if (argc == 2 || argc == 3)
 	{
-		if ((ft_init_parse(argv[1])) == -1)
+		if ((ft_init_parse(&game.info_game, argv[1])) == -1)
 			return (-1);
-			printf("valeur de resx %d et resy %d-------\n", game.info_game.win_res[0], game.info_game.win_res[1]);
 		// void    *mlx;
     	// void    *mlx_win;
     	// t_data  img;

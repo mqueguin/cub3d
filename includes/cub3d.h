@@ -113,7 +113,7 @@ typedef struct	s_game
 
 int		ft_check_file(char *path);
 int		ft_check_extension(char *path, char *extension);
-int		ft_init_parse(char *path);
+int		ft_init_parse(t_info_game *info_game, char *path);
 void	ft_init_info_game(t_info_game *info_game);
 void	ft_init_boolean_settings(t_info_game *info_game);
 int		ft_parse_gnl(t_info_game *info_game, char *path);

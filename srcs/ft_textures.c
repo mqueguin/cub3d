@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 23:51:20 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/14 01:05:38 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/14 01:11:35 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end)
 	}
 	//Print des textures du mur A FAIRE
 	y = print_tex_wall(game, side, y, x);
+	printf("valeur de y : %d\n", y);
+	printf("valeur de res_y : %d\n", game->info_game.win_res[1]);
 	while (draw_end <= y && y < game->info_game.win_res[1])
 	{
 		my_mlx_pixel_put(game, x, y, color_f);

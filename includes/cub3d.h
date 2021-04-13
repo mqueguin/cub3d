@@ -113,6 +113,7 @@ typedef struct	s_textures
 	int			endian;
 	int			width;
 	int			height;
+	float		texture_x;
 }				t_textures;
 
 typedef struct	s_game
@@ -195,5 +196,7 @@ void	ft_events_managements(t_game *game);
 /** Raycasting **/
 int		ft_raycasting(t_game *game);
 void	ft_size_wall(t_game *game);
+void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end);
+int		wich_plan(t_game *game);
 
 #endif

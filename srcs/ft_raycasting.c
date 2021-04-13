@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:47:12 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/14 00:10:57 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/14 01:05:32 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static	void	ft_algo_dda(t_game *game)
 {
 	int		hit;
+	int		side;
 
 	hit = 0;
 	while (hit == 0)
@@ -31,9 +32,10 @@ static	void	ft_algo_dda(t_game *game)
 			game->rays.map_y += game->rays.step_y;
 			game->rays.side = 1;
 		}
-		if (game->info_game.map[(int)game->rays.map_y][(int)game->rays.map_x] == 1)
+		if (game->info_game.map[(int)game->rays.map_y][(int)game->rays.map_x] == '1')
 			hit = 1;
 	}
+	side = wich_plan(game);
 }
 
 static	void	ft_calculate_step_and_side_dist(t_game *game)

@@ -7,9 +7,9 @@ WE ./textures/WOLF4.xpm
 SO ./textures/WOLF3.xpm
 S ./textures/Barrel.xpm
 
-F  132,132,132
+F  0, 128, 0
 
-C 96, 96, 96
+C 255, 165, 0
 
 EA ./textures/WOLF6.xpm
 

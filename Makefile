@@ -6,7 +6,7 @@
 #    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/24 18:54:15 by mqueguin          #+#    #+#              #
-#    Updated: 2021/04/14 00:26:48 by mqueguin         ###   ########.fr        #
+#    Updated: 2021/04/14 01:04:30 by mqueguin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ CP		= cp -r
 
 LS		= ls -la
 
-CFLAGS		= -c #-Wall -Wextra -Werror -g -c
+CFLAGS		=  -c#-Wall -Wextra -Werror -g -c
 
 #LFLAGS		= -framework OpenGL -framework AppKit
 LFLAGS		= -lm -lbsd -lX11 -lXext

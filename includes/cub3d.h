@@ -82,23 +82,26 @@ typedef struct	s_world
 
 typedef struct	s_rays
 {
-	int			mapx; // coordonée x du carré dans lequel est pos
-	int			mapy; // coordonnée y du carré dans lequel est pos
-	float		camerax; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	float		raydirx; //calcul de direction x du rayon
-	float		raydiry; //calcul de direction y du rayon
-	float		sidedistx; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
-	float		sidedisty; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
-	float		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
-	float		deltadisty; //distance que le rayon parcours entre chaque point d'intersection horizontal
-	int			stepx; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
-	int			stepy; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
-	int			hit; // 1 si un mur a ete touche, 0 sinon
+	int			map_x; // coordonée x du carré dans lequel est pos
+	int			map_y; // coordonnée y du carré dans lequel est pos
+	float		camera_x; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+	float		ray_dir_x; //calcul de direction x du rayon
+	float		ray_dir_y; //calcul de direction y du rayon
+	float		dir_x; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	float		dir_y; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	float		plan_x; //Vecteur du plan x
+	float		plan_y; //Vecteur du plan y
+	float		side_dist_x; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
+	float		side_dist_y; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
+	float		delta_dist_x; //distance que rayon parcours entre chaque point d'intersection vertical
+	float		delta_dist_y; //distance que le rayon parcours entre chaque point d'intersection horizontal
+	int			step_x; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
+	int			step_y; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
 	float		perpwalldist; // distance du joueur au mur
-	int			lineheight; //hauteur de la ligne a dessiner
-	int			drawstart; //position de debut ou il faut dessiner
-	int			drawend; //position de fin ou il faut dessiner
+	int			line_height; //hauteur de la ligne a dessiner
+	int			draw_start; //position de debut ou il faut dessiner
+	int			draw_end; //position de fin ou il faut dessiner
 }				t_rays;
 
 typedef struct	s_textures
@@ -187,5 +190,8 @@ int		ft_load_textures(t_game *game, t_textures *text, char *path);
 /** gestion des évènements **/
 void	ft_events_managements(t_game *game);
 //int		ft_press_hook(int keycode, t_player *player);
+
+/** Raycasting **/
+int		ft_raycasting(t_game *game);
 
 #endif

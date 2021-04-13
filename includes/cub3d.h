@@ -98,7 +98,7 @@ typedef struct	s_rays
 	int			step_x; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
 	int			step_y; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
-	float		perpwalldist; // distance du joueur au mur
+	float		perp_wall_dist; // distance du joueur au mur
 	int			line_height; //hauteur de la ligne a dessiner
 	int			draw_start; //position de debut ou il faut dessiner
 	int			draw_end; //position de fin ou il faut dessiner
@@ -183,8 +183,9 @@ int		ft_init_game(t_game *game);
 
 /** mlx utils **/
 int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y);
-void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void    my_mlx_pixel_put(t_game *game, int x, int y, int color);
 int		ft_load_textures(t_game *game, t_textures *text, char *path);
+int		ft_convert_to_trgb(int t, int r, int g, int b);
 
 
 /** gestion des évènements **/
@@ -193,5 +194,6 @@ void	ft_events_managements(t_game *game);
 
 /** Raycasting **/
 int		ft_raycasting(t_game *game);
+void	ft_size_wall(t_game *game);
 
 #endif

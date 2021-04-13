@@ -6,17 +6,17 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:56:29 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/13 14:45:07 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/14 00:25:51 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void    my_mlx_pixel_put(t_game *game, int x, int y, int color)
 {
 	char    *dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = game->data.addr + (y * game->data.line_length + x * (game->data.bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -46,7 +46,7 @@ int		ft_load_textures(t_game *game, t_textures *text, char *path)
 	return (1);
 }
 
-int		ft_convert_trgb_hexa(int t, int r, int g, int b)
+int		ft_convert_to_trgb(int t, int r, int g, int b)
 {
 	int		color;
 

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:47:12 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/13 20:13:49 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/14 00:10:57 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ int		ft_raycasting(t_game *game)
 		ft_raycast_init(game, i);
 		ft_calculate_step_and_side_dist(game);
 		ft_algo_dda(game);
+		ft_size_wall(game);
+		ft_print_textures(game, i, game->rays.draw_start, game->rays.draw_end);
 	}
+	return (1);
 }

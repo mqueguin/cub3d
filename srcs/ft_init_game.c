@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/13 00:19:19 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/13 15:36:38 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ int		ft_creates_images(t_game *game)
 	if (!my_mlx_new_image(game->world.mlx, &game->data, game->info_game.win_res[0],
 						game->info_game.win_res[1]))
 		return (0);
-	//Ici charger les textures via une fonction
+	if (!ft_load_textures(game, &game->north_text, game->info_game.path_textures_no)
+		|| !ft_load_textures(game, &game->south_text, game->info_game.path_textures_so)
+		|| !ft_load_textures(game, &game->east_text, game->info_game.path_textures_ea)
+		|| !ft_load_textures(game, &game->west_text, game->info_game.path_textures_we)
+		|| !ft_load_textures(game, &game->sprites_text, game->info_game.path_textures_s))
+		return (0);
 	return (1);
 }
 

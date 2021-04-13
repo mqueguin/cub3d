@@ -61,6 +61,7 @@ typedef struct	s_player
 	float		angle; //Angle de rotation du joueur
 	int			b_walk_dir;
 	int			b_angle_dir;
+	int			b_turn_dir;
 }				t_player;
 
 typedef struct  s_data
@@ -107,6 +108,8 @@ typedef struct	s_textures
 	int			bits_per_pixel;
 	int			line_lenght;
 	int			endian;
+	int			width;
+	int			height;
 }				t_textures;
 
 typedef struct	s_game
@@ -174,9 +177,15 @@ float	ft_degree_to_radian(float degree);
 
 void	ft_init_struct(t_game *game);
 int		ft_init_game(t_game *game);
+
+/** mlx utils **/
 int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y);
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		ft_load_textures(t_game *game, t_textures *text, char *path);
 
-int		ft_press_hook(int keycode, t_player *player);
+
+/** gestion des évènements **/
+void	ft_events_managements(t_game *game);
+//int		ft_press_hook(int keycode, t_player *player);
 
 #endif

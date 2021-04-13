@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:56:29 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/12 15:16:31 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/13 14:45:07 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y)
 	}
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 				&data->line_length, &data->endian);
+	return (1);
+}
+
+int		ft_load_textures(t_game *game, t_textures *text, char *path)
+{
+	text->img = mlx_xpm_file_to_image(game->world.mlx, path, &text->width, &text->height);
+	if (!text->img)
+	{
+		ft_msg_errors(&game->info_game, "Failed to load textures or sprites...");
+		return (0);
+	}
+	text->addr = mlx_get_data_addr(text->img, &text->bits_per_pixel, &text->line_lenght, &text->endian);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/12 23:54:57 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/13 15:54:55 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		game_start(t_game *game)
 		ft_msg_errors(&game->info_game, "Failed to create mlx instance...");
 		return (0);
 	}
-	ft_init_game(game);
+	if (!ft_init_game(game))
+		return (0);
 	return (1);
 }
 
@@ -47,7 +48,14 @@ int		main(int argc, char **argv)
     	// my_mlx_pixel_put(&img, 1000, 500, 0x00FF0000);
     	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     	// mlx_loop(mlx);
-		game_start(&game);
+		if (!game_start(&game))
+		{
+			//Fonction pour tout free et quitter
+			return (-1);
+		}
+		ft_events_managements(&game);
+		//Fonction pour gerer les évènements et lancer le raycasting
+		//Fonction pour quitter le jeu
 	}
 	else
 		return(ft_error("There must be 2 or 3 parameters"));

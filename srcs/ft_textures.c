@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 23:51:20 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/14 01:11:35 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/15 15:05:18 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,5 @@ void	ft_size_wall(t_game *game)
 	game->rays.draw_end = game->rays.line_height / 2 + game->info_game.win_res[1] / 2;
 	if (game->rays.draw_end >= game->info_game.win_res[1])
 		game->rays.draw_end = game->info_game.win_res[1];
+		printf("perp_wall_dist : %f\n", game->rays.perp_wall_dist);
 }

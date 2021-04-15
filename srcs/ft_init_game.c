@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/13 15:36:38 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/14 14:45:22 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_init_struct(t_game *game)
 
 static void	ft_get_pos_player_and_angle(t_game *game)
 {
+	game->player.b_turn_dir = 0;
+	game->player.b_walk_dir = 0;
 	game->player.pos_x = game->info_game.characters_start_x_y[0];
 	game->player.pos_y = game->info_game.characters_start_x_y[1];
 	if (game->info_game.character_pos == 'S')

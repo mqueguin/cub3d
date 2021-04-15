@@ -11,6 +11,8 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
+# define PLAYER_SPEED	0.3
+# define PLAYER_ROT		2.0
 # define KEYCODE_A 		97
 # define KEYCODE_S		115
 # define KEYCODE_D		100
@@ -60,7 +62,7 @@ typedef struct	s_player
 	float		dir;
 	float		angle; //Angle de rotation du joueur
 	int			b_walk_dir;
-	int			b_angle_dir;
+	int			b_angle_dir; // Angle de direction
 	int			b_turn_dir;
 }				t_player;
 

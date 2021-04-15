@@ -11,8 +11,8 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
-# define PLAYER_SPEED	0.3
-# define PLAYER_ROT		2.0
+# define PLAYER_SPEED	0.05
+# define PLAYER_ROT		0.02
 # define KEYCODE_A 		97
 # define KEYCODE_S		115
 # define KEYCODE_D		100
@@ -60,10 +60,10 @@ typedef struct	s_player
 	float		pos_x; //Position x du joueur
 	float		pos_y; //Position y du joueur
 	float		dir;
-	float		angle; //Angle de rotation du joueur
-	int			b_walk_dir;
-	int			b_angle_dir; // Angle de direction
-	int			b_turn_dir;
+	// float		angle; //Angle de rotation du joueur
+	// int			b_walk_dir;
+	// int			b_angle_dir; // Angle de direction
+	// int			b_turn_dir;
 }				t_player;
 
 typedef struct  s_data
@@ -80,6 +80,12 @@ typedef struct	s_world
 	void		*mlx;
 	void		*win;
 	float		dist_to_projection_plane; // distance entre la caméra et l'écran de projection
+	int			key_a;
+	int			key_d;
+	int			key_up;
+	int			key_down;
+	int			key_left_rot;
+	int			key_right_rot;
 }				t_world;
 
 typedef struct	s_rays
@@ -196,9 +202,14 @@ void	ft_events_managements(t_game *game);
 //int		ft_press_hook(int keycode, t_player *player);
 
 /** Raycasting **/
+void	ft_plan_init(t_game *game);
+void	ft_player_init_dir(t_game *game);
 int		ft_raycasting(t_game *game);
 void	ft_size_wall(t_game *game);
 void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end);
 int		wich_plan(t_game *game);
+
+/** Mouvements et déplacements du joueur **/
+void	ft_player_move(t_game *game);
 
 #endif

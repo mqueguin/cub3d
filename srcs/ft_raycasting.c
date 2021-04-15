@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 16:47:12 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/15 17:11:29 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/15 19:33:10 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,6 @@ int		ft_raycasting(t_game *game)
 	int		i;
 
 	i = -1;
-	game->rays.dir_x = -1;
-	game->rays.dir_y = 0;
-	game->rays.plan_x = 0;
-	game->rays.plan_y = 0.66;
 	while (++i < game->info_game.win_res[0])
 	{
 		ft_raycast_init(game, i);
@@ -94,7 +90,7 @@ int		ft_raycasting(t_game *game)
 		// printf("Valeur de dir_x : %f et dir_y %f\n", game->rays.dir_x, game->rays.dir_y);
 		// printf("Valeur plan_x : %f et plan_y %f\n", game->rays.plan_x, game->rays.plan_y);
 		// printf("Valeur de map_x : %d et map_y : %d\n", game->rays.map_x, game->rays.map_y);
-		printf("Valeur de delta_dist_x : %f et delta_dist_y : %f\n", game->rays.delta_dist_x, game->rays.delta_dist_y);
+		//printf("Valeur de delta_dist_x : %f et delta_dist_y : %f\n", game->rays.delta_dist_x, game->rays.delta_dist_y);
 		ft_calculate_step_and_side_dist(game);
 		ft_algo_dda(game);
 		ft_size_wall(game);

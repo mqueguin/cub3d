@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 23:51:20 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/15 15:05:18 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/15 19:33:39 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end)
 	}
 	//Print des textures du mur A FAIRE
 	y = print_tex_wall(game, side, y, x);
-	printf("valeur de y : %d\n", y);
-	printf("valeur de res_y : %d\n", game->info_game.win_res[1]);
+	//printf("valeur de y : %d\n", y);
+	//printf("valeur de res_y : %d\n", game->info_game.win_res[1]);
 	while (draw_end <= y && y < game->info_game.win_res[1])
 	{
 		my_mlx_pixel_put(game, x, y, color_f);
@@ -123,5 +123,5 @@ void	ft_size_wall(t_game *game)
 	game->rays.draw_end = game->rays.line_height / 2 + game->info_game.win_res[1] / 2;
 	if (game->rays.draw_end >= game->info_game.win_res[1])
 		game->rays.draw_end = game->info_game.win_res[1];
-		printf("perp_wall_dist : %f\n", game->rays.perp_wall_dist);
+		//printf("perp_wall_dist : %f\n", game->rays.perp_wall_dist);
 }

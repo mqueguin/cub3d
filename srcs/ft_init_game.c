@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/14 14:45:22 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/15 19:59:57 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	ft_init_struct(t_game *game)
 
 static void	ft_get_pos_player_and_angle(t_game *game)
 {
-	game->player.b_turn_dir = 0;
-	game->player.b_walk_dir = 0;
+	// game->player.b_turn_dir = 0;
+	// game->player.b_walk_dir = 0;
 	game->player.pos_x = game->info_game.characters_start_x_y[0];
 	game->player.pos_y = game->info_game.characters_start_x_y[1];
 	if (game->info_game.character_pos == 'S')
-		game->player.angle = 0;
+		game->player.dir = 0;
 	else if (game->info_game.character_pos == 'N')
-		game->player.angle =  M_PI;
+		game->player.dir = M_PI;
 	else if (game->info_game.character_pos == 'W')
-		game->player.angle =  (3 * M_PI) / 2;
+		game->player.dir = (3 * M_PI) / 2;
 	else if (game->info_game.character_pos == 'E')
-		game->player.angle =  M_PI / 2;
+		game->player.dir = M_PI / 2;
 }
 
 int		ft_creates_images(t_game *game)
@@ -65,5 +65,7 @@ int		ft_init_game(t_game *game)
 		return (0);
 	ft_get_pos_player_and_angle(game);
 	game->world.dist_to_projection_plane = (game->info_game.win_res[0] / 2) / (tan(ft_degree_to_radian(FOV / 2)));
+	ft_plan_init(game);
+	ft_player_init_dir(game);
 	return (1);
 }

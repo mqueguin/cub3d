@@ -6,7 +6,7 @@
 #    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/24 18:54:15 by mqueguin          #+#    #+#              #
-#    Updated: 2021/04/14 01:04:30 by mqueguin         ###   ########.fr        #
+#    Updated: 2021/04/15 18:07:08 by mqueguin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,8 @@ SRC_NAME		=	main.c\
 			ft_events.c\
 			mlx_utils.c\
 			ft_raycasting.c\
+			ft_raycasting_init.c\
+			ft_player_move.c\
 			ft_textures.c
 
 INCLUDE_NAME		=	cub3d.h\

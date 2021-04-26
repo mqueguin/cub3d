@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 23:51:20 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/15 19:33:39 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:50:42 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ static	int			print_tex_wall(t_game *game, int side, int y, int x)
 	color = 0;
 	while (y >= game->rays.draw_start && y < game->rays.draw_end)
 	{
-		// tex_y = (int)(((y - game->world.res_y /
-		// 	2 + game->wall.line_height / 2) *
-		// 	game->tex.height[side]) / game->wall.line_height);
-		// color = game->tex.tex[side][game->tex.width[side] *
-		// 	(int)floor(tex_y) + game->tex.tex_x];
-		color = 6316128;
+		tex_y = (int)(((y - game->info_game.win_res[1] /
+			2 + game->rays.line_height / 2) *
+			game->north_text.height) / game->rays.line_height);
+		color = game->north_text.tex[game->north_text.width *
+			(int)floor(tex_y) + game->north_text.texture_x];
 		my_mlx_pixel_put(game, x, y, color);
 		++y;
 	}
@@ -55,27 +54,27 @@ int					wich_plan(t_game *game)
 	return (side);
 }
 
-// static	int			tex_x_calcul(t_game *game, int side)
-// {
-// 	int		tex_x;
-// 	float	wall_x;
+static	int			tex_x_calcul(t_game *game, int side)
+{
+	int		tex_x;
+	float	wall_x;
 
-// 	tex_x = 0;
-// 	wall_x = 0;
-// 	if (game->rays.side == 0)
-// 		wall_x = game->player.pos_y + game->rays.perp_wall_dist *
-// 			game->rays.ray_dir_y;
-// 	else
-// 		wall_x = game->player.pos_x + game->rays.perp_wall_dist *
-// 			game->rays.ray_dir_x;
-// 	wall_x = wall_x - floor(wall_x);
-// 	tex_x = (int)(wall_x * (float)game->tex.width[side]);
-// 	if (side == 0)
-// 		tex_x = game->tex.width[side] - tex_x - 1;
-// 	if (side == 3)
-// 		tex_x = game->tex.width[side] - tex_x - 1;
-// 	return (tex_x);
-// }
+	tex_x = 0;
+	wall_x = 0;
+	if (game->rays.side == 0)
+		wall_x = game->player.pos_y + game->rays.perp_wall_dist *
+			game->rays.ray_dir_y;
+	else
+		wall_x = game->player.pos_x + game->rays.perp_wall_dist *
+			game->rays.ray_dir_x;
+	wall_x = wall_x - floor(wall_x);
+	tex_x = (int)(wall_x * (float)game->north_text.width);
+	if (side == 0)
+		tex_x = game->north_text.width - tex_x - 1;
+	if (side == 3)
+		tex_x = game->north_text.width - tex_x - 1;
+	return (tex_x);
+}
 
 void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end)
 {
@@ -83,14 +82,16 @@ void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end)
 	int		color_c;
 	int		color_f;
 	int		side;
+	int		text_y;
 
 	y = 0;
 	side = wich_plan(game);
-	//printf("valeur de draw_start : %d et draw_end : %d\n", draw_start, draw_end);
+	game->north_text.texture_x = tex_x_calcul(game, side);
 	color_c = ft_convert_to_trgb(0, game->info_game.color_c[0], game->info_game.color_c[1]
 				, game->info_game.color_c[2]);
 	color_f = ft_convert_to_trgb(0, game->info_game.color_f[0], game->info_game.color_f[1]
 				, game->info_game.color_f[2]);
+	text_y = 0;
 	while (y < draw_start)
 	{
 		my_mlx_pixel_put(game, x, y, color_c);

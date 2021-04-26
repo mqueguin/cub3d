@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 17:47:33 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/18 18:07:47 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_alloc_map(t_info_game *info_game)
 	int y;
 
 	y = -1;
+	printf("Valeur de x : %d et y : %d\n", info_game->size_map_x_y[0], info_game->size_map_x_y[1]);
 	if (!(info_game->map = (char**)malloc(sizeof(char*) * (info_game->size_map_x_y[1] + 1))))
 		return (ft_msg_errors(info_game, "Memory allocation failed..."));
 	while (++y < info_game->size_map_x_y[1])

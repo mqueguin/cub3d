@@ -115,13 +115,16 @@ typedef struct	s_rays
 typedef struct	s_textures
 {
 	void		*img;
-	char		*addr;
+	unsigned int		*addr;
 	int			bits_per_pixel;
 	int			line_lenght;
 	int			endian;
 	int			width;
 	int			height;
-	float		texture_x;
+	int			texture_x;
+	int			texture_y;
+	float		wall_x;
+	unsigned int	*tex;
 }				t_textures;
 
 typedef struct	s_game

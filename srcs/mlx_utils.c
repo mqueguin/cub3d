@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:56:29 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/14 00:25:51 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:00:36 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,25 @@ int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y)
 
 int		ft_load_textures(t_game *game, t_textures *text, char *path)
 {
+	int		i;
+	int		end;
+
 	text->img = mlx_xpm_file_to_image(game->world.mlx, path, &text->width, &text->height);
 	if (!text->img)
 	{
 		ft_msg_errors(&game->info_game, "Failed to load textures or sprites...");
 		return (0);
 	}
-	text->addr = mlx_get_data_addr(text->img, &text->bits_per_pixel, &text->line_lenght, &text->endian);
+	text->addr = (unsigned int*)mlx_get_data_addr(text->img, &text->bits_per_pixel, &text->line_lenght, &text->endian);
+	if (!(text->tex = ft_calloc(text->width * text->height, sizeof(unsigned int))))
+	{
+		ft_msg_errors(&game->info_game, "Invalid Memory allocation textures...");
+		return (0);
+	}
+	i = -1;
+	end = text->width * text->height;
+	while (++i < end)
+		text->tex[i] = text->addr[i];
 	return (1);
 }
 

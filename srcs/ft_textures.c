@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 23:51:20 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/28 19:18:38 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/05/05 19:06:59 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end)
 	y = 0;
 	side = wich_plan(game);
 	if (side == 0)
-		game->north_text.texture_x = tex_x_calcul(game, game->north_text, side);
-	else if (side == 1)
 		game->south_text.texture_x = tex_x_calcul(game, game->south_text, side);
-	else if (side == 2)
-		game->west_text.texture_x = tex_x_calcul(game, game->west_text, side);
-	else if (side == 3)
+	else if (side == 1)
 		game->east_text.texture_x = tex_x_calcul(game, game->east_text, side);
+	else if (side == 2)
+		game->north_text.texture_x = tex_x_calcul(game, game->north_text, side);
+	else if (side == 3)
+		game->west_text.texture_x = tex_x_calcul(game, game->west_text, side);
 	colors[0] = ft_convert_to_trgb(0, game->info_game.color_c[0], game->info_game.color_c[1],
 				game->info_game.color_c[2]);
 	colors[1] = ft_convert_to_trgb(0, game->info_game.color_f[0], game->info_game.color_f[1],
@@ -105,13 +105,13 @@ void	ft_print_textures(t_game *game, int x, int draw_start, int draw_end)
 	}
 	//Print des textures du mur A FAIRE
 	if (side == 0)
-		y = print_tex_wall(game, game->north_text, side, y, x);
-	else if (side == 1)
 		y = print_tex_wall(game, game->south_text, side, y, x);
-	else if (side == 2)
-		y = print_tex_wall(game, game->west_text, side, y, x);
-	else if (side == 3)
+	else if (side == 1)
 		y = print_tex_wall(game, game->east_text, side, y, x);
+	else if (side == 2)
+		y = print_tex_wall(game, game->north_text, side, y, x);
+	else if (side == 3)
+		y = print_tex_wall(game, game->west_text, side, y, x);
 	//printf("valeur de y : %d\n", y);
 	//printf("valeur de res_y : %d\n", game->info_game.win_res[1]);
 	while (draw_end <= y && y < game->info_game.win_res[1])

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:06 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 17:32:25 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:35:15 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,9 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 	if (info_game->parse_char[0] == 'F')
 	{
 		if (info_game->color_f[0] < 0 || info_game->color_f[1] < 0
-				|| info_game->color_f[2] < 0 ||
-				info_game->color_f[0] > 255 ||
-				info_game->color_f[1] > 255 ||
-				info_game->color_f[2] > 255 || info_game->b_colors[0] == 1)
+			|| info_game->color_f[2] < 0 || info_game->color_f[0] > 255
+			|| info_game->color_f[1] > 255 || info_game->color_f[2] > 255
+			|| info_game->b_colors[0] == 1)
 		{
 			ft_msg_errors(info_game, "Invalid colors settings...");
 			return (0);
@@ -80,10 +79,9 @@ int	ft_verif_f_or_c(t_info_game *info_game)
 	else if (info_game->parse_char[0] == 'C')
 	{
 		if (info_game->color_c[0] < 0 || info_game->color_c[1] < 0
-				|| info_game->color_c[2] < 0 ||
-				info_game->color_c[0] > 255 ||
-				info_game->color_c[1] > 255 ||
-				info_game->color_c[2] > 255 || info_game->b_colors[1] == 1)
+			|| info_game->color_c[2] < 0 || info_game->color_c[0] > 255
+			|| info_game->color_c[1] > 255 || info_game->color_c[2] > 255
+			|| info_game->b_colors[1] == 1)
 		{
 			ft_msg_errors(info_game, "Invalid colors settings...");
 			return (0);

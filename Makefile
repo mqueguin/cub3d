@@ -2,7 +2,19 @@ NAME	        =		cub3D
 
 NAME_B          =       cub3D_bonus
 
-SRCS            =       $(wildcard srcs/*.c)
+SRCS            =       srcs/main.c\
+						srcs/ft_parse.c\
+						srcs/ft_parse_map.c\
+						srcs/ft_init_parse.c\
+						srcs/ft_check_space_map.c\
+						srcs/ft_map_is_close.c\
+						srcs/ft_parse_utils.c\
+						srcs/ft_parse_utils2.c\
+						srcs/ft_recover_map.c\
+						srcs/ft_utils.c\
+						srcs/check_file.c\
+						srcs/cub3d_utils.c\
+						srcs/ft_parse_settings.c\
 
 SRCS_B      =       $(wildcard srcs_bonus/*.c)
 
@@ -14,7 +26,7 @@ LIB_DIR         =       libft/
 
 LIBFT           =       libft/libft.a
 
-CC              =       clang
+CC              =       gcc
 
 OBJS            =       ${SRCS:.c=.o}
 
@@ -26,7 +38,11 @@ MLX_DIR     =       minilibx/
 
 RM          =       rm -rf
 
-LFLAGS       =       -lm -lbsd -lX11 -lXext
+#MACOS
+#LFLAGS		=			-framework OpenGL -framework AppKit
+
+#LINUX
+#LFLAGS       =       -lm -lbsd -lX11 -lXext
 
 FLAGS       =       -Wall -Wextra -Werror
 
@@ -37,15 +53,13 @@ FLAGS       =       -Wall -Wextra -Werror
 all:			${NAME}
 
 ${NAME}:		${OBJS}
-						#@make -C ${MLX_DIR}
 						@make -C ${LIB_DIR}
 						@make -C ${LIB_DIR} bonus
-						@${CC} ${FLAGS} ${LFLAGS} -I${INCLUDES_DIR} -o ${NAME} ${OBJS} ${LIBFT} ${MLX}
+						@${CC} ${FLAGS} ${LFLAGS} -I${INCLUDES_DIR} -o ${NAME} ${OBJS} ${LIBFT} #${MLX}
 						@echo "\nlibft.a has been created"
 						@echo "cub3d has been created"
 
 bonus:		${OBJS_B}
-						#@make -C ${MLX_DIR}
 						@make -C ${LIB_DIR}
 						@make -C ${LIB_DIR} bonus
 						@${CC} ${FLAGS} ${LFLAGS} -I ${INCLUDES_DIR_B} -o ${NAME_B} ${OBJS_B} ${LIBFT} ${MLX}

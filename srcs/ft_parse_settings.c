@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:17 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 17:49:24 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:33:44 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_parse_res(t_info_game *info_game, char *line, int i)
 	info_game->win_res[1] = ft_isdigit_atoi(line, &i);
 	if (!ft_check_line(info_game, line, i))
 		return (0);
-	if ((info_game->win_res[0] == 0  && info_game->win_res[1] == 0) ||
-			info_game->win_res[0] == 0 || info_game->win_res[1] == 0)
+	if ((info_game->win_res[0] == 0 && info_game->win_res[1] == 0)
+		|| info_game->win_res[0] == 0 || info_game->win_res[1] == 0)
 		return (0);
 	info_game->b_res = 1;
 	return (1);
@@ -45,12 +45,14 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 	if (line[i] != ',')
 		return (0);
 	i = ft_jump_space(line, i);
-	if ((i = ft_parse_f_or_c(info_game, line, i)) == -1)
+	i = ft_parse_f_or_c(info_game, line, i);
+	if (i == -1)
 		return (0);
 	if (line[i] != ',')
 		return (0);
 	i = ft_jump_space(line, i);
-	if ((i = ft_parse_f_or_c(info_game, line, i)) == -1)
+	i = ft_parse_f_or_c(info_game, line, i);
+	if (i == -1)
 		return (0);
 	if (!ft_check_line(info_game, line, i))
 		return (0);
@@ -64,12 +66,11 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 	char	*texture;
 
 	i++;
-	if ((texture = ft_recover_texture(info_game, line, i)) == NULL)
+	if ((texture = ft_recover_texture(info_game, line, i, 0)) == NULL)
 		return (0);
 	if (!(ft_check_textures(texture)))
 	{
 		ft_msg_errors(info_game, "Invalid path of textures...");
-		free(texture);
 		return (0);
 	}
 	if ((ft_strcmp(info_game->parse_char, "S")) == 0)

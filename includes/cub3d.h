@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 17:40:59 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:29:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>
-# include "../libft/libft.h"
 # include "mlx.h"
+# include "../libft/libft.h"
 
 # define PLAYER_SPEED	0.10
 # define PLAYER_ROT		0.10
@@ -170,7 +170,7 @@ int		ft_check_line(t_info_game *info_game, char *line, int i);
 int		ft_parse_identifiant(t_info_game *info_game, char *line, int i);
 int		ft_parse_textures(t_info_game *info_game, char *line, int i);
 int		ft_check_textures(char *texture_path);
-char	*ft_recover_texture(t_info_game *info_game, char *line, int i);
+char	*ft_recover_texture(t_info_game *info_game, char *line, int i, int j);
 int		ft_verif_settings(t_info_game *info_game);
 
 /** Parse map **/

@@ -6,11 +6,24 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 13:40:09 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 15:27:41 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 20:49:18 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+/* int ft_strlen2(char *s)
+{
+	int i = 0;
+	while (s[i++])
+		;
+	return i;
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen2(s));
+} */
 
 int	ft_msg_errors(t_info_game *info_game, char *str)
 {
@@ -34,7 +47,7 @@ int	ft_error(char *str)
 	return (-1);
 }
 
-void	ft_check_res_size(t_game *game)
+/* void	ft_check_res_size(t_game *game)
 {
 	int		res_x_max;
 	int		res_y_max;
@@ -46,7 +59,7 @@ void	ft_check_res_size(t_game *game)
 		game->info_game.win_res[0] = res_x_max;
 	if (game->info_game.win_res[1] > res_y_max)
 		game->info_game.win_res[1] = res_y_max;
-}
+} */
 
 float	ft_degree_to_radian(float degree)
 {

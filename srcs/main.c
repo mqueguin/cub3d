@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 15:24:22 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:04:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_free_all(t_info_game *info_game)
 	ft_free_tab2d(info_game->map);
 }
 
-int	game_start(t_game *game)
+/* int	game_start(t_game *game)
 {
 	ft_init_struct(game);
 	game->world.mlx = mlx_init();
@@ -43,7 +43,7 @@ int	game_start(t_game *game)
 		return (0);
 	}
 	return (1);
-}
+} */
 
 int	main(int argc, char **argv)
 {
@@ -51,7 +51,9 @@ int	main(int argc, char **argv)
 	if (argc == 2 || argc == 3)
 	{
 		if ((ft_init_parse(&game.info_game, argv[1])) == -1)
-			return (-1);
+		{
+			return (1);
+		}
 		// void    *mlx;
     	// void    *mlx_win;
     	// t_data  img;
@@ -67,16 +69,15 @@ int	main(int argc, char **argv)
     	// my_mlx_pixel_put(&img, 1000, 500, 0x00FF0000);
     	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     	// mlx_loop(mlx);
-		if (!game_start(&game))
+		/* if (!game_start(&game))
 		{
 			//Fonction pour tout free et quitter
 			return (-1);
 		}
 		ft_events_managements(&game);
-		//Fonction pour gerer les évènements et lancer le raycasting
-		//Fonction pour quitter le jeu
 	}
 	else
-		return(ft_error("There must be 2 or 3 parameters"));
+		return(ft_error("There must be 2 or 3 parameters")); */
+	}
 	return (0);
 }

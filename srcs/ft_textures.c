@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 23:51:20 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/05/12 19:59:24 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:22:23 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static	int			print_tex_wall(t_game *game, t_textures textures, int side, int y, 
 	float			tex_y;
 	unsigned	int	color;
 
+	(void)side;
 	tex_y = 0.0;
 	color = 0;
 	while (y >= game->rays.draw_start && y < game->rays.draw_end)

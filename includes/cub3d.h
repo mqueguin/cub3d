@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
+/*   Updated: 2022/03/07 17:40:59 by mqueguin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -11,8 +23,8 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
-# define PLAYER_SPEED	0.05
-# define PLAYER_ROT		0.02
+# define PLAYER_SPEED	0.10
+# define PLAYER_ROT		0.10
 # define KEYCODE_A 		97
 # define KEYCODE_S		115
 # define KEYCODE_D		100
@@ -24,36 +36,36 @@
 # define KEYCODE_ESCAPE	65307
 # define FOV 			60
 
-typedef struct	s_info_game
+typedef struct s_info_game
 {
-	int 		fd;
-	int 		line_index;
-	int 		x;
-	int 		y;
-	int 		characters_start_x_y[2];
-	char 		character_pos;
-	int 		win_res[2];
-	int 		color_f[3];
-	int 		color_c[3];
-	char 		parse_char[3];
-	char 		*path_textures_s;
-	char 		*path_textures_no;
-	char 		*path_textures_so;
-	char 		*path_textures_we;
-	char 		*path_textures_ea;
-	int 		b_colors[2];
-	int 		b_res;
-	int 		b_texture_no;
-	int 		b_texture_so;
-	int 		b_texture_we;
-	int 		b_texture_ea;
-	int 		b_texture_s;
-	char 		**map;
-	int 		fd_map;
-	int 		size_map_x_y[2];
-	int			b_line_before;
-	int			msg_error;
-}				t_info_game;
+	int		fd;
+	int		line_index;
+	int		x;
+	int		y;
+	int		characters_start_x_y[2];
+	char	character_pos;
+	int		win_res[2];
+	int		color_f[3];
+	int		color_c[3];
+	char	parse_char[3];
+	char	*path_textures_s;
+	char	*path_textures_no;
+	char	*path_textures_so;
+	char	*path_textures_we;
+	char	*path_textures_ea;
+	int		b_colors[2];
+	int		b_res;
+	int		b_texture_no;
+	int		b_texture_so;
+	int		b_texture_we;
+	int		b_texture_ea;
+	int		b_texture_s;
+	char	**map;
+	int		fd_map;
+	int		size_map_x_y[2];
+	int		b_line_before;
+	int		msg_error;
+}		t_info_game;
 
 typedef struct	s_player
 {
@@ -112,25 +124,25 @@ typedef struct	s_rays
 	int			draw_end; //position de fin ou il faut dessiner
 }				t_rays;
 
-typedef struct	s_textures
+typedef struct s_textures
 {
-	void		*img;
-	unsigned int		*addr;
-	int			bits_per_pixel;
-	int			line_lenght;
-	int			endian;
-	int			width;
-	int			height;
-	int			texture_x;
-	int			texture_y;
-	float		wall_x;
+	void			*img;
+	unsigned int	*addr;
+	int				bits_per_pixel;
+	int				line_lenght;
+	int				endian;
+	int				width;
+	int				height;
+	int				texture_x;
+	int				texture_y;
+	float			wall_x;
 	unsigned int	*tex;
 }				t_textures;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	t_world		world;
-	t_info_game info_game;
+	t_info_game	info_game;
 	t_player	player;
 	t_data		data;
 	t_rays		rays;
@@ -156,7 +168,7 @@ int		ft_parse_f_or_c(t_info_game *info_game, char *line, int i);
 int		ft_verif_f_or_c(t_info_game *info_game);
 int		ft_check_line(t_info_game *info_game, char *line, int i);
 int		ft_parse_identifiant(t_info_game *info_game, char *line, int i);
-int		ft_parse_textures(t_info_game *info_game,  char *line, int i);
+int		ft_parse_textures(t_info_game *info_game, char *line, int i);
 int		ft_check_textures(char *texture_path);
 char	*ft_recover_texture(t_info_game *info_game, char *line, int i);
 int		ft_verif_settings(t_info_game *info_game);
@@ -168,7 +180,8 @@ int		ft_parse_line_size(char *line, int *x_max, int *y_max);
 int		ft_check_line_map(t_info_game *info_game, char *line, int i);
 int		ft_alloc_map(t_info_game *info_game);
 int		ft_recover_map(t_info_game *info_game, char *path);
-int		ft_recover_line(t_info_game *info_game, char *line, int start_map, int *y);
+int		ft_recover_line(t_info_game *info_game, char *line,
+			int start_map, int *y);
 int		ft_recover_first_line(t_info_game *info_game, char *line);
 int		ft_recover_all_lines(t_info_game *info_game, char *line, int *y);
 int		ft_recover_player(t_info_game *info_game, char c, int x, int *y);
@@ -182,9 +195,8 @@ int		ft_check_down_is_wall(char **map, int x, int y);
 /** Start game **/
 int		game_start(t_game *game);
 
-
 /** Utils **/
-void	ft_free_tab2d(t_info_game *info_game);
+void	ft_free_tab2d(char **str);
 int		ft_msg_errors(t_info_game *info_game, char *str);
 int		ft_error(char *str);
 void	ft_check_res_size(t_game *game);
@@ -194,11 +206,10 @@ void	ft_init_struct(t_game *game);
 int		ft_init_game(t_game *game);
 
 /** mlx utils **/
-int     my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y);
-void    my_mlx_pixel_put(t_game *game, int x, int y, int color);
+int		my_mlx_new_image(void *mlx_ptr, t_data *data, int res_x, int res_y);
+void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 int		ft_load_textures(t_game *game, t_textures *text, char *path);
 int		ft_convert_to_trgb(int t, int r, int g, int b);
-
 
 /** gestion des évènements **/
 void	ft_events_managements(t_game *game);
@@ -214,5 +225,9 @@ int		wich_plan(t_game *game);
 
 /** Mouvements et déplacements du joueur **/
 void	ft_player_move(t_game *game);
+
+/** Fonctions free **/
+void	ft_free_all(t_info_game *info_game);
+void	ft_free_exit(t_game *game);
 
 #endif

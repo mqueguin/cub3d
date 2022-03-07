@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 17:21:48 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/15 19:56:50 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:05:22 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_plan_init(t_game *game)
 	float	dir;
 
 	dir = game->player.dir;
-	printf("valeur de de dir : %f\n", game->player.dir);
+	//printf("valeur de de dir : %f\n", game->player.dir);
 	if (dir > (5 * M_PI) / 4 && dir < (7 * M_PI) / 4)
 	{
 		game->rays.plan_x = 0.0;

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:24:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 15:34:07 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:05:28 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	ft_recover_map(t_info_game *info_game, char *path)
 	info_game->fd_map = open(path, O_RDONLY);
 	if (info_game->fd_map == -1)
 		return (ft_msg_errors(info_game, "Invalid file descriptor..."));
-	printf("Valeur de line_index : %d\n", info_game->line_index);
+	//printf("Valeur de line_index : %d\n", info_game->line_index);
 	while ((get_next_line(info_game->fd_map, &line)) > 0)
 	{
 		if (i >= info_game->line_index)

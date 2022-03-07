@@ -6,37 +6,46 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 18:39:33 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/15 18:41:32 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:36:48 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /** Fichier qui contient les différents évènements quand on appuie sur le clavier **/
 #include "../includes/cub3d.h"
 
-static int	ft_press_hook(int keycode, t_world *world)
+void	ft_free_exit(t_game *game)
 {
-	//if (keycode == KEYCODE_ESCAPE)
-		//ft_end_game(); // Fonction qui mettra fin au programme apres avoir tout free
-	if (keycode == KEYCODE_W || keycode == KEYCODE_UP)
-		world->key_up = 1;
-	else if (keycode == KEYCODE_S || keycode == KEYCODE_DOWN)
-		world->key_down = 1;
+	ft_free_all(&game->info_game);
+	mlx_destroy_image(game->world.mlx, game->data.img);
+	mlx_destroy_window(game->world.mlx, game->world.win);
+	free(game->world.mlx);
+	exit(EXIT_SUCCESS);
+}
+
+static int	ft_press_hook(int keycode, t_game *game)
+{
+	if (keycode == KEYCODE_ESCAPE)
+		ft_free_exit(game);
+	if (keycode == KEYCODE_W)
+		game->world.key_up = 1;
+	else if (keycode == KEYCODE_S)
+		game->world.key_down = 1;
 	else if (keycode == KEYCODE_A)
-		world->key_a = 1;
+		game->world.key_a = 1;
 	else if (keycode == KEYCODE_D)
-		world->key_d = 1;
+		game->world.key_d = 1;
 	else if (keycode == KEYCODE_LEFT)
-		world->key_left_rot = 1;
+		game->world.key_left_rot = 1;
 	else if (keycode == KEYCODE_RIGHT)
-		world->key_right_rot = 1;
+		game->world.key_right_rot = 1;
 	return (1);
 }
 
 static int	ft_release_hook(int keycode, t_world *world)
 {
-	if (keycode == KEYCODE_W || keycode == KEYCODE_UP)
+	if (keycode == KEYCODE_W)
 		world->key_up = 0;
-	else if (keycode == KEYCODE_S || keycode == KEYCODE_DOWN)
+	else if (keycode == KEYCODE_S)
 		world->key_down = 0;
 	else if (keycode == KEYCODE_A)
 		world->key_a = 0;
@@ -60,7 +69,7 @@ static int	ft_update_hook(t_game *game)
 void		ft_events_managements(t_game *game)
 {
 	mlx_hook(game->world.win, 33, 1L << 17, &mlx_loop_end, game->world.mlx);
-	mlx_hook(game->world.win, 2, 1L << 0, &ft_press_hook, &game->world);
+	mlx_hook(game->world.win, 2, 1L << 0, &ft_press_hook, game);
 	mlx_hook(game->world.win, 3, 1L << 1, &ft_release_hook, &game->world);
 	mlx_loop_hook(game->world.mlx, &ft_update_hook, game);
 	mlx_loop(game->world.mlx);

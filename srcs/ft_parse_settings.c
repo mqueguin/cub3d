@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:17 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/08 16:08:25 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:49:24 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 
 int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 {
-	char *texture;
+	char	*texture;
 
 	i++;
 	if ((texture = ft_recover_texture(info_game, line, i)) == NULL)
@@ -69,6 +69,7 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 	if (!(ft_check_textures(texture)))
 	{
 		ft_msg_errors(info_game, "Invalid path of textures...");
+		free(texture);
 		return (0);
 	}
 	if ((ft_strcmp(info_game->parse_char, "S")) == 0)

@@ -1,24 +1,10 @@
 Penser a regarder les messages d'erreur... Parce que desfois chelou
-Faire une fonction pour centraliser les messages d'erreurs
-Gerer le parsing apres le chemin des textures -------------------FAIT------------------- 
-Checker le maximum de test possibles... Faire tout pour planter le programme
 
-Comment stocker la map ? Stocker dans un tableau en 2d avec x et y
-Parser la map //Pour l'instant faire l algo sur papier
-Reflechir au raycasting //Pour l instant j'ai regarder des tutos
-Faire la norm du parseur // A faire a la fin du parser
-
-
-
-Recuperation line_index ok
 Faire un appel a gnl dans une fonction pour savoir combien malloc et commencer un minimum de verif (Peut-etre meme toutes les verifs)
-
-
-PENSER A FAIRE LE MAKEFILE SINON CA VA DEVENIR CHIANT...
-
 
 Regler le probleme de la ligne apres la map qui est pas detecté comme une erreur...
 
-25/03 : Recuperation de la map ok
+Refonte et norme du parsing en cours.
+Modifications pour free et exit des qu on a une erreur (Ca evite les leaks et ca evite a devoir faire une cascade de return -1 dans les fonctions)
 
-FINIR LE PARSING AVANT FIN DE SEMAINE...
+J ai passer un tester pour le parsing tout semble bon. juste quleques leaks a cause des textures quand on met des erreurs dans le path des textures.

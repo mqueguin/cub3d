@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:24:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 16:05:28 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:19:12 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	ft_recover_first_line(t_info_game *info_game, char *line)
 	while (line[++i])
 	{
 		if (line[i] == '1')
+		{
 			info_game->map[0][x] = '1';
+		}
 		else if (line[i] == ' ')
 			info_game->map[0][x] = ' ';
 		else if (line[i] != '1' && line[i] != ' ')
@@ -92,7 +94,7 @@ int	ft_recover_line(t_info_game *info_game, char *line, int start_map, int *y)
 int	ft_recover_map(t_info_game *info_game, char *path)
 {
 	int		i;
-	char 	*line;
+	char	*line;
 	int		y;
 
 	i = 0;

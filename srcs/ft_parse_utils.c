@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:06 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 15:06:17 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:19:13 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int	ft_isdigit_atoi(char *line, int *i)
 {
@@ -31,7 +31,6 @@ int	ft_jump_space(char *line, int i)
 {
 	while (line[i] && line[i] == ' ')
 		i++;
-	printf("Valeur de i a la fin de ft_jump_space; %d\n", i);
 	return (i);
 }
 

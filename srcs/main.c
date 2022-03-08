@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 23:04:02 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:37:26 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_free_all(t_info_game *info_game)
 {
+	printf("J ARRIVE BIEN JUSQU ICI\n");
 	if (info_game->path_textures_ea)
 		free(info_game->path_textures_ea);
 	else if (info_game->path_textures_no)
@@ -45,15 +46,13 @@ void	ft_free_all(t_info_game *info_game)
 	return (1);
 } */
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	t_game	game;
-	if (argc == 2 || argc == 3)
+	if (ac == 2 || ac == 3)
 	{
-		if ((ft_init_parse(&game.info_game, argv[1])) == -1)
-		{
+		if ((ft_init_parse(&game.info_game, av[1])) == -1)
 			return (1);
-		}
 		// void    *mlx;
     	// void    *mlx_win;
     	// t_data  img;
@@ -79,5 +78,7 @@ int	main(int argc, char **argv)
 	else
 		return(ft_error("There must be 2 or 3 parameters")); */
 	}
+	printf("TOUT A MARCHER\n");
+	ft_free_all(&game.info_game);
 	return (0);
 }

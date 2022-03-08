@@ -15,6 +15,7 @@ SRCS            =       srcs/main.c\
 						srcs/check_file.c\
 						srcs/cub3d_utils.c\
 						srcs/ft_parse_settings.c\
+						srcs/ft_parse_identifier.c
 
 SRCS_B      =       $(wildcard srcs_bonus/*.c)
 
@@ -44,7 +45,7 @@ RM          =       rm -rf
 #LINUX
 #LFLAGS       =       -lm -lbsd -lX11 -lXext
 
-FLAGS       =       -Wall -Wextra -Werror
+FLAGS       =       -Wall -Wextra -Werror -g#-ggdb3
 
 .c.o:
 					@${CC} ${FLAGS} -I${INCLUDES_DIR} -c $< -o ${<:.c=.o}

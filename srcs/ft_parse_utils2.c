@@ -6,16 +6,15 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:56 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 16:05:14 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:59:26 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int	ft_check_line(t_info_game *info_game, char *line, int i)
 {
-	if (line[i] != '\0')
-		i = ft_jump_space(line, i);
+	i = ft_jump_space(line, i);
 	if (line[i] != ' ' && line[i] != '\0')
 	{
 		if (info_game->parse_char[0] == 'R')
@@ -28,37 +27,6 @@ int	ft_check_line(t_info_game *info_game, char *line, int i)
 		return (0);
 	}
 	return (1);
-}
-
-int	ft_parse_identifiant(t_info_game *info_game, char *line, int i)
-{
-	if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
-	{
-		i += 1;
-		info_game->parse_char[0] = 'N';
-		info_game->parse_char[1] = 'O';
-	}
-	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
-	{
-		i += 1;
-		info_game->parse_char[0] = 'S';
-		info_game->parse_char[1] = 'O';
-	}
-	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
-	{
-		i += 1;
-		info_game->parse_char[0] = 'E';
-		info_game->parse_char[1] = 'A';
-	}
-	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
-	{
-		i += 1;
-		info_game->parse_char[0] = 'W';
-		info_game->parse_char[1] = 'E';
-	}
-	else if (line[i] != '\0')
-		return (ft_msg_errors(info_game, "Invalid settings..."));
-	return (i);	
 }
 
 int	ft_check_textures(char *texture_path)
@@ -75,6 +43,19 @@ int	ft_check_textures(char *texture_path)
 	return (1);
 }
 
+int	malloc_size_of_texture(char *line, int *tmp)
+{
+	int	size;
+
+	size = 0;
+	while (line[*tmp] != '\0' && line[*tmp] != ' ')
+	{
+		size++;
+		*tmp += 1;
+	}
+	return (size);
+}
+
 char	*ft_recover_texture(t_info_game *info_game, char *line,
 		int i, int j)
 {
@@ -87,14 +68,11 @@ char	*ft_recover_texture(t_info_game *info_game, char *line,
 	if (line[i] != ' ')
 		return (0);
 	i = ft_jump_space(line, i);
-	printf("////Valeur de i apres ft_jump_space dans ft_recover_texture : %d\n", i);
 	tmp = i;
-	printf("Valeur de line[tmp] : %c\n", line[tmp]);
-	while (line[tmp++] != '\0' && line[tmp] != ' ')
-		size++;
-	printf("Valeur de line[tmp] apres : %c\n", line[tmp]);
-	if (!ft_check_line(info_game, line, tmp))
-		return (0);
+	size = malloc_size_of_texture(line, &tmp);
+	if (line[tmp])
+		if (!ft_check_line(info_game, line, tmp))
+			return (0);
 	texture = malloc(sizeof(char) * (size + 1));
 	if (texture == NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 11:26:50 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:19:48 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	manage_identifier(t_info_game *info_game, char *line, int i, char *err)
 	if (ft_strcmp(err, "RES") == 0)
 	{
 		if (!(ft_parse_res(info_game, line, i)))
-			return (ft_msg_errors(info_game, "INvalid resolution settings"));
+			return (ft_msg_errors(info_game, "Invalid resolution settings"));
 	}
 	else if (ft_strcmp(err, "COLORS") == 0)
 	{
@@ -112,8 +112,14 @@ int	ft_parse_gnl(t_info_game *info_game, char *path)
 		free(line);
 		ret = get_next_line(info_game->fd_map, &line);
 	}
+	if (line)
+		free(line);
+	printf("Je sors bien a chaque fois\n");
 	if (ret == -1)
+	{
+		close(info_game->fd_map);
 		return (-1);
+	}
 	close(info_game->fd_map);
 	if (ft_manage_parsing(info_game, path) == -1)
 		exit(EXIT_FAILURE);

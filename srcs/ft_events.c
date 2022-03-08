@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/** Fichier qui contient les différents évènements quand on appuie sur le clavier **/
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	ft_free_exit(t_game *game)
 {
@@ -62,11 +61,12 @@ static int	ft_update_hook(t_game *game)
 {
 	ft_player_move(game);
 	ft_raycasting(game);
-	mlx_put_image_to_window(game->world.mlx, game->world.win, game->data.img, 0, 0);
+	mlx_put_image_to_window(game->world.mlx,
+		game->world.win, game->data.img, 0, 0);
 	return (1);
 }
 
-void		ft_events_managements(t_game *game)
+void	ft_events_managements(t_game *game)
 {
 	mlx_hook(game->world.win, 33, 1L << 17, &mlx_loop_end, game->world.mlx);
 	mlx_hook(game->world.win, 2, 1L << 0, &ft_press_hook, game);

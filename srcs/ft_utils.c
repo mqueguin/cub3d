@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 13:40:09 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 15:27:41 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:20:40 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int	ft_msg_errors(t_info_game *info_game, char *str)
 {

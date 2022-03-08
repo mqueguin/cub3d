@@ -32,7 +32,8 @@ static	void	ft_algo_dda(t_game *game)
 			game->rays.map_y += game->rays.step_y;
 			game->rays.side = 1;
 		}
-		if (game->info_game.map[(int)game->rays.map_y][(int)game->rays.map_x] == '1')
+		if (game->info_game.map[(int)game->rays.map_y][(int)game->rays.map_x]
+				== '1')
 			hit = 1;
 	}
 	side = wich_plan(game);
@@ -68,17 +69,19 @@ static	void	ft_calculate_step_and_side_dist(t_game *game)
 
 static	void	ft_raycast_init(t_game *game, int x)
 {
-	game->rays.camera_x = 2.0 * (float)(game->info_game.win_res[0] - 1 - x) /
-		(float)game->info_game.win_res[0] - 1;;
-	game->rays.ray_dir_x = game->rays.dir_x + game->rays.plan_x * game->rays.camera_x;
-	game->rays.ray_dir_y = game->rays.dir_y + game->rays.plan_y * game->rays.camera_x;
+	game->rays.camera_x = 2.0 * (float)(game->info_game.win_res[0] - 1 - x)
+		/ (float)game->info_game.win_res[0] - 1;
+	game->rays.ray_dir_x = game->rays.dir_x
+		+ game->rays.plan_x * game->rays.camera_x;
+	game->rays.ray_dir_y = game->rays.dir_y
+		+ game->rays.plan_y * game->rays.camera_x;
 	game->rays.map_x = (int)game->player.pos_x;
 	game->rays.map_y = (int)game->player.pos_y;
 	game->rays.delta_dist_x = fabs(1 / game->rays.ray_dir_x);
 	game->rays.delta_dist_y = fabs(1 / game->rays.ray_dir_y);
 }
 
-int		ft_raycasting(t_game *game)
+int	ft_raycasting(t_game *game)
 {
 	int		i;
 
@@ -86,11 +89,6 @@ int		ft_raycasting(t_game *game)
 	while (++i < game->info_game.win_res[0])
 	{
 		ft_raycast_init(game, i);
-		// printf("Valeur de ray_dir_x : %f et ray_dir_y : %f\n", game->rays.ray_dir_x, game->rays.ray_dir_y);
-		// printf("Valeur de dir_x : %f et dir_y %f\n", game->rays.dir_x, game->rays.dir_y);
-		// printf("Valeur plan_x : %f et plan_y %f\n", game->rays.plan_x, game->rays.plan_y);
-		// printf("Valeur de map_x : %d et map_y : %d\n", game->rays.map_x, game->rays.map_y);
-		//printf("Valeur de delta_dist_x : %f et delta_dist_y : %f\n", game->rays.delta_dist_x, game->rays.delta_dist_y);
 		ft_calculate_step_and_side_dist(game);
 		ft_algo_dda(game);
 		ft_size_wall(game);

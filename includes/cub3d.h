@@ -23,7 +23,7 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
-# define PLAYER_SPEED	0.10
+# define PLAYER_SPEED	0.50
 # define PLAYER_ROT		0.10
 # define KEYCODE_A 		97
 # define KEYCODE_S		115

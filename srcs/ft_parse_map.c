@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 16:05:18 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:29:12 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	ft_parse_line_size(char *line, int *x_max, int *y_max)
 
 int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
 {
-	char *line_map;
-	int y_max;
+	char	*line_map;
+	int		y_max;
 
 	y_max = 1;
 	while (line[i] != '\0')
@@ -79,7 +79,7 @@ int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
 
 int	ft_parse_map(t_info_game *info_game, char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (line[0] == '\0')
@@ -96,8 +96,8 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 	else if (line[i] != '1')
 		return (ft_msg_errors(info_game, "Invalid data settings..."));
 	else
-			if (!ft_recover_size_map(info_game, line, i))
-				return (-1);
+		if (!ft_recover_size_map(info_game, line, i))
+			return (-1);
 	info_game->y += 1;
 	return (1);
 }

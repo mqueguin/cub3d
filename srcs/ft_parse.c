@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 23:48:37 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:26:50 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ int	manage_identifier(t_info_game *info_game, char *line, int i, char *err)
 	return (1);
 }
 
-int	ft_parse_line(t_info_game *info_game, char *line)
+int	ft_parse_line(t_info_game *info_game, char *line, int i)
 {
-	int	i;
-
-	i = 0;
 	info_game->line_index += 1;
 	ft_bzero(info_game->parse_char, 3);
 	if (line[0] == '\0')
@@ -50,20 +47,18 @@ int	ft_parse_line(t_info_game *info_game, char *line)
 		else
 			return (-1);
 	}
-	if (line[i] == 'R')
+	if (line[i] == 'R' || line[i] == 'F' || line[i] == 'C'
+		|| (line[i] == 'S' && line[i + 1] == ' '))
 	{
-		if (manage_identifier(info_game, line, i, "RES") == -1)
-			return (-1);
-	}
-	else if (line[i] == 'F' || line[i] == 'C')
-	{
-		if (manage_identifier(info_game, line, i, "COLORS") == -1)
-			return (-1);
-	}
-	else if (line[i] == 'S' && line[i + 1] == ' ')
-	{
-		if (manage_identifier(info_game, line, i, "TEXT") == -1)
-			return (-1);
+		if (line[i] == 'R')
+			if (manage_identifier(info_game, line, i, "RES") == -1)
+				return (-1);
+		if (line[i] == 'F' || line[i] == 'C')
+			if (manage_identifier(info_game, line, i, "COLORS") == -1)
+				return (-1);
+		if (line[i] == 'S' && line[i + 1] == ' ')
+			if (manage_identifier(info_game, line, i, "TEXT") == -1)
+				return (-1);
 	}
 	else if ((i = ft_parse_identifiant(info_game, line, i)))
 	{
@@ -107,7 +102,7 @@ int	ft_parse_gnl(t_info_game *info_game, char *path)
 	{
 		if (!ft_verif_settings(info_game))
 		{
-			if ((ft_parse_line(info_game, line)) == -1)
+			if ((ft_parse_line(info_game, line, 0)) == -1)
 				exit(free_and_exit_parsing(info_game, line,
 						"Invalid settings."));
 		}

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 23:29:02 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:21:40 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int		ft_init_parse(t_info_game *info_game, char *path);
 void	ft_init_info_game(t_info_game *info_game);
 void	ft_init_boolean_settings(t_info_game *info_game);
 int		ft_parse_gnl(t_info_game *info_game, char *path);
-int		ft_parse_line(t_info_game *info_game, char *line);
+int		ft_parse_line(t_info_game *info_game, char *line, int i);
 int		ft_parse_res(t_info_game *info_game, char *line, int i);
 int		ft_isdigit_atoi(char *line, int *i);
 int		ft_jump_space(char *line, int i);

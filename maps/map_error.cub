@@ -1,9 +1,9 @@
 R 640 480
-NO ./cub3D_map_tester/images/NO.xpm
-SO ./cub3D_map_tester/images/SO.xpm
-WE ./cub3D_map_tester/images/WE.xpm
-EA ./cub3D_map_tester/images/EA.xpm
-S ./cub3D_map_tester/images/ITEM.xpm
+NO ./../cub3D_map_tester/images/NO.xpm
+SO ./../cub3D_map_tester/images/SO.xpm
+WE ./../cub3D_map_tester/images/WE.xpm
+EA ./../cub3D_map_tester/images/EA.xpm
+S ./../cub3D_map_tester/images/ITEM.xpm
 f 255
 C 255,255,255
 

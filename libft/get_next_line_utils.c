@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 18:42:12 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/01/23 13:24:41 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:17:25 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strcpy(char *dst, char *src)
 	return (dst);
 }
 
-int		ft_check(char *str)
+int	ft_check(char *str)
 {
 	int		i;
 

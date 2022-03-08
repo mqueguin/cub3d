@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:56 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 23:28:23 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:05:14 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_check_line(t_info_game *info_game, char *line, int i)
 {
-	i = ft_jump_space(line, i);
+	if (line[i] != '\0')
+		i = ft_jump_space(line, i);
 	if (line[i] != ' ' && line[i] != '\0')
 	{
 		if (info_game->parse_char[0] == 'R')
@@ -86,9 +87,12 @@ char	*ft_recover_texture(t_info_game *info_game, char *line,
 	if (line[i] != ' ')
 		return (0);
 	i = ft_jump_space(line, i);
+	printf("////Valeur de i apres ft_jump_space dans ft_recover_texture : %d\n", i);
 	tmp = i;
-	while (line[tmp] != ' ' && line[tmp++] != '\0')
+	printf("Valeur de line[tmp] : %c\n", line[tmp]);
+	while (line[tmp++] != '\0' && line[tmp] != ' ')
 		size++;
+	printf("Valeur de line[tmp] apres : %c\n", line[tmp]);
 	if (!ft_check_line(info_game, line, tmp))
 		return (0);
 	texture = malloc(sizeof(char) * (size + 1));

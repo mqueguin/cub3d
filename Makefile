@@ -15,7 +15,14 @@ SRCS            =       srcs/main.c\
 						srcs/check_file.c\
 						srcs/cub3d_utils.c\
 						srcs/ft_parse_settings.c\
-						srcs/ft_parse_identifier.c
+						srcs/ft_parse_identifier.c\
+						srcs/ft_events.c\
+						srcs/ft_init_game.c\
+						srcs/ft_player_move.c\
+						srcs/ft_raycasting_init.c\
+						srcs/ft_raycasting.c\
+						srcs/ft_textures.c\
+						srcs/mlx_utils.c
 
 SRCS_B      =       $(wildcard srcs_bonus/*.c)
 
@@ -33,19 +40,19 @@ OBJS            =       ${SRCS:.c=.o}
 
 OBJS_B          =       ${SRCS_B:.c=.o}
 
-MLX         =       minilibx/libmlx_Linux.a
+MLX         =       minilibx/libmlx.a
 
 MLX_DIR     =       minilibx/
 
 RM          =       rm -rf
 
 #MACOS
-#LFLAGS		=			-framework OpenGL -framework AppKit
+LFLAGS		=			-framework OpenGL -framework AppKit
 
 #LINUX
 #LFLAGS       =       -lm -lbsd -lX11 -lXext
 
-FLAGS       =       -Wall -Wextra -Werror -g#-ggdb3
+FLAGS       =       -Wall -Wextra -Werror #-g -ggdb3
 
 .c.o:
 					@${CC} ${FLAGS} -I${INCLUDES_DIR} -c $< -o ${<:.c=.o}
@@ -56,7 +63,7 @@ all:			${NAME}
 ${NAME}:		${OBJS}
 						@make -C ${LIB_DIR}
 						@make -C ${LIB_DIR} bonus
-						@${CC} ${FLAGS} ${LFLAGS} -I${INCLUDES_DIR} -o ${NAME} ${OBJS} ${LIBFT} #${MLX}
+						@${CC} ${FLAGS} ${LFLAGS} -I${INCLUDES_DIR} -o ${NAME} ${OBJS} ${LIBFT} ${MLX}
 						@echo "\nlibft.a has been created"
 						@echo "cub3d has been created"
 

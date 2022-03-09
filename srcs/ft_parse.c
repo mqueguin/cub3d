@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 18:19:48 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/09 17:27:12 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 int	manage_identifier(t_info_game *info_game, char *line, int i, char *err)
 {
 	info_game->parse_char[0] = line[i];
-	if (ft_strcmp(err, "RES") == 0)
-	{
-		if (!(ft_parse_res(info_game, line, i)))
-			return (ft_msg_errors(info_game, "Invalid resolution settings"));
-	}
-	else if (ft_strcmp(err, "COLORS") == 0)
+	if (ft_strcmp(err, "COLORS") == 0)
 	{
 		if (!(ft_parse_color(info_game, line, i)))
 			return (ft_msg_errors(info_game, "Invalid colors settings..."));
@@ -47,12 +42,9 @@ int	ft_parse_line(t_info_game *info_game, char *line, int i)
 		else
 			return (-1);
 	}
-	if (line[i] == 'R' || line[i] == 'F' || line[i] == 'C'
+	if (line[i] == 'F' || line[i] == 'C'
 		|| (line[i] == 'S' && line[i + 1] == ' '))
 	{
-		if (line[i] == 'R')
-			if (manage_identifier(info_game, line, i, "RES") == -1)
-				return (-1);
 		if (line[i] == 'F' || line[i] == 'C')
 			if (manage_identifier(info_game, line, i, "COLORS") == -1)
 				return (-1);
@@ -114,7 +106,6 @@ int	ft_parse_gnl(t_info_game *info_game, char *path)
 	}
 	if (line)
 		free(line);
-	printf("Je sors bien a chaque fois\n");
 	if (ret == -1)
 	{
 		close(info_game->fd_map);

@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:13 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 19:06:04 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:32:29 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_init_boolean_settings(t_info_game *info_game)
 {
 	info_game->b_colors[0] = 0;
 	info_game->b_colors[1] = 0;
-	info_game->b_res = 0;
 	info_game->b_texture_no = 0;
 	info_game->b_texture_so = 0;
 	info_game->b_texture_we = 0;

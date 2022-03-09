@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 18:37:26 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/09 17:53:28 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 void	ft_free_all(t_info_game *info_game)
 {
-	printf("J ARRIVE BIEN JUSQU ICI\n");
 	if (info_game->path_textures_ea)
 		free(info_game->path_textures_ea);
-	else if (info_game->path_textures_no)
+	if (info_game->path_textures_no)
 		free(info_game->path_textures_no);
-	else if (info_game->path_textures_so)
+	if (info_game->path_textures_so)
 		free(info_game->path_textures_so);
-	else if (info_game->path_textures_s)
+	if (info_game->path_textures_s)
 		free(info_game->path_textures_s);
-	else if (info_game->path_textures_we)
+	if (info_game->path_textures_we)
 		free(info_game->path_textures_we);
 	ft_free_tab2d(info_game->map);
 }
 
-/* int	game_start(t_game *game)
+int	game_start(t_game *game)
 {
 	ft_init_struct(game);
 	game->world.mlx = mlx_init();
@@ -44,7 +43,7 @@ void	ft_free_all(t_info_game *info_game)
 		return (0);
 	}
 	return (1);
-} */
+}
 
 int	main(int ac, char **av)
 {
@@ -68,7 +67,7 @@ int	main(int ac, char **av)
     	// my_mlx_pixel_put(&img, 1000, 500, 0x00FF0000);
     	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     	// mlx_loop(mlx);
-		/* if (!game_start(&game))
+		if (!game_start(&game))
 		{
 			//Fonction pour tout free et quitter
 			return (-1);
@@ -76,9 +75,6 @@ int	main(int ac, char **av)
 		ft_events_managements(&game);
 	}
 	else
-		return(ft_error("There must be 2 or 3 parameters")); */
-	}
-	printf("TOUT A MARCHER\n");
-	ft_free_all(&game.info_game);
+		return(ft_error("There must be 2 or 3 parameters"));
 	return (0);
 }

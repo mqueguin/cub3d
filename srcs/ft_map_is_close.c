@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 18:13:45 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/07 17:52:21 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/09 18:03:00 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_check_up_is_wall(char **map, int x, int y)
 
 int	ft_check_down_is_wall(char **map, int x, int y)
 {
+	printf("Valeur de strlen(map[y]) : %d\n", ft_strlen(map[y]));
 	while (y < ft_strlen(map[y]))
 	{
 		if (map[y][x] == '1')

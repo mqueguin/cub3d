@@ -6,13 +6,14 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/09 17:27:12 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:06:54 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	manage_identifier(t_info_game *info_game, char *line, int i, char *err)
+static int	manage_identifier(t_info_game *info_game, char *line,
+	int i, char *err)
 {
 	info_game->parse_char[0] = line[i];
 	if (ft_strcmp(err, "COLORS") == 0)
@@ -28,6 +29,17 @@ int	manage_identifier(t_info_game *info_game, char *line, int i, char *err)
 	return (1);
 }
 
+static int	select_identifier(t_info_game *info_game, char *line, int i)
+{
+	if (line[i] == 'F' || line[i] == 'C')
+		if (manage_identifier(info_game, line, i, "COLORS") == -1)
+			return (-1);
+	if (line[i] == 'S' && line[i + 1] == ' ')
+		if (manage_identifier(info_game, line, i, "TEXT") == -1)
+			return (-1);
+	return (1);
+}
+
 int	ft_parse_line(t_info_game *info_game, char *line, int i)
 {
 	info_game->line_index += 1;
@@ -39,23 +51,16 @@ int	ft_parse_line(t_info_game *info_game, char *line, int i)
 		i = ft_jump_space(line, i);
 		if (line[i] == '\0')
 			return (1);
-		else
-			return (-1);
+		return (-1);
 	}
 	if (line[i] == 'F' || line[i] == 'C'
 		|| (line[i] == 'S' && line[i + 1] == ' '))
 	{
-		if (line[i] == 'F' || line[i] == 'C')
-			if (manage_identifier(info_game, line, i, "COLORS") == -1)
-				return (-1);
-		if (line[i] == 'S' && line[i + 1] == ' ')
-			if (manage_identifier(info_game, line, i, "TEXT") == -1)
-				return (-1);
-	}
-	else if ((i = ft_parse_identifiant(info_game, line, i)))
-	{
-		if (i == -1)
+		if (select_identifier(info_game, line, i) == -1)
 			return (-1);
+	}
+	else if (ft_parse_identifiant(info_game, line, &i) != -1)
+	{
 		if (!(ft_parse_textures(info_game, line, i)))
 			return (ft_msg_errors(info_game, "Invalid textures settings..."));
 	}
@@ -64,15 +69,7 @@ int	ft_parse_line(t_info_game *info_game, char *line, int i)
 	return (1);
 }
 
-int	free_and_exit_parsing(t_info_game *info_game, char *line, char *err)
-{
-	free(line);
-	close(info_game->fd_map);
-	ft_msg_errors(info_game, err);
-	return (1);
-}
-
-int	ft_manage_parsing(t_info_game *info_game, char *path)
+static int	ft_manage_parsing(t_info_game *info_game, char *path)
 {
 	if ((ft_recover_map(info_game, path)) == -1)
 		return (ft_msg_errors(info_game, "Invalid map..."));
@@ -83,9 +80,8 @@ int	ft_manage_parsing(t_info_game *info_game, char *path)
 	return (1);
 }
 
-int	ft_parse_gnl(t_info_game *info_game, char *path)
+int	ft_parse_gnl(t_info_game *info_game, char *path, int ret)
 {
-	int		ret;
 	char	*line;
 
 	line = NULL;
@@ -95,22 +91,18 @@ int	ft_parse_gnl(t_info_game *info_game, char *path)
 		if (!ft_verif_settings(info_game))
 		{
 			if ((ft_parse_line(info_game, line, 0)) == -1)
-				exit(free_and_exit_parsing(info_game, line,
-						"Invalid settings."));
+				exit(free_parsing(info_game, line, "Invalid settings."));
 		}
 		else
 			if ((ft_parse_map(info_game, line)) == -1)
-				exit(free_and_exit_parsing(info_game, line, "Invalid map."));
+				exit(free_parsing(info_game, line, "Invalid map."));
 		free(line);
 		ret = get_next_line(info_game->fd_map, &line);
 	}
 	if (line)
 		free(line);
 	if (ret == -1)
-	{
-		close(info_game->fd_map);
-		return (-1);
-	}
+		exit(free_parsing(info_game, line, "Function read failed."));
 	close(info_game->fd_map);
 	if (ft_manage_parsing(info_game, path) == -1)
 		exit(EXIT_FAILURE);

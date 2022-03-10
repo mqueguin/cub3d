@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:17 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/09 17:25:35 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:20:07 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,8 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 	return (1);
 }
 
-int	ft_parse_textures(t_info_game *info_game, char *line, int i)
+static int	ft_fill_texture_s_or_no(t_info_game *info_game, char *texture)
 {
-	char	*texture;
-
-	i++;
-	texture = NULL;
-	if ((texture = ft_recover_texture(info_game, line, i, 0)) == NULL)
-		return (0);
-	if (!(ft_check_textures(texture)))
-	{
-		if (texture)
-			free(texture);
-		ft_msg_errors(info_game, "Invalid path of textures...");
-		return (0);
-	}
 	if ((ft_strcmp(info_game->parse_char, "S")) == 0)
 	{
 		info_game->path_textures_s = ft_strdup(texture);
@@ -80,7 +67,12 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 		}
 		info_game->b_texture_no = 1;
 	}
-	else if ((ft_strcmp(info_game->parse_char, "SO")) == 0)
+	return (1);
+}
+
+static int	ft_fill_texture_so_or_we(t_info_game *info_game, char *texture)
+{
+	if ((ft_strcmp(info_game->parse_char, "SO")) == 0)
 	{
 		info_game->path_textures_so = ft_strdup(texture);
 		if (info_game->path_textures_so == NULL)
@@ -104,6 +96,28 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 		}
 		info_game->b_texture_we = 1;
 	}
+	return (1);
+}
+
+int	ft_parse_textures(t_info_game *info_game, char *line, int i)
+{
+	char	*texture;
+
+	i++;
+	texture = ft_recover_texture(info_game, line, i, 0);
+	if (texture == NULL)
+		return (0);
+	if (!(ft_check_textures(texture)))
+	{
+		if (texture)
+			free(texture);
+		ft_msg_errors(info_game, "Invalid path of textures...");
+		return (0);
+	}
+	if (!ft_fill_texture_s_or_no(info_game, texture))
+		return (0);
+	else if (!ft_fill_texture_so_or_we(info_game, texture))
+		return (0);
 	else if ((ft_strcmp(info_game->parse_char, "EA")) == 0)
 	{
 		info_game->path_textures_ea = ft_strdup(texture);
@@ -118,5 +132,5 @@ int	ft_parse_textures(t_info_game *info_game, char *line, int i)
 	}
 	if (texture)
 		free(texture);
-	return (1);	
+	return (1);
 }

@@ -10,6 +10,7 @@ SRCS            =       srcs/main.c\
 						srcs/ft_map_is_close.c\
 						srcs/ft_parse_utils.c\
 						srcs/ft_parse_utils2.c\
+						srcs/ft_parse_utils3.c\
 						srcs/ft_recover_map.c\
 						srcs/ft_utils.c\
 						srcs/check_file.c\

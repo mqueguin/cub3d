@@ -34,20 +34,25 @@ static void	ft_get_pos_player_and_angle(t_game *game)
 		game->player.dir = M_PI / 2;
 }
 
-int		ft_creates_images(t_game *game)
+int	ft_creates_images(t_game *game)
 {
 	game->north_text.img = NULL;
 	game->south_text.img = NULL;
 	game->west_text.img = NULL;
 	game->east_text.img = NULL;
-	if (!my_mlx_new_image(game->world.mlx, &game->data, game->info_game.win_res[0],
-						game->info_game.win_res[1]))
+	if (!my_mlx_new_image(game->world.mlx, &game->data,
+			game->info_game.win_res[0], game->info_game.win_res[1]))
 		return (0);
-	if (!ft_load_textures(game, &game->north_text, game->info_game.path_textures_no)
-		|| !ft_load_textures(game, &game->south_text, game->info_game.path_textures_so)
-		|| !ft_load_textures(game, &game->east_text, game->info_game.path_textures_ea)
-		|| !ft_load_textures(game, &game->west_text, game->info_game.path_textures_we)
-		|| !ft_load_textures(game, &game->sprites_text, game->info_game.path_textures_s))
+	if (!ft_load_textures(game, &game->north_text,
+			game->info_game.path_textures_no)
+		|| !ft_load_textures(game, &game->south_text,
+			game->info_game.path_textures_so)
+		|| !ft_load_textures(game, &game->east_text,
+			game->info_game.path_textures_ea)
+		|| !ft_load_textures(game, &game->west_text,
+			game->info_game.path_textures_we)
+		|| !ft_load_textures(game, &game->sprites_text,
+			game->info_game.path_textures_s))
 	{
 		ft_msg_errors(&game->info_game, "Failed to load textures");
 		return (0);
@@ -55,10 +60,11 @@ int		ft_creates_images(t_game *game)
 	return (1);
 }
 
-int		ft_init_game(t_game *game)
+int	ft_init_game(t_game *game)
 {
 	ft_check_res_size(game);
-	game->world.win = mlx_new_window(game->world.mlx, game->info_game.win_res[0], game->info_game.win_res[1], "Cub3d");
+	game->world.win = mlx_new_window(game->world.mlx,
+			game->info_game.win_res[0], game->info_game.win_res[1], "Cub3d");
 	if (!game->world.win)
 	{
 		ft_msg_errors(&game->info_game, "Failed to create window");
@@ -67,7 +73,8 @@ int		ft_init_game(t_game *game)
 	if (!ft_creates_images(game))
 		return (0);
 	ft_get_pos_player_and_angle(game);
-	game->world.dist_to_projection_plane = (game->info_game.win_res[0] / 2) / (tan(ft_degree_to_radian(FOV / 2)));
+	game->world.dist_to_projection_plane = (game->info_game.win_res[0] / 2)
+		/ (tan(ft_degree_to_radian(FOV / 2)));
 	ft_plan_init(game);
 	ft_player_init_dir(game);
 	return (1);

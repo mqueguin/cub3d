@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
-void		ft_plan_init(t_game *game)
+void	ft_plan_init(t_game *game)
 {
 	float	dir;
 
 	dir = game->player.dir;
-	//printf("valeur de de dir : %f\n", game->player.dir);
 	if (dir > (5 * M_PI) / 4 && dir < (7 * M_PI) / 4)
 	{
 		game->rays.plan_x = 0.0;
@@ -40,7 +39,7 @@ void		ft_plan_init(t_game *game)
 	}
 }
 
-void		ft_player_init_dir(t_game *game)
+void	ft_player_init_dir(t_game *game)
 {
 	float	dir;
 

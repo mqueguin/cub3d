@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 13:40:09 by mqueguin          #+#    #+#             */
 /*   Updated: 2022/03/09 16:45:12 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 /* int ft_strlen2(char *s)
 {

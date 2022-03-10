@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
 /*   Updated: 2022/03/09 17:53:28 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	ft_free_all(t_info_game *info_game)
 {

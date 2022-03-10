@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 23:26:41 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/02/25 22:52:06 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/07 20:29:16 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef	struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -49,7 +49,7 @@ size_t			ft_strlcat(char *dest, const char *src, size_t len);
 int				ft_atoi(const char *str);
 char			*ft_strdup(const char *s1);
 char			*ft_strnstr(const char *haystack, const char *needle,
-		size_t len);
+					size_t len);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_itoa(int n);
 char			**ft_split(const char *s, char c);
@@ -72,10 +72,10 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
-		void (*del)(void *));
-int			get_next_line(int fd, char **line);
+					void (*del)(void *));
+int				get_next_line(int fd, char **line);
 char			*ft_strcpy(char *dst, char *src);
-int			ft_check(char *str);
-int			ft_strcmp(const char *s1, const char *s2);
+int				ft_check(char *str);
+int				ft_strcmp(const char *s1, const char *s2);
 
 #endif

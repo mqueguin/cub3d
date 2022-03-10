@@ -6,11 +6,23 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 18:13:45 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/07 17:52:21 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:15:44 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	ft_strlen_tab2d(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return (0);
+	while (tab[i])
+		i++;
+	return (i);
+}
 
 int	ft_check_column(char **map)
 {
@@ -44,7 +56,7 @@ int	ft_check_up_is_wall(char **map, int x, int y)
 
 int	ft_check_down_is_wall(char **map, int x, int y)
 {
-	while (y < ft_strlen(map[y]))
+	while (y < ft_strlen_tab2d(map))
 	{
 		if (map[y][x] == '1')
 			return (1);
@@ -57,7 +69,7 @@ int	ft_verif_map(t_info_game *info_game)
 {
 	int		x;
 	int		y;
-	
+
 	y = -1;
 	if (!ft_check_column(info_game->map))
 		return (0);

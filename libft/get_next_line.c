@@ -6,13 +6,13 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 18:39:25 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/01/23 13:39:56 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:01:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_strjoin_gnl(char *str, char *buffer)
+static char	*ft_strjoin_gnl(char *str, char *buffer)
 {
 	char	*new_line;
 	int		len_str;
@@ -23,8 +23,8 @@ static char		*ft_strjoin_gnl(char *str, char *buffer)
 		return (NULL);
 	len_str = ft_strlen(str);
 	total_len = len_str + ft_strlen(buffer);
-	if (!(new_line = (char*)malloc(sizeof(char)
-					* (total_len + 1))))
+	new_line = malloc(sizeof(char) * (total_len + 1));
+	if (new_line == NULL)
 		return (NULL);
 	if (str)
 		ft_strcpy(new_line, str);
@@ -32,11 +32,11 @@ static char		*ft_strjoin_gnl(char *str, char *buffer)
 	while (buffer[++i])
 		new_line[len_str + i] = buffer[i];
 	new_line[len_str + i] = '\0';
-	free((char*)str);
+	free((char *)str);
 	return (new_line);
 }
 
-static char		*ft_get_new_line(char *str)
+static char	*ft_get_new_line(char *str)
 {
 	char	*line;
 	int		len;
@@ -47,7 +47,8 @@ static char		*ft_get_new_line(char *str)
 	len = 0;
 	while (str[len] && str[len] != '\n')
 		len++;
-	if (!(line = (char*)malloc(sizeof(char) * (len + 1))))
+	line = malloc(sizeof(char) * (len + 1));
+	if (line == NULL)
 		return (NULL);
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -59,7 +60,7 @@ static char		*ft_get_new_line(char *str)
 	return (line);
 }
 
-static char		*ft_get_second_part(char *str)
+static char	*ft_get_second_part(char *str)
 {
 	char	*new_str;
 	int		len;
@@ -77,8 +78,8 @@ static char		*ft_get_second_part(char *str)
 		return (NULL);
 	}
 	len_new_str = ft_strlen(str) - len;
-	if (!(new_str = (char*)malloc(sizeof(char)
-					* (len_new_str + 1))))
+	new_str = malloc(sizeof(char) * (len_new_str + 1));
+	if (new_str == NULL)
 		return (NULL);
 	while (str[++len])
 		new_str[i++] = str[len];
@@ -87,7 +88,13 @@ static char		*ft_get_second_part(char *str)
 	return (new_str);
 }
 
-int				get_next_line(int fd, char **line)
+int	free_exit(char *buffer)
+{
+	free(buffer);
+	return (-1);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	char			*buffer;
 	static char		*str = NULL;
@@ -96,15 +103,14 @@ int				get_next_line(int fd, char **line)
 	size_of_read = 1;
 	if (BUFFER_SIZE <= 0 || !line || fd < 0)
 		return (-1);
-	if (!(buffer = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buffer == NULL)
 		return (-1);
 	while (!ft_check(str) && size_of_read != 0)
 	{
-		if ((size_of_read = read(fd, buffer, BUFFER_SIZE)) == -1)
-		{
-			free(buffer);
-			return (-1);
-		}
+		size_of_read = read(fd, buffer, BUFFER_SIZE);
+		if (size_of_read == -1)
+			return (free_exit(buffer));
 		buffer[size_of_read] = '\0';
 		str = ft_strjoin_gnl(str, buffer);
 	}

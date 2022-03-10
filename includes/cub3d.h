@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 17:40:59 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:07:49 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,19 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>
+# include "../minilibx/mlx.h"
 # include "../libft/libft.h"
-# include "mlx.h"
 
-# define PLAYER_SPEED	0.50
+# define PLAYER_SPEED	0.15
 # define PLAYER_ROT		0.10
-# define KEYCODE_A 		97
-# define KEYCODE_S		115
-# define KEYCODE_D		100
-# define KEYCODE_W		119
-# define KEYCODE_UP		65362
-# define KEYCODE_DOWN	65364
-# define KEYCODE_LEFT	65361
-# define KEYCODE_RIGHT	65363
-# define KEYCODE_ESCAPE	65307
-# define FOV 			60
+# define KEYCODE_A 		0
+# define KEYCODE_S		1
+# define KEYCODE_D		2
+# define KEYCODE_W		13
+# define KEYCODE_LEFT	123
+# define KEYCODE_RIGHT	124
+# define KEYCODE_ESCAPE	53
+# define FOV 			10000000
 
 typedef struct s_info_game
 {
@@ -54,7 +52,6 @@ typedef struct s_info_game
 	char	*path_textures_we;
 	char	*path_textures_ea;
 	int		b_colors[2];
-	int		b_res;
 	int		b_texture_no;
 	int		b_texture_so;
 	int		b_texture_we;
@@ -158,20 +155,20 @@ int		ft_check_extension(char *path, char *extension);
 int		ft_init_parse(t_info_game *info_game, char *path);
 void	ft_init_info_game(t_info_game *info_game);
 void	ft_init_boolean_settings(t_info_game *info_game);
-int		ft_parse_gnl(t_info_game *info_game, char *path);
-int		ft_parse_line(t_info_game *info_game, char *line);
-int		ft_parse_res(t_info_game *info_game, char *line, int i);
+int		ft_parse_gnl(t_info_game *info_game, char *path, int ret);
+int		ft_parse_line(t_info_game *info_game, char *line, int i);
 int		ft_isdigit_atoi(char *line, int *i);
 int		ft_jump_space(char *line, int i);
 int		ft_parse_color(t_info_game *info_game, char *line, int i);
 int		ft_parse_f_or_c(t_info_game *info_game, char *line, int i);
 int		ft_verif_f_or_c(t_info_game *info_game);
 int		ft_check_line(t_info_game *info_game, char *line, int i);
-int		ft_parse_identifiant(t_info_game *info_game, char *line, int i);
+int		ft_parse_identifiant(t_info_game *info_game, char *line, int *i);
 int		ft_parse_textures(t_info_game *info_game, char *line, int i);
 int		ft_check_textures(char *texture_path);
-char	*ft_recover_texture(t_info_game *info_game, char *line, int i);
+char	*ft_recover_texture(t_info_game *info_game, char *line, int i, int j);
 int		ft_verif_settings(t_info_game *info_game);
+int		free_parsing(t_info_game *info_game, char *line, char *err);
 
 /** Parse map **/
 int		ft_parse_map(t_info_game *info_game, char *line);
@@ -228,6 +225,6 @@ void	ft_player_move(t_game *game);
 
 /** Fonctions free **/
 void	ft_free_all(t_info_game *info_game);
-void	ft_free_exit(t_game *game);
+int		ft_free_exit(t_game *game);
 
 #endif

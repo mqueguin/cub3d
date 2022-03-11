@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:24:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 13:21:27 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:24:17 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ static int	ft_recover_all_lines(t_info_game *info_game, char *line, int *y)
 	return (1);
 }
 
-static int	ft_recover_line(t_info_game *info_game, char *line, int start_map, int *y)
+static int	ft_recover_line(t_info_game *info_game, char *line,
+		int start_map, int *y)
 {
 	if (start_map == info_game->line_index)
 	{

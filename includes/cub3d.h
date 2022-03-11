@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 11:34:53 by tale-fau         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:22:01 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,18 +169,16 @@ int		ft_check_textures(char *texture_path);
 char	*ft_recover_texture(t_info_game *info_game, char *line, int i, int j);
 int		ft_verif_settings(t_info_game *info_game);
 int		free_parsing(t_info_game *info_game, char *line, char *err);
+int		open_map(t_info_game *info_game, char *path);
 
 /** Parse map **/
 int		ft_parse_map(t_info_game *info_game, char *line);
-int		ft_recover_size_map(t_info_game *info_game, char *line, int i);
+int		ft_recover_size_map(t_info_game *info_game, char *line,
+			int i, int y_max);
 int		ft_parse_line_size(char *line, int *x_max, int *y_max);
 int		ft_check_line_map(t_info_game *info_game, char *line, int i);
 int		ft_alloc_map(t_info_game *info_game);
-int		ft_recover_map(t_info_game *info_game, char *path);
-int		ft_recover_line(t_info_game *info_game, char *line,
-			int start_map, int *y);
-int		ft_recover_first_line(t_info_game *info_game, char *line);
-int		ft_recover_all_lines(t_info_game *info_game, char *line, int *y);
+int		ft_recover_map(t_info_game *info_game, char *path, int i, int y);
 int		ft_recover_player(t_info_game *info_game, char c, int x, int *y);
 int		ft_verif_map(t_info_game *info_game);
 int		ft_check_space_map(char **map);

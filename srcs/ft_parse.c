@@ -6,11 +6,11 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/10 15:06:54 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:14:29 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static int	manage_identifier(t_info_game *info_game, char *line,
 	int i, char *err)
@@ -71,7 +71,7 @@ int	ft_parse_line(t_info_game *info_game, char *line, int i)
 
 static int	ft_manage_parsing(t_info_game *info_game, char *path)
 {
-	if ((ft_recover_map(info_game, path)) == -1)
+	if ((ft_recover_map(info_game, path, 0, 1)) == -1)
 		return (ft_msg_errors(info_game, "Invalid map..."));
 	if (!ft_check_space_map(info_game->map))
 		return (ft_msg_errors(info_game, "Invalid map..."));

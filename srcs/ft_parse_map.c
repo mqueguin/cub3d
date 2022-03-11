@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 11:17:14 by tale-fau         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:59:21 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ int	ft_parse_line_size(char *line, int *x_max, int *y_max)
 	return (1);
 }
 
-int	ft_recover_size_map(t_info_game *info_game, char *line, int i)
+int	ft_recover_size_map(t_info_game *info_game, char *line, int i, int y_max)
 {
 	char	*line_map;
-	int		y_max;
 
-	y_max = 1;
 	while (line[i] != '\0')
 		i++;
 	while ((get_next_line(info_game->fd_map, &line_map) > 0))
@@ -99,7 +97,7 @@ int	ft_parse_map(t_info_game *info_game, char *line)
 	else if (line[i] != '1')
 		return (ft_msg_errors(info_game, "Invalid data settings..."));
 	else
-		if (!ft_recover_size_map(info_game, line, i))
+		if (!ft_recover_size_map(info_game, line, i, 1))
 			return (-1);
 	info_game->y += 1;
 	return (1);

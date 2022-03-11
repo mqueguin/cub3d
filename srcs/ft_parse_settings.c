@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_settings.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:17 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 12:15:04 by tale-fau         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:11:20 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,7 @@ int	ft_parse_color(t_info_game *info_game, char *line, int i)
 
 static int	ft_fill_texture_s_or_no(t_info_game *info_game, char *texture)
 {
-	if ((ft_strcmp(info_game->parse_char, "S")) == 0)
-	{
-		info_game->path_textures_s = ft_strdup(texture);
-		if (info_game->path_textures_s == NULL)
-			exit(EXIT_FAILURE);
-		if (info_game->b_texture_s == 1)
-		{
-			free(texture);
-			return (0);
-		}
-		info_game->b_texture_s = 1;
-	}
-	else if ((ft_strcmp(info_game->parse_char, "NO")) == 0)
+	if ((ft_strcmp(info_game->parse_char, "NO")) == 0)
 	{
 		info_game->path_textures_no = ft_strdup(texture);
 		if (info_game->path_textures_no == NULL)

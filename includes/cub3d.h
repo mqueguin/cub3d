@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 13:22:01 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:20:36 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_info_game
 	int		color_f[3];
 	int		color_c[3];
 	char	parse_char[3];
-	char	*path_textures_s;
 	char	*path_textures_no;
 	char	*path_textures_so;
 	char	*path_textures_we;
@@ -56,7 +55,6 @@ typedef struct s_info_game
 	int		b_texture_so;
 	int		b_texture_we;
 	int		b_texture_ea;
-	int		b_texture_s;
 	char	**map;
 	int		fd_map;
 	int		size_map_x_y[2];
@@ -66,29 +64,25 @@ typedef struct s_info_game
 
 typedef struct s_player
 {
-	float		pos_x; //Position x du joueur
-	float		pos_y; //Position y du joueur
+	float		pos_x;
+	float		pos_y;
 	float		dir;
-	// float		angle; //Angle de rotation du joueur
-	// int			b_walk_dir;
-	// int			b_angle_dir; // Angle de direction
-	// int			b_turn_dir;
 }				t_player;
 
-typedef struct  s_data
+typedef struct s_data
 {
-    void        *img;
-    char        *addr;
-    int         bits_per_pixel;
-    int         line_length;
-    int         endian;
-}               t_data;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data;
 
-typedef struct	s_world
+typedef struct s_world
 {
 	void		*mlx;
 	void		*win;
-	float		dist_to_projection_plane; // distance entre la caméra et l'écran de projection
+	float		dist_to_projection_plane;
 	int			key_a;
 	int			key_d;
 	int			key_up;
@@ -97,9 +91,9 @@ typedef struct	s_world
 	int			key_right_rot;
 }				t_world;
 
-typedef struct	s_rays
+typedef struct s_rays
 {
-	int			map_x; // coordonée x du carré dans lequel est pos
+	int		map_x; // coordonée x du carré dans lequel est pos
 	int			map_y; // coordonnée y du carré dans lequel est pos
 	float		camera_x; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
 	float		ray_dir_x; //calcul de direction x du rayon
@@ -147,7 +141,6 @@ typedef struct s_game
 	t_textures	south_text;
 	t_textures	west_text;
 	t_textures	east_text;
-	t_textures	sprites_text;
 }				t_game;
 
 int		ft_check_file(char *path);

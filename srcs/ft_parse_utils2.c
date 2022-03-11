@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:56 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/09 16:20:10 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:10:31 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int	ft_verif_settings(t_info_game *info_game)
 {
 	if (info_game->b_colors[0] == 1 && info_game->b_colors[1] == 1
 		&& info_game->b_texture_no == 1 && info_game->b_texture_so == 1
-		&& info_game->b_texture_we == 1 && info_game->b_texture_ea == 1
-		&& info_game->b_texture_s == 1)
+		&& info_game->b_texture_we == 1 && info_game->b_texture_ea == 1)
 		return (1);
 	return (0);
 }

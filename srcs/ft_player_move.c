@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:06:29 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/04/15 19:32:08 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:01:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_move_up_or_down(t_game *game)
 			game->player.pos_x += game->rays.dir_x * PLAYER_SPEED;
 		if (game->info_game.map[(int)(game->player.pos_y
 				+ game->rays.dir_y * PLAYER_SPEED)]
-			[(int)game->player.pos_x] == '0')
+			[(int)game->player.pos_x] != '1')
 			game->player.pos_y += game->rays.dir_y * PLAYER_SPEED;
 	}
 	else if (game->world.key_down == 1)
@@ -33,7 +33,7 @@ static void	ft_move_up_or_down(t_game *game)
 			game->player.pos_x -= game->rays.dir_x * PLAYER_SPEED;
 		if (game->info_game.map[(int)(game->player.pos_y
 				- game->rays.dir_y * PLAYER_SPEED)]
-			[(int)game->player.pos_x] == '0')
+			[(int)game->player.pos_x] != '1')
 			game->player.pos_y -= game->rays.dir_y * PLAYER_SPEED;
 	}
 }

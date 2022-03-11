@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:48:08 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 12:14:01 by tale-fau         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:13:23 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	ft_free_all(t_info_game *info_game)
 		free(info_game->path_textures_no);
 	if (info_game->path_textures_so)
 		free(info_game->path_textures_so);
-	if (info_game->path_textures_s)
-		free(info_game->path_textures_s);
 	if (info_game->path_textures_we)
 		free(info_game->path_textures_we);
 	ft_free_tab2d(info_game->map);

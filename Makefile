@@ -54,7 +54,7 @@ LFLAGS		=			-framework OpenGL -framework AppKit
 #LINUX
 #LFLAGS       =       -lm -lbsd -lX11 -lXext
 
-FLAGS       =       -Wall -Wextra -Werror #-g -ggdb3
+FLAGS       =       -Wall -Wextra -Werror -g #-ggdb3
 
 .c.o:
 					@${CC} ${FLAGS} -I${INCLUDES_DIR} -c $< -o ${<:.c=.o}

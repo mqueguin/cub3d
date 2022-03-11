@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:28 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 13:14:29 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:08:57 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ static int	manage_identifier(t_info_game *info_game, char *line,
 		if (!(ft_parse_color(info_game, line, i)))
 			return (ft_msg_errors(info_game, "Invalid colors settings..."));
 	}
-	else if (ft_strcmp(err, "TEXT") == 0)
-	{
-		if (!(ft_parse_textures(info_game, line, i)))
-			return (ft_msg_errors(info_game, "Invalid textures settings..."));
-	}
 	return (1);
 }
 
@@ -33,9 +28,6 @@ static int	select_identifier(t_info_game *info_game, char *line, int i)
 {
 	if (line[i] == 'F' || line[i] == 'C')
 		if (manage_identifier(info_game, line, i, "COLORS") == -1)
-			return (-1);
-	if (line[i] == 'S' && line[i + 1] == ' ')
-		if (manage_identifier(info_game, line, i, "TEXT") == -1)
 			return (-1);
 	return (1);
 }
@@ -53,8 +45,7 @@ int	ft_parse_line(t_info_game *info_game, char *line, int i)
 			return (1);
 		return (-1);
 	}
-	if (line[i] == 'F' || line[i] == 'C'
-		|| (line[i] == 'S' && line[i + 1] == ' '))
+	if (line[i] == 'F' || line[i] == 'C')
 	{
 		if (select_identifier(info_game, line, i) == -1)
 			return (-1);

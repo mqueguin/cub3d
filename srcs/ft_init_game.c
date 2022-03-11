@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/11 11:17:45 by tale-fau         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:14:04 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ int	ft_creates_images(t_game *game)
 		|| !ft_load_textures(game, &game->east_text,
 			game->info_game.path_textures_ea)
 		|| !ft_load_textures(game, &game->west_text,
-			game->info_game.path_textures_we)
-		|| !ft_load_textures(game, &game->sprites_text,
-			game->info_game.path_textures_s))
+			game->info_game.path_textures_we))
 	{
 		ft_msg_errors(&game->info_game, "Failed to load textures");
 		return (0);

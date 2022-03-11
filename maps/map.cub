@@ -1,14 +1,14 @@
-NO ./textures/naruto2.xpm
-WE ./textures/naruto2.xpm
+NO ./textures/mqueguin.xpm
+WE ./textures/mqueguin.xpm
 
-SO ./textures/naruto2.xpm
+SO ./textures/mqueguin.xpm
 S ./textures/Barrel.xpm
 
 F  255, 255, 255
 
 C 255, 165, 0
 
-EA ./textures/naruto2.xpm
+EA ./textures/mqueguin.xpm
 
 111111111111111111111111111
 10000000000000000000000001

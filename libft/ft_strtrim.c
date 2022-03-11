@@ -3,50 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/24 19:08:21 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/02/25 22:50:59 by mqueguin         ###   ########.fr       */
+/*   Created: 2020/12/13 20:39:29 by tale-fau          #+#    #+#             */
+/*   Updated: 2022/03/11 12:07:22 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_check_trim(char c, const char *set)
+int	find_set(const char *set, char s)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (set[i])
 	{
-		if (set[i] == c)
+		if (set[i] == s)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char				*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	size_t	size;
+	size_t	start;
+	size_t	len;
 	size_t	i;
 
 	i = 0;
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
-	while (ft_check_trim(*s1, set))
-		s1++;
-	size = ft_strlen(s1);
-	while (size && ft_check_trim((s1[--size]), set))
-		;
-	if (!(str = (char*)malloc(sizeof(char) * (size + 2))))
-		return (NULL);
-	while (i <= size)
-	{
-		str[i] = s1[i];
+	if (!set)
+		return (ft_strdup(s1));
+	while (s1[i] && find_set(set, s1[i]))
 		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	if (i >= (size_t)ft_strlen(s1))
+		return ((char *)ft_calloc(1, 1));
+	start = i;
+	i = ft_strlen(s1) - 1;
+	while (find_set(set, s1[i]))
+		i--;
+	len = i - start + 1;
+	return (ft_substr(s1, start, len));
 }

@@ -5,17 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 22:27:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2020/09/09 22:29:02 by mqueguin         ###   ########.fr       */
+/*   Created: 2020/12/09 16:49:39 by tale-fau          #+#    #+#             */
+/*   Updated: 2022/02/24 15:47:02 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+int	ft_isalnum_spe(int c)
 {
-	if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')
-			|| (c >= 'a' && c <= 'z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
 		return (1);
 	return (0);
+}
+
+int	ft_isalnum(int c)
+{
+	if (c == '_' || c == '?')
+		return (1);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	else
+		return (0);
 }

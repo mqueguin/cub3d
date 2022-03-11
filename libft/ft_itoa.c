@@ -3,52 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 19:30:13 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/02/09 10:20:53 by mqueguin         ###   ########.fr       */
+/*   Created: 2021/06/02 15:51:40 by tale-fau          #+#    #+#             */
+/*   Updated: 2021/06/02 15:58:45 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_number_size(long nb)
+int	n_size(int n)
 {
-	int		len;
+	int			i;
+	long int	nb;
 
-	len = 0;
-	if (nb == 0)
-		return (1);
+	i = 0;
+	nb = n;
 	if (nb < 0)
-		nb *= -1;
+		nb = nb * -1;
 	while (nb > 0)
 	{
-		len++;
-		nb /= 10;
+		nb = nb / 10;
+		i++;
 	}
-	return (len);
+	return (i);
 }
 
-char			*ft_itoa(int n)
+void	loop(long int nb, char *ret, int size)
 {
-	char	*result;
-	int		len;
-	long	nb;
-
-	nb = n;
-	len = ft_number_size(nb);
-	if (!(result = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	result[len--] = '\0';
-	if (nb < 0)
-		nb *= -1;
-	if (nb == 0)
-		result[len] = '0';
 	while (nb > 0)
 	{
-		result[len] = (nb % 10) + 48;
-		nb /= 10;
-		len--;
+		ret[size] = (nb % 10) + 48;
+		nb = nb / 10;
+		size--;
 	}
-	return (result);
+}
+
+char	*if_zero(char *ret)
+{
+	ret = (char *)malloc(sizeof(char) * 2);
+	if (ret == NULL)
+		return (NULL);
+	ret[1] = '\0';
+	ret[0] = '0';
+	return (ret);
+}
+
+char	*ft_itoa(int n)
+{
+	int			sign;
+	int			size;
+	char		*ret;
+	long int	nb;
+
+	sign = 0;
+	ret = NULL;
+	nb = n;
+	if (n == 0)
+	{
+		ret = if_zero(ret);
+		return (ret);
+	}
+	if (n < 0)
+		nb = nb * -1;
+	size = n_size(n) + sign;
+	ret = (char *)malloc(sizeof(char) * (size + 1));
+	if (ret == NULL)
+		return (NULL);
+	ret[size] = '\0';
+	size--;
+	loop(nb, ret, size);
+	return (ret);
 }

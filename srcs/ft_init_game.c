@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:27:22 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/07 15:23:42 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:17:45 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	ft_init_struct(t_game *game)
 
 static void	ft_get_pos_player_and_angle(t_game *game)
 {
-	// game->player.b_turn_dir = 0;
-	// game->player.b_walk_dir = 0;
 	game->player.pos_x = game->info_game.characters_start_x_y[0];
 	game->player.pos_y = game->info_game.characters_start_x_y[1];
 	if (game->info_game.character_pos == 'S')

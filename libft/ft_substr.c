@@ -3,26 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/18 14:45:40 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/01/05 15:29:36 by mqueguin         ###   ########.fr       */
+/*   Created: 2020/12/13 19:43:19 by tale-fau          #+#    #+#             */
+/*   Updated: 2022/03/11 12:07:07 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char				*ret;
+	unsigned int		i;
+	unsigned int		j;
 
+	ret = NULL;
 	if (!s)
 		return (NULL);
 	if (start > (unsigned int)ft_strlen(s))
 		return (ft_calloc(1, sizeof(char)));
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+	ret = (char *)malloc(sizeof(char) * (len + 1));
+	if (ret == NULL)
 		return (NULL);
-	ft_memcpy(str, start + s, len);
-	str[len] = '\0';
-	return (str);
+	i = 0;
+	j = 0;
+	while (i < start)
+		i++;
+	while (j < len)
+	{
+		ret[j] = s[i + j];
+		j++;
+	}
+	ret[j] = '\0';
+	return (ret);
 }

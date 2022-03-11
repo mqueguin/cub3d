@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:49:06 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 17:19:13 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:06:44 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_isdigit_atoi(char *line, int *i)
 
 	res = 0;
 	j = *i;
-	if (!ft_isdigit(line[j]))
+	if (!ft_is_digit(line[j]))
 		return (-1);
-	while (ft_isdigit(line[j]))
+	while (ft_is_digit(line[j]))
 		res = (res * 10) + ((int)line[j++] - 48);
 	*i = j;
 	return (res);
@@ -42,7 +42,7 @@ int	ft_parse_f_or_c(t_info_game *info_game, char *line, int i)
 	if (line[i++] == ',')
 	{
 		i = ft_jump_space(line, i);
-		if (!ft_isdigit(line[i]))
+		if (!ft_is_digit(line[i]))
 			return (-1);
 		if (info_game->parse_char[0] == 'F')
 		{

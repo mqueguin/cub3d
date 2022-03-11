@@ -23,6 +23,7 @@ SRCS            =       srcs/main.c\
 						srcs/ft_raycasting_init.c\
 						srcs/ft_raycasting.c\
 						srcs/ft_textures.c\
+						srcs/ft_texture2.c\
 						srcs/mlx_utils.c
 
 SRCS_B      =       $(wildcard srcs_bonus/*.c)

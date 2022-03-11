@@ -3,102 +3,100 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
+#    By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/09/09 23:39:23 by mqueguin          #+#    #+#              #
-#    Updated: 2021/04/07 23:38:17 by mqueguin         ###   ########.fr        #
+#    Created: 2020/12/09 19:01:04 by tale-fau          #+#    #+#              #
+#    Updated: 2022/03/11 12:04:41 by tale-fau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-END		=	\x1b[0m
-BOLD	=	\x1b[1m
-UNDER	=	\x1b[4m
-RED		=	\x1b[31m
-GREEN	=	\x1b[32m
-YELLOW	=	\x1b[33m
-BLUE	=	\x1b[34m
-PURPLE	=	\x1b[35m
-CYAN	=	\x1b[36m
-WHITE	=	\x1b[37m
+RED = \033[0;91m
+GREEN = \033[0;92m
+BLUE = \033[0;34m
+WHITE = \x1b[0m
 
-SRCS		= 		ft_isalnum.c\
-					ft_isalpha.c\
-					ft_isascii.c\
-					ft_isdigit.c\
-					ft_isprint.c\
-					ft_strchr.c\
-					ft_strlcpy.c\
-					ft_strlen.c\
-					ft_strncmp.c\
-					ft_strrchr.c\
-					ft_tolower.c\
-					ft_toupper.c\
-					ft_atoi.c\
-					ft_strdup.c\
-					ft_itoa.c\
-					ft_memset.c\
-					ft_bzero.c\
-					ft_memcpy.c\
-					ft_memccpy.c\
-					ft_memcmp.c\
-					ft_memmove.c\
-					ft_memchr.c\
-					ft_strnstr.c\
-					ft_calloc.c\
-					ft_substr.c\
-					ft_strjoin.c\
-					ft_split.c\
-					ft_strtrim.c\
-					ft_strmapi.c\
-					ft_putchar_fd.c\
-					ft_putstr_fd.c\
-					ft_putendl_fd.c\
-					ft_putnbr_fd.c\
-					ft_strcmp.c\
-					get_next_line.c\
-					get_next_line_utils.c
+NAME		=	libft.a
 
-SRCS_BONUS	=		ft_lstnew.c\
-					ft_lstadd_front.c\
-					ft_lstsize.c\
-					ft_lstlast.c\
-					ft_lstadd_back.c\
-					ft_lstdelone.c\
-					ft_lstclear.c\
-					ft_lstiter.c\
-					ft_lstmap.c
+SRCS		=	ft_atoi.c\
+			ft_memset.c \
+			ft_memcpy.c \
+			ft_free_tab.c \
+			ft_memccpy.c \
+			ft_memmove.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_strlen.c \
+			ft_tablen.c \
+			ft_isalpha.c \
+			ft_isdigit.c \
+			ft_isalnum.c \
+			ft_isascii.c \
+			ft_isprint.c \
+			ft_toupper.c \
+			ft_tolower.c \
+			ft_strchr.c \
+			ft_strrchr.c \
+			ft_strncmp.c \
+			ft_strncmp_check_len.c \
+			ft_strncpy.c \
+			ft_strlcpy.c \
+			ft_strlcat.c \
+			ft_strcat.c \
+			ft_strncat.c \
+			ft_strnstr.c \
+			ft_calloc.c \
+			ft_strdup.c \
+			ft_substr.c \
+			ft_strjoin.c \
+			ft_strtrim.c \
+			ft_itoa.c \
+			ft_strmapi.c \
+			ft_putchar_fd.c \
+			ft_putstr_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c \
+			ft_strjoinfree.c \
+			ft_swap.c \
+			ft_putchar.c \
+			ft_putstr.c \
+			ft_free_tab.c \
+			ft_putnbr.c \
+			ft_strdel.c \
+			get_next_line.c \
+			get_next_line_utils.c \
+			ft_bzero.c \
+			ft_strcmp.c
 
-HEAD		=		libft.h
+HEAD		= libft.h
 
-OBJS		= ${SRCS:.c=.o}
+OBJS		= ${SRCS:%.c=${OBJS_DIR}/%.o}
 
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+OBJS_DIR	= ./objs
 
 NAME		= libft.a
 
-CC			= gcc
+CC		= clang
 
-RM			= rm -f
+RM		= rm -f
 
-CFLAGS		= -Wall -Wextra -Werror -I.
+CFLAGS		= -Wall -Wextra -Werror
 
-.c.o:
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+${OBJS_DIR}/%.o: %.c
+		@mkdir -p ${OBJS_DIR}
+		@${CC} ${CFLAGS} -I. -c $< -o $@
 
 $(NAME):	${OBJS}
-			ar rc ${NAME} ${OBJS}
-
-bonus:		${NAME} ${OBJS} ${OBJS_BONUS}
-			ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
+		@ar rc ${NAME} ${OBJS}
 
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS} ${OBJS_BONUS}
+		@${RM} ${OBJS} ${OBJS_BONUS}
+		@rm -rf ${OBJS_DIR}
 
 fclean:		clean
-			${RM} ${NAME}
+		@${RM} ${NAME}
 
-re:			fclean all
+re:		fclean all
 
-.PHONY:		all	clean	fclean re bonus
+.PHONY:		all    clean    fclean re bonus

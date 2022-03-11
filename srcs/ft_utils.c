@@ -6,24 +6,11 @@
 /*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 13:40:09 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/09 16:45:12 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:16:55 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/* int ft_strlen2(char *s)
-{
-	int i = 0;
-	while (s[i++])
-		;
-	return i;
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen2(s));
-} */
 
 int	ft_msg_errors(t_info_game *info_game, char *str)
 {
@@ -54,7 +41,6 @@ void	ft_check_res_size(t_game *game)
 
 	res_x_max = 0;
 	res_y_max = 0;
-	//mlx_get_screen_size(game->world.mlx, &res_x_max, &res_y_max);
 	game->info_game.win_res[0] = 1920;
 	game->info_game.win_res[1] = 1080;
 }

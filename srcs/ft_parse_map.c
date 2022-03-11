@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:28:05 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 19:01:40 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:17:14 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_alloc_map(t_info_game *info_game)
 
 int	ft_parse_line_size(char *line, int *x_max, int *y_max)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (line[0] == '\0')
@@ -43,8 +43,6 @@ int	ft_parse_line_size(char *line, int *x_max, int *y_max)
 		if (*y_max > 0)
 			return (0);
 	}
-	// if (!ft_check_line_map(info_game, line, i))
-	// 	return (0);
 	i = ft_strlen(line);
 	*y_max += 1;
 	if (i > *x_max)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:43:34 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/10 15:07:49 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:34:53 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_info_game
 	int		msg_error;
 }		t_info_game;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	float		pos_x; //Position x du joueur
 	float		pos_y; //Position y du joueur

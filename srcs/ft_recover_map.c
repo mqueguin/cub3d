@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_recover_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tale-fau <tale-fau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:24:15 by mqueguin          #+#    #+#             */
-/*   Updated: 2022/03/08 18:19:12 by mqueguin         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:18:21 by tale-fau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	ft_recover_all_lines(t_info_game *info_game, char *line, int *y)
 			info_game->map[*y][x] = '2';
 		else if (line[i] == '0')
 			info_game->map[*y][x] = '0';
-		else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+		else if (line[i] == 'N' || line[i] == 'S'
+			|| line[i] == 'E' || line[i] == 'W')
 		{
 			if (info_game->character_pos != 0)
 				return (0);
@@ -102,7 +103,6 @@ int	ft_recover_map(t_info_game *info_game, char *path)
 	info_game->fd_map = open(path, O_RDONLY);
 	if (info_game->fd_map == -1)
 		return (ft_msg_errors(info_game, "Invalid file descriptor..."));
-	//printf("Valeur de line_index : %d\n", info_game->line_index);
 	while ((get_next_line(info_game->fd_map, &line)) > 0)
 	{
 		if (i >= info_game->line_index)

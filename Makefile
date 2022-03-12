@@ -26,11 +26,33 @@ SRCS            =       srcs/main.c\
 						srcs/ft_texture2.c\
 						srcs/mlx_utils.c
 
-SRCS_B      =       $(wildcard srcs_bonus/*.c)
+SRCS_B      =       bonus/srcs_bonus/main_bonus.c\
+					bonus/srcs_bonus/ft_parse_bonus.c\
+					bonus/srcs_bonus/ft_parse_map_bonus.c\
+					bonus/srcs_bonus/ft_init_parse_bonus.c\
+					bonus/srcs_bonus/ft_check_space_map_bonus.c\
+					bonus/srcs_bonus/ft_map_is_close_bonus.c\
+					bonus/srcs_bonus/ft_parse_utils_bonus.c\
+					bonus/srcs_bonus/ft_parse_utils2_bonus.c\
+					bonus/srcs_bonus/ft_parse_utils3_bonus.c\
+					bonus/srcs_bonus/ft_recover_map_bonus.c\
+					bonus/srcs_bonus/ft_utils_bonus.c\
+					bonus/srcs_bonus/check_file_bonus.c\
+					bonus/srcs_bonus/cub3d_utils_bonus.c\
+					bonus/srcs_bonus/ft_parse_settings_bonus.c\
+					bonus/srcs_bonus/ft_parse_identifier_bonus.c\
+					bonus/srcs_bonus/ft_events_bonus.c\
+					bonus/srcs_bonus/ft_init_game_bonus.c\
+					bonus/srcs_bonus/ft_player_move_bonus.c\
+					bonus/srcs_bonus/ft_raycasting_init_bonus.c\
+					bonus/srcs_bonus/ft_raycasting_bonus.c\
+					bonus/srcs_bonus/ft_textures_bonus.c\
+					bonus/srcs_bonus/ft_texture2_bonus.c\
+					bonus/srcs_bonus/mlx_utils_bonus.c
 
 INCLUDES_DIR     =       includes/
 
-INCLUDES_DIR_B  =       includes_bonus/
+INCLUDES_DIR_B  =       bonus/includes_bonus/
 
 LIB_DIR         =       libft/
 
@@ -72,7 +94,7 @@ ${NAME}:		${OBJS}
 bonus:		${OBJS_B}
 						@make -C ${LIB_DIR}
 						@make -C ${LIB_DIR} bonus
-						@${CC} ${FLAGS} ${LFLAGS} -I ${INCLUDES_DIR_B} -o ${NAME_B} ${OBJS_B} ${LIBFT} ${MLX}
+						@${CC} ${FLAGS} ${LFLAGS} -I ${INCLUDES_DIR} -o ${NAME_B} ${OBJS_B} ${LIBFT} ${MLX}
 						@echo "\nlibft.a has been created"
 						@echo "cub3d_bonus has been created"
 
